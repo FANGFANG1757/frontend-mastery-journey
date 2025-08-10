@@ -101,7 +101,7 @@ jobs:
             
             ---
             
-            @claude-code Please review this PR for Week ${{ steps.analyze.outputs.week_number }} completion and advise on readiness for advancement.
+            @claude Please review this PR for Week ${{ steps.analyze.outputs.week_number }} completion and advise on readiness for advancement.
             `;
             
             await github.rest.issues.createComment({
