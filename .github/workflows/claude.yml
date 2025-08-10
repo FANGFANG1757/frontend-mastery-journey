@@ -8,6 +8,7 @@ on:
     paths: 
       - 'weeks/**'
       - 'projects/**'
+      - '.github/workflows/**'
   # Manual trigger with @claude mentions
   issue_comment:
     types: [created]
@@ -29,8 +30,8 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
-      issues: read
+      pull-requests: write # Required for Claude to write comments
+      issues: write # Required for Claude to write comments
       id-token: write
       actions: read # Required for Claude to read CI results on PRs
     steps:
@@ -47,8 +48,7 @@ jobs:
 
           # Enable automatic review mode for PR events
           direct_prompt: |
-            ${{ github.event_name == 'pull_request' && 
-            'Please provide an automatic code review with inline comments for this PR. Focus on:
+            Please provide an automatic code review with inline comments for this PR. Focus on:
             - Code quality and best practices
             - Accessibility compliance (WCAG 2.2 AA)
             - Performance considerations
@@ -56,8 +56,7 @@ jobs:
             - Testing coverage
             - Professional development standards
             
-            Provide specific, actionable inline comments on the changed code.' || 
-            '' }}
+            Provide specific, actionable inline comments on the changed code.
 
           # Allow Claude to read CI results and run basic commands
           additional_permissions: |
