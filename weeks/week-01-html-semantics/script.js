@@ -1,4 +1,4 @@
-// TODO: Implement interactive features for TechShop
+// TODO: Implement interactive features for Wuli Home
 
 document.addEventListener('DOMContentLoaded', function() {
     // TODO: Mobile navigation toggle functionality
@@ -8,110 +8,211 @@ document.addEventListener('DOMContentLoaded', function() {
         // TODO: Manage focus when menu opens/closes
         // TODO: Handle escape key to close mobile menu
         // TODO: Close menu when clicking outside
+        // TODO: Trap focus within mobile menu when open
+    }
+    
+    // TODO: Shopping cart functionality
+    function initShoppingCart() {
+        // TODO: Initialize cart from localStorage
+        // TODO: Update cart count badge on load
+        // TODO: Add to cart functionality for each product
+        // TODO: Show loading state on "Add to Cart" buttons
+        // TODO: Display success message with animation
+        // TODO: Update cart count with bounce animation
+        // TODO: Save cart to localStorage
+        // TODO: Show cart preview on hover (desktop)
+        // TODO: Announce cart updates to screen readers
     }
     
     // TODO: Product interactions
-    function initProductInteractions() {
-        // TODO: Add to cart functionality for each product
-        // TODO: Show loading state on "Add to Cart" buttons
-        // TODO: Display success/error messages with proper announcements
-        // TODO: Update cart count in header
-        // TODO: Handle quantity selection if implementing
-        // TODO: Manage focus after adding to cart
+    function initProductCards() {
+        // TODO: Quick view functionality
+        // TODO: Image gallery/carousel for products
+        // TODO: Wishlist toggle (heart icon)
+        // TODO: Size/variant selection if applicable
+        // TODO: Stock availability checking
+        // TODO: Price formatting with currency
+    }
+    
+    // TODO: Search functionality
+    function initSearch() {
+        // TODO: Toggle search overlay/modal
+        // TODO: Search input with autocomplete
+        // TODO: Search suggestions based on categories
+        // TODO: Recent searches from localStorage
+        // TODO: Popular searches display
+        // TODO: Search results with product previews
+        // TODO: Close search with Escape key
+        // TODO: Announce search results count
     }
     
     // TODO: Newsletter form handling
     function initNewsletterForm() {
         // TODO: Email validation (format and required)
-        // TODO: Form submission with proper error handling
-        // TODO: Display success/error messages
-        // TODO: Prevent duplicate submissions
+        // TODO: Check for duplicate submissions
+        // TODO: Show loading state during submission
+        // TODO: Display success message with discount code
+        // TODO: Error handling with friendly messages
+        // TODO: Save email preference to localStorage
+        // TODO: Confetti animation on success (fun touch!)
         // TODO: Reset form after successful submission
         // TODO: Announce form status to screen readers
     }
     
     // TODO: Hero section interactions
     function initHeroSection() {
-        // TODO: Hero CTA button interactions
-        // TODO: Background image loading with proper fallbacks
-        // TODO: Ensure hero content is accessible on all devices
+        // TODO: Hero banner carousel/slider if multiple
+        // TODO: Parallax effect on scroll (subtle)
+        // TODO: Auto-pause carousel on hover
+        // TODO: Keyboard navigation for carousel
+        // TODO: Touch/swipe support for mobile
+        // TODO: Lazy load hero images
+        // TODO: Smooth scroll to shop section on CTA click
     }
     
-    // TODO: Categories navigation
-    function initCategoriesNav() {
-        // TODO: Category filtering or navigation
-        // TODO: Active category state management
-        // TODO: Keyboard navigation for category links
-        // TODO: Update ARIA states for selected categories
+    // TODO: Category filtering
+    function initCategoryFilter() {
+        // TODO: Filter products by category
+        // TODO: Smooth transition animations
+        // TODO: Update URL with selected category
+        // TODO: Active category highlighting
+        // TODO: Show product count per category
+        // TODO: "Show all" option
+        // TODO: Maintain scroll position after filter
+    }
+    
+    // TODO: Announcement bar
+    function initAnnouncementBar() {
+        // TODO: Rotate through multiple announcements
+        // TODO: Pause rotation on hover
+        // TODO: Close/dismiss functionality
+        // TODO: Save dismissed state in sessionStorage
+        // TODO: Countdown timer for limited offers
+    }
+    
+    // TODO: User account menu
+    function initUserAccount() {
+        // TODO: Toggle account dropdown
+        // TODO: Login/signup modal trigger
+        // TODO: Guest vs logged-in state
+        // TODO: Recently viewed products
+        // TODO: Order tracking link
+        // TODO: Wishlist count display
     }
     
     // TODO: Accessibility enhancements
     function initA11yFeatures() {
-        // TODO: Focus management for dynamic content
-        // TODO: Announce cart updates to screen readers
-        // TODO: Handle keyboard navigation patterns
         // TODO: Skip link functionality
-        // TODO: Focus trapping for mobile menu
-        // TODO: Live regions for status messages
+        // TODO: Focus management for modals
+        // TODO: Keyboard navigation patterns
+        // TODO: Live regions for dynamic content
+        // TODO: High contrast mode toggle
+        // TODO: Font size adjustment controls
+        // TODO: Reduced motion preferences
+        // TODO: Screen reader announcements
     }
     
-    // TODO: Image handling
-    function initImageHandling() {
-        // TODO: Lazy loading for product images
-        // TODO: Loading states and error fallbacks
-        // TODO: Proper alt text management
-        // TODO: Aspect ratio maintenance to prevent CLS
+    // TODO: Image handling and optimization
+    function initImageOptimization() {
+        // TODO: Lazy loading for all product images
+        // TODO: Progressive image loading (blur-up)
+        // TODO: Retina/high-DPI image support
+        // TODO: WebP with fallbacks
+        // TODO: Error handling with placeholder images
+        // TODO: Aspect ratio to prevent layout shift
     }
     
-    // TODO: Search functionality (if implementing)
-    function initSearch() {
-        // TODO: Search input handling
-        // TODO: Search suggestions/autocomplete
-        // TODO: Search results accessibility
-        // TODO: Announce search results count
+    // TODO: Social proof features
+    function initSocialProof() {
+        // TODO: Customer reviews carousel
+        // TODO: Instagram feed integration
+        // TODO: Recently purchased notifications
+        // TODO: Product view count ("X people viewing")
+        // TODO: Limited stock warnings
     }
     
-    // TODO: Initialize all functionality
+    // TODO: Smooth scrolling
+    function initSmoothScroll() {
+        // TODO: Smooth scroll for anchor links
+        // TODO: Back to top button
+        // TODO: Progress indicator on scroll
+        // TODO: Sticky header on scroll down
+        // TODO: Hide header on scroll up (mobile)
+    }
+    
+    // TODO: Initialize all features
+    // Uncomment as you implement each feature:
     // initMobileNav();
-    // initProductInteractions();
+    // initShoppingCart();
+    // initProductCards();
+    // initSearch();
     // initNewsletterForm();
     // initHeroSection();
-    // initCategoriesNav();
+    // initCategoryFilter();
+    // initAnnouncementBar();
+    // initUserAccount();
     // initA11yFeatures();
-    // initImageHandling();
-    // initSearch();
+    // initImageOptimization();
+    // initSocialProof();
+    // initSmoothScroll();
     
-    // TODO: Global keyboard shortcuts
+    // TODO: Performance monitoring
+    function initPerformanceMonitoring() {
+        // TODO: Track Core Web Vitals
+        // TODO: Monitor cart abandonment
+        // TODO: Track user interactions
+        // TODO: Error logging
+    }
+    
+    // TODO: Global event handlers
     document.addEventListener('keydown', function(e) {
-        // TODO: Handle global shortcuts (Escape, etc.)
-        // TODO: Close mobile menu with Escape
-        // TODO: Focus management for modal dialogs
-        // TODO: Navigate between products with arrow keys (optional)
+        // TODO: Global keyboard shortcuts
+        // TODO: Escape to close modals/overlays
+        // TODO: "/" to focus search
+        // TODO: Arrow keys for gallery navigation
     });
     
-    // TODO: Handle window resize for responsive features
+    // TODO: Window resize handler
+    let resizeTimer;
     window.addEventListener('resize', function() {
-        // TODO: Handle responsive behavior changes
-        // TODO: Reset mobile menu state if switching to desktop
-        // TODO: Recalculate any dynamic layouts
+        // TODO: Debounce resize events
+        // TODO: Update mobile/desktop specific features
+        // TODO: Recalculate dynamic layouts
+        // TODO: Close mobile menu if switching to desktop
     });
     
-    // TODO: Handle cart persistence (localStorage)
-    function initCartStorage() {
-        // TODO: Save cart items to localStorage
-        // TODO: Restore cart on page load
-        // TODO: Update cart count on load
+    // TODO: Intersection Observer for animations
+    function initScrollAnimations() {
+        // TODO: Fade in products on scroll
+        // TODO: Parallax effects
+        // TODO: Sticky elements
+        // TODO: Infinite scroll for products
     }
     
-    // TODO: Form validation helpers
-    function validateEmail(email) {
-        // TODO: Email format validation
-        // TODO: Return validation result with error messages
+    // TODO: Utility functions
+    function formatCurrency(amount) {
+        // TODO: Format price with currency symbol
+        // TODO: Handle different locales
     }
     
-    function showMessage(message, type) {
-        // TODO: Display user messages (success/error)
-        // TODO: Announce messages to screen readers
-        // TODO: Auto-hide messages after timeout
+    function debounce(func, wait) {
+        // TODO: Debounce utility for search/resize
+    }
+    
+    function showNotification(message, type = 'success') {
+        // TODO: Show toast notifications
+        // TODO: Auto-dismiss after timeout
+        // TODO: Stack multiple notifications
+        // TODO: Announce to screen readers
+    }
+    
+    function saveToLocalStorage(key, value) {
+        // TODO: Safe localStorage with fallback
+        // TODO: Handle quota exceeded errors
+    }
+    
+    function getFromLocalStorage(key, defaultValue) {
+        // TODO: Safe localStorage retrieval
+        // TODO: Parse JSON with error handling
     }
 });

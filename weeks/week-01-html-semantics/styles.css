@@ -6,266 +6,387 @@
 }
 
 :root {
-    /* TODO: Define design system variables for TechShop */
-    --primary-color: #2563eb;
-    --secondary-color: #64748b;
-    --success-color: #059669;
-    --warning-color: #d97706;
-    --danger-color: #dc2626;
-    --text-color: #1f2937;
-    --bg-color: #ffffff;
-    --border-color: #e5e7eb;
-    --focus-color: #3b82f6;
+    /* TODO: Define design system variables for Wuli Home */
+    /* Brand colors inspired by Wuli Home's cute and cozy aesthetic */
+    --primary-color: #f8b4d9;  /* Soft pink */
+    --secondary-color: #ffd6a5; /* Peach */
+    --accent-color: #a8dadc;    /* Mint */
+    --neutral-light: #f1f5f9;   /* Light gray */
+    --neutral-dark: #475569;    /* Dark gray */
+    --text-primary: #1e293b;    /* Almost black */
+    --text-secondary: #64748b;  /* Medium gray */
+    --bg-white: #ffffff;
+    --bg-cream: #fefce8;        /* Cream background */
+    --border-color: #e2e8f0;
+    --focus-color: #f472b6;     /* Pink focus */
+    --success-color: #10b981;
+    --error-color: #ef4444;
     
+    /* Typography scale */
+    --font-size-xs: 0.75rem;
     --font-size-sm: 0.875rem;
     --font-size-base: 1rem;
     --font-size-lg: 1.125rem;
     --font-size-xl: 1.25rem;
     --font-size-2xl: 1.5rem;
     --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
     
+    /* Spacing scale */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
     --spacing-2xl: 3rem;
+    --spacing-3xl: 4rem;
+    
+    /* Border radius for that soft, cute aesthetic */
+    --radius-sm: 0.25rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 1rem;
+    --radius-full: 9999px;
 }
 
 body {
-    font-family: system-ui, -apple-system, sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
     line-height: 1.6;
-    color: var(--text-color);
-    background-color: var(--bg-color);
+    color: var(--text-primary);
+    background-color: var(--bg-white);
 }
 
 /* TODO: Implement skip link styles */
 .skip-link {
     /* TODO: Position off-screen initially */
     /* TODO: Show on focus with proper styling */
+    /* TODO: Match Wuli Home's soft aesthetic */
 }
 
-/* TODO: Style the header and navigation */
+/* TODO: Style the header */
 header {
-    /* TODO: Create header layout with logo and navigation */
+    /* TODO: Create header layout with logo, nav, and action buttons */
+    /* TODO: Sticky header with shadow on scroll */
+    /* TODO: Background color and padding */
+}
+
+.header-container {
+    /* TODO: Container for header content */
+    /* TODO: Max-width and centering */
+    /* TODO: Flexbox layout for alignment */
 }
 
 .logo {
     /* TODO: Logo styling */
+    /* TODO: Size constraints */
 }
 
-header nav {
-    /* TODO: Style main navigation menu */
-    /* TODO: Implement responsive navigation (mobile menu) */
+/* TODO: Style main navigation */
+header nav ul {
+    /* TODO: Remove list styles */
+    /* TODO: Flexbox for horizontal layout */
+    /* TODO: Gap between items */
 }
 
-.nav-toggle {
-    /* TODO: Mobile menu hamburger button */
-    /* TODO: Hide on desktop */
+header nav a {
+    /* TODO: Navigation link styling */
+    /* TODO: Hover effects with soft transitions */
+    /* TODO: Active state for current page */
 }
 
-.cart-icon {
-    /* TODO: Shopping cart icon styling */
+/* TODO: Header action buttons (search, cart, user) */
+.header-actions {
+    /* TODO: Group action buttons */
+    /* TODO: Icon button styling */
+}
+
+.header-actions button {
+    /* TODO: Button reset and custom styling */
+    /* TODO: Round buttons with soft colors */
+    /* TODO: Hover and focus states */
+}
+
+.cart-count {
     /* TODO: Cart count badge */
-}
-
-/* TODO: Add focus states for all interactive elements */
-a:focus,
-button:focus {
-    /* TODO: Visible focus indicators */
+    /* TODO: Position absolute over cart icon */
+    /* TODO: Pink background with white text */
 }
 
 /* TODO: Style the hero section */
 .hero {
-    /* TODO: Hero layout with background image */
-    /* TODO: Ensure text contrast over image */
-}
-
-.hero h1 {
-    /* TODO: Hero heading typography */
+    /* TODO: Hero layout and background */
+    /* TODO: Min-height for impact */
+    /* TODO: Soft gradient or pattern background */
 }
 
 .hero-content {
-    /* TODO: Hero content positioning */
+    /* TODO: Center content in hero */
+    /* TODO: Text alignment and spacing */
+}
+
+.hero h1 {
+    /* TODO: Main heading typography */
+    /* TODO: Large, playful font size */
+    /* TODO: Soft color treatment */
 }
 
 .cta-button {
-    /* TODO: Call-to-action button styling */
-    /* TODO: Hover and focus states */
+    /* TODO: Primary call-to-action button */
+    /* TODO: Pink background with white text */
+    /* TODO: Rounded corners */
+    /* TODO: Hover animation (scale or shadow) */
+    /* TODO: Focus outline */
 }
 
-/* TODO: Style the products section */
-.featured-products {
-    /* TODO: Section spacing and layout */
+/* TODO: Style announcement bar */
+.announcement-bar {
+    /* TODO: Soft background color (peach or mint) */
+    /* TODO: Center text with icon */
+    /* TODO: Padding and font size */
 }
 
+/* TODO: Style New Arrivals section */
+.new-arrivals {
+    /* TODO: Section padding and spacing */
+    /* TODO: Container max-width */
+}
+
+.new-arrivals h2 {
+    /* TODO: Section heading styling */
+    /* TODO: Center alignment */
+    /* TODO: Playful typography */
+}
+
+/* TODO: Product grid */
 .products-grid {
-    /* TODO: CSS Grid layout for products */
-    /* TODO: Responsive columns (1 on mobile, 2-3 on tablet, 4+ on desktop) */
+    /* TODO: CSS Grid layout */
+    /* TODO: Responsive columns (1 on mobile, 2 on tablet, 4 on desktop) */
+    /* TODO: Gap between products */
 }
 
 .product-card {
-    /* TODO: Product card styling */
-    /* TODO: Card hover effects */
-    /* TODO: Card border and shadow */
+    /* TODO: Card styling with soft shadows */
+    /* TODO: Rounded corners */
+    /* TODO: Background white */
+    /* TODO: Transition for hover effects */
+}
+
+.product-card:hover {
+    /* TODO: Lift effect on hover */
+    /* TODO: Soft shadow enhancement */
 }
 
 .product-card img {
     /* TODO: Product image styling */
-    /* TODO: Use aspect-ratio to prevent CLS */
-}
-
-.product-info {
-    /* TODO: Product information section */
+    /* TODO: Border radius on top corners */
+    /* TODO: Aspect ratio for consistency */
+    /* TODO: Object-fit cover */
 }
 
 .product-card h3 {
     /* TODO: Product name styling */
+    /* TODO: Font size and weight */
+    /* TODO: Color and spacing */
 }
 
-.product-price {
-    /* TODO: Price styling with proper formatting */
+.product-description {
+    /* TODO: Product description text */
+    /* TODO: Smaller, secondary color */
 }
 
-.add-to-cart-btn {
-    /* TODO: Add to cart button styling */
-    /* TODO: Loading state for button */
-    /* TODO: Disabled state styling */
+.price {
+    /* TODO: Price styling */
+    /* TODO: Bold or different color */
+    /* TODO: Spacing */
 }
 
-/* TODO: Style the categories section */
+.product-card button {
+    /* TODO: Add to cart button */
+    /* TODO: Full width in card */
+    /* TODO: Soft pink background */
+    /* TODO: Rounded corners */
+    /* TODO: Hover and focus states */
+}
+
+/* TODO: Style Shop by Category section */
 .categories {
-    /* TODO: Categories section layout */
+    /* TODO: Section background (cream or light) */
+    /* TODO: Padding and spacing */
 }
 
-.categories-nav {
-    /* TODO: Categories navigation layout */
+.category-grid {
+    /* TODO: Grid layout for categories */
+    /* TODO: 2x2 on mobile, 4 columns on desktop */
 }
 
-.category-link {
-    /* TODO: Category link styling */
-    /* TODO: Active/selected state */
+.category-grid a {
+    /* TODO: Category card styling */
+    /* TODO: Image with text overlay or below */
+    /* TODO: Rounded corners */
     /* TODO: Hover effects */
 }
 
-/* TODO: Style the newsletter section */
+/* TODO: Style About preview section */
+.about-preview {
+    /* TODO: Section styling */
+    /* TODO: Center text */
+    /* TODO: Max-width for readability */
+}
+
+.about-content {
+    /* TODO: Content container */
+    /* TODO: Line height and spacing */
+}
+
+.text-link {
+    /* TODO: Inline link styling */
+    /* TODO: Pink color with underline */
+    /* TODO: Arrow animation on hover */
+}
+
+/* TODO: Style newsletter section */
 .newsletter {
-    /* TODO: Newsletter section background and spacing */
+    /* TODO: Section background (soft gradient) */
+    /* TODO: Padding and centering */
 }
 
-.newsletter-form {
-    /* TODO: Form layout (inline or stacked) */
+.newsletter h2 {
+    /* TODO: Newsletter heading */
+    /* TODO: Friendly, inviting style */
 }
 
-.newsletter-form label {
-    /* TODO: Label styling (ensure visibility) */
+.newsletter form {
+    /* TODO: Form layout */
+    /* TODO: Max-width and centering */
 }
 
-.newsletter-form input {
-    /* TODO: Input styling */
-    /* TODO: Focus and error states */
+.form-group {
+    /* TODO: Form field group */
+    /* TODO: Label and input styling */
 }
 
-.newsletter-form button {
+.newsletter input[type="email"] {
+    /* TODO: Email input styling */
+    /* TODO: Rounded corners */
+    /* TODO: Border and padding */
+    /* TODO: Focus state with pink outline */
+}
+
+.newsletter button[type="submit"] {
     /* TODO: Submit button styling */
+    /* TODO: Match CTA button style */
 }
 
-.privacy-notice {
-    /* TODO: Privacy notice styling */
-}
-
-/* TODO: Style the footer */
+/* TODO: Style footer */
 footer {
-    /* TODO: Footer layout with multiple sections */
-    /* TODO: Footer background and spacing */
+    /* TODO: Footer background (light gray or cream) */
+    /* TODO: Padding and spacing */
+}
+
+.footer-container {
+    /* TODO: Footer content container */
+    /* TODO: Grid layout for sections */
+    /* TODO: Responsive columns */
 }
 
 .footer-section {
-    /* TODO: Footer section styling */
+    /* TODO: Individual footer section */
+    /* TODO: Spacing and typography */
 }
 
 .footer-section h3 {
     /* TODO: Footer section headings */
+    /* TODO: Smaller, uppercase style */
+    /* TODO: Soft color */
 }
 
-.footer-nav {
-    /* TODO: Footer navigation styling */
+.footer-section ul {
+    /* TODO: Remove list styles */
+    /* TODO: Spacing between items */
 }
 
-.footer-nav a {
+.footer-section a {
     /* TODO: Footer link styling */
+    /* TODO: Subtle color */
+    /* TODO: Hover effects */
 }
 
 .social-links {
-    /* TODO: Social media links styling */
+    /* TODO: Social media links layout */
+    /* TODO: Horizontal with gap */
 }
 
 .social-links a {
-    /* TODO: Social link styling with icons */
+    /* TODO: Social icon styling */
+    /* TODO: Round buttons */
+    /* TODO: Brand colors on hover */
 }
 
-.copyright {
-    /* TODO: Copyright section styling */
+.payment-methods {
+    /* TODO: Payment icons layout */
+    /* TODO: Horizontal list */
+    /* TODO: Icon sizing */
 }
 
-/* TODO: Implement responsive breakpoints */
-@media (max-width: 768px) {
+.footer-bottom {
+    /* TODO: Copyright section */
+    /* TODO: Border top */
+    /* TODO: Flex layout for copyright and legal links */
+}
+
+/* TODO: Utility classes */
+.sr-only {
+    /* TODO: Screen reader only text */
+    /* TODO: Visually hidden but accessible */
+}
+
+/* TODO: Focus states for accessibility */
+*:focus {
+    /* TODO: Visible focus outline */
+    /* TODO: Pink color to match brand */
+    /* TODO: Offset for better visibility */
+}
+
+/* TODO: Loading states */
+.loading {
+    /* TODO: Loading spinner or skeleton */
+    /* TODO: Soft animation */
+}
+
+/* TODO: Responsive breakpoints */
+@media (max-width: 640px) {
     /* TODO: Mobile styles */
-    
-    header {
-        /* TODO: Mobile header layout */
-    }
-    
-    .nav-toggle {
-        /* TODO: Show mobile menu toggle */
-    }
-    
-    header nav {
-        /* TODO: Mobile navigation menu */
-    }
-    
-    .products-grid {
-        /* TODO: Single column on mobile */
-    }
-    
-    .hero {
-        /* TODO: Mobile hero adjustments */
-    }
-    
-    .newsletter-form {
-        /* TODO: Stack form elements on mobile */
-    }
+    /* TODO: Stack header elements */
+    /* TODO: Mobile navigation menu */
+    /* TODO: Single column layouts */
+    /* TODO: Larger touch targets */
 }
 
-@media (min-width: 769px) and (max-width: 1024px) {
+@media (min-width: 641px) and (max-width: 1024px) {
     /* TODO: Tablet styles */
-    
-    .products-grid {
-        /* TODO: 2-3 columns on tablet */
-    }
+    /* TODO: 2-3 column grids */
+    /* TODO: Adjusted spacing */
 }
 
 @media (min-width: 1025px) {
     /* TODO: Desktop styles */
-    
-    .nav-toggle {
-        /* TODO: Hide mobile menu toggle on desktop */
-    }
-    
-    .products-grid {
-        /* TODO: 4+ columns on desktop */
-    }
+    /* TODO: Full header layout */
+    /* TODO: 4+ column grids */
+    /* TODO: Hover effects enabled */
 }
 
-/* TODO: Add reduced motion preferences */
+/* TODO: Accessibility preferences */
 @media (prefers-reduced-motion: reduce) {
-    /* TODO: Disable animations for users who prefer reduced motion */
+    /* TODO: Disable animations */
+    /* TODO: Instant transitions */
 }
 
-/* TODO: Ensure color contrast meets WCAG AA standards */
-/* TODO: Test with high contrast mode */
+@media (prefers-color-scheme: dark) {
+    /* TODO: Dark mode support (optional) */
+    /* TODO: Adjust colors for dark theme */
+}
 
-/* TODO: Add print styles */
+/* TODO: Print styles */
 @media print {
-    /* TODO: Print-friendly styles */
+    /* TODO: Hide navigation and interactive elements */
+    /* TODO: Optimize for printing */
 }

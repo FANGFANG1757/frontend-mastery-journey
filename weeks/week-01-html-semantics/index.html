@@ -1,88 +1,194 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShop - Your Electronics Store</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- TODO: Implement skip link for accessibility -->
-    <a href="#main">Skip to main</a>
-    
-    <!-- TODO: Create semantic header with logo and navigation -->
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wuli Home - Creating cozy moments in every corner</title>
+    <!-- TODO: Add meta description for SEO -->
+    <meta
+      name="description"
+      content="Shop cute and functional home essentials at Wuli home. Free shipping over $50."
+    />
+    <!-- TODO: Add Font Awesome CDN for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- TODO: Add skip link for accessibility (should link to #main) -->
+    <a href="#main" class="skip">Skip to main content</a>
+
     <header>
-        <!-- TODO: Add company logo with proper alt text -->
-         <img src="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjApY-J4_-OAxXtnq8BHTzxEwIQPAgI" alt="">
-        
-        <!-- TODO: Implement main navigation with proper ARIA labels -->
-        <nav>
-            <!-- TODO: Add navigation links (Home, Products, About, Contact, Cart) -->
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/cart">Cart</a>
-        </nav>
+      <!-- TODO: Create header container with logo, navigation, and action buttons -->
+
+      <!-- TODO: Add company logo with proper alt text -->
+      <a href="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg" alt="Store logo"></a>
+
+      <!-- TODO: Create main navigation with semantic markup -->
+      <nav>
+        <a href="#">Home</a>
+        <a href="">Shop all</a>
+        <a href="">About us</a>
+        <a href="">Contact</a>
+        <a href="">FAQ</a>
+      </nav>
+      <!-- Navigation items: Home, Shop All (with dropdown), About Us, Contact, FAQ -->
+
+      <!-- TODO: Add header action buttons (search, cart with count, user account) -->
+      <div>
+        <button type="button" aria-label="Search">
+          <i class="fas fa-search" aria-hidden="true"></i>
+        </button>
+        <button type="button" aria-label="Cart">
+          <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+        </button>
+        <button type="button" aria-label="User account">
+          <i class="fa-solid fa-user" aria-hidden="true"></i>
+        </button>
+      </div>
+      <!-- Use appropriate ARIA labels for each button -->
     </header>
 
-    <!-- TODO: Implement main content area with proper landmark -->
-    <main>
-        <!-- TODO: Create hero section with featured product -->
-        <section>
-            <!-- TODO: Add hero heading and promotional content -->
-            <!-- TODO: Include hero image with proper alt text and aspect-ratio -->
-            <!-- TODO: Add call-to-action button with proper focus states -->
-        </section>
+    <main id="main">
+      <!-- TODO: Create hero section -->
+      <!-- Include: 
+            - Main heading "Creating cozy moments in every corner"
+            - Subtitle about Wuli Home
+            - Call-to-action button "Shop Now"
+            - Hero image with proper alt text
+        -->
+      <section class="hero">
+        <div>
+          <h1>Creating cozy moments in every corner</h1>
+          <p>
+            Welcome to Wuli Home - Your destination for cute and functional home
+            essentials
+          </p>
+          <a href="#shop" class="cta-button">Shop now</a>
+        </div>
+        <img
+          src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/coffee.jpg"
+          alt="hero section background img"
+        />
+      </section>
 
-        <!-- TODO: Add featured products section -->
-        <section>
-            <!-- TODO: Add section heading with proper hierarchy -->
-            
-            <!-- TODO: Create product grid using CSS Grid -->
-            <div class="products-grid">
-                <!-- TODO: Create product cards as articles -->
-                <article>
-                    <!-- TODO: Add product image with proper alt text -->
-                    <!-- TODO: Add product name as heading -->
-                    <!-- TODO: Add product price -->
-                    <!-- TODO: Add "Add to Cart" button with proper ARIA attributes -->
-                </article>
-                
-                <!-- TODO: Repeat for 5-6 more products -->
-            </div>
-        </section>
+      <!-- TODO: Add announcement bar for promotions -->
+      <section class="announcement-bar" role="region" aria-label="promotions">
+        <p>✨Free gift wrapping on all orders over $50</p>
+      </section>
+      <!-- Example: Free gift wrapping on orders over $50 -->
 
-        <!-- TODO: Add categories section -->
-        <section>
-            <!-- TODO: Add categories heading -->
-            
-            <!-- TODO: Create category navigation -->
-            <nav>
-                <!-- TODO: Add category links with proper labeling -->
-            </nav>
-        </section>
+      <!-- TODO: Create "New Arrivals" section -->
+      <!-- Include:
+            - Section heading
+            - Product grid with 4-6 product cards
+            - Each product card should be an <article> with:
+                * Product image with descriptive alt text
+                * Product name as heading
+                * Product description
+                * Price (with screen reader friendly markup)
+                * Add to Cart button with proper ARIA label
+        -->
+      <section>
+        <h1>New Arrivals</h1>
+        <div>
+          <article>
+            <img
+              src="https://wulihome.ca/cdn/shop/files/CB602798-AEA5-4EC5-891F-99DAC9488C09.jpg?v=1754803669&width=823"
+              alt="Cute bear ceramic mug"
+            />
+            <h1>Cute Bear Ceramic Mug with Lid</h1>
+            <p>Cute Bear Ceramic Mug with Lid 400ML Capacity</p>
+            <p>$12</p>
+            <button type="button" aria-label="Add to cart">Add to cart</button>
+          </article>
+          <article>
+            <img
+              src="https://wulihome.ca/cdn/shop/files/6822D51A-4568-4018-B19F-212B0F1F03F2.jpg?v=1754801648&width=823"
+              alt="Kitty Short Glass Tumbler "
+            />
+            <h1>Kitty Short Glass Tumbler </h1>
+            <p>Kitty Short Glass Tumbler with Glass Straw 400ML</p>
+            <p>$8</p>
+            <button type="button" aria-label="Add to cart">Add to cart</button>
+          </article>
+           <article>
+            <img
+              src="https://wulihome.ca/cdn/shop/files/947C3E1C-A1F0-433C-88B1-DF59A95660F2.jpg?v=1754713740&width=823"
+              alt="Wavy Rim Ceramic Yogurt Bowl"
+            />
+            <h1>Kitty Wavy Rim Ceramic Yogurt Bowl </h1>
+            <p>Kitty Wavy Rim Ceramic Yogurt Bowl 300ML</p>
+            <p>$8</p>
+            <button type="button" aria-label="Add to cart">Add to cart</button>
+          </article> <article>
+            <img
+              src="https://wulihome.ca/cdn/shop/files/5A1C206F-E68A-4DF6-9859-160D23A10BF4.jpg?v=1754540723&width=823"
+              alt="Hand-Painted Cake Ceramic Dessert Plate "
+            />
+            <h1>Hand-Painted Cake Ceramic Dessert Plate </h1>
+            <p>Hand-Painted Cake Ceramic Dessert Plate, 7.8-Inch</p>
+            <p>$8</p>
+            <button type="button" aria-label="Add to cart">Add to cart</button>
+          </article>
+          
+        </div>
+      </section>
 
-        <!-- TODO: Add newsletter signup section -->
-        <section>
-            <!-- TODO: Add newsletter heading -->
-            <!-- TODO: Create accessible form with proper labels -->
-            <form>
-                <!-- TODO: Add email input with label and validation -->
-                <!-- TODO: Add submit button -->
-                <!-- TODO: Include privacy notice -->
-            </form>
-        </section>
+      <!-- TODO: Create "Shop by Category" section -->
+      <!-- Include:
+            - Section heading
+            - Category navigation grid
+            - Categories: Kitchen Essentials, Home Decor, Bath & Body, Lifestyle
+            - Each category with image and label
+        -->
+            <section>
+                <h1>Shop by Category</h1>
+
+            </section>
+
+      <!-- TODO: Add "About Wuli Home" preview section -->
+      <!-- Include:
+            - Section heading
+            - Brief company description
+            - "Learn more" link
+        -->
+
+      <!-- TODO: Create newsletter signup section -->
+      <!-- Include:
+            - Section heading "Stay Connected"
+            - Benefit text (e.g., "Get 10% off your first order")
+            - Accessible form with:
+                * Email input with proper label
+                * Required attribute and ARIA attributes
+                * Submit button
+                * Privacy notice for screen readers
+        -->
     </main>
 
-    <!-- TODO: Implement semantic footer -->
     <footer>
-        <!-- TODO: Add footer navigation sections -->
-        <!-- TODO: Include company information -->
-        <!-- TODO: Add social media links with proper alt text -->
-        <!-- TODO: Include copyright notice -->
+      <!-- TODO: Create footer with multiple sections -->
+
+      <!-- TODO: Add "Customer Service" section -->
+      <!-- Links: Contact Us, Shipping Info, Returns & Exchanges, FAQ -->
+
+      <!-- TODO: Add "About" section -->
+      <!-- Links: Our Story, Sustainability, Careers, Press -->
+
+      <!-- TODO: Add "Connect" section with social media links -->
+      <!-- Include: Instagram, Facebook, Pinterest, TikTok -->
+      <!-- Each link needs proper ARIA label -->
+
+      <!-- TODO: Add "Payment Methods" section -->
+      <!-- Include payment icons with appropriate labels -->
+
+      <!-- TODO: Add footer bottom with copyright and legal links -->
+      <!-- Include: Copyright notice, Privacy Policy, Terms of Service, Accessibility -->
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
