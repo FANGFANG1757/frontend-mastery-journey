@@ -1,0 +1,271 @@
+/* TODO: Add CSS reset and base styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    /* TODO: Define design system variables for TechShop */
+    --primary-color: #2563eb;
+    --secondary-color: #64748b;
+    --success-color: #059669;
+    --warning-color: #d97706;
+    --danger-color: #dc2626;
+    --text-color: #1f2937;
+    --bg-color: #ffffff;
+    --border-color: #e5e7eb;
+    --focus-color: #3b82f6;
+    
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    
+    --spacing-xs: 0.25rem;
+    --spacing-sm: 0.5rem;
+    --spacing-md: 1rem;
+    --spacing-lg: 1.5rem;
+    --spacing-xl: 2rem;
+    --spacing-2xl: 3rem;
+}
+
+body {
+    font-family: system-ui, -apple-system, sans-serif;
+    line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--bg-color);
+}
+
+/* TODO: Implement skip link styles */
+.skip-link {
+    /* TODO: Position off-screen initially */
+    /* TODO: Show on focus with proper styling */
+}
+
+/* TODO: Style the header and navigation */
+header {
+    /* TODO: Create header layout with logo and navigation */
+}
+
+.logo {
+    /* TODO: Logo styling */
+}
+
+header nav {
+    /* TODO: Style main navigation menu */
+    /* TODO: Implement responsive navigation (mobile menu) */
+}
+
+.nav-toggle {
+    /* TODO: Mobile menu hamburger button */
+    /* TODO: Hide on desktop */
+}
+
+.cart-icon {
+    /* TODO: Shopping cart icon styling */
+    /* TODO: Cart count badge */
+}
+
+/* TODO: Add focus states for all interactive elements */
+a:focus,
+button:focus {
+    /* TODO: Visible focus indicators */
+}
+
+/* TODO: Style the hero section */
+.hero {
+    /* TODO: Hero layout with background image */
+    /* TODO: Ensure text contrast over image */
+}
+
+.hero h1 {
+    /* TODO: Hero heading typography */
+}
+
+.hero-content {
+    /* TODO: Hero content positioning */
+}
+
+.cta-button {
+    /* TODO: Call-to-action button styling */
+    /* TODO: Hover and focus states */
+}
+
+/* TODO: Style the products section */
+.featured-products {
+    /* TODO: Section spacing and layout */
+}
+
+.products-grid {
+    /* TODO: CSS Grid layout for products */
+    /* TODO: Responsive columns (1 on mobile, 2-3 on tablet, 4+ on desktop) */
+}
+
+.product-card {
+    /* TODO: Product card styling */
+    /* TODO: Card hover effects */
+    /* TODO: Card border and shadow */
+}
+
+.product-card img {
+    /* TODO: Product image styling */
+    /* TODO: Use aspect-ratio to prevent CLS */
+}
+
+.product-info {
+    /* TODO: Product information section */
+}
+
+.product-card h3 {
+    /* TODO: Product name styling */
+}
+
+.product-price {
+    /* TODO: Price styling with proper formatting */
+}
+
+.add-to-cart-btn {
+    /* TODO: Add to cart button styling */
+    /* TODO: Loading state for button */
+    /* TODO: Disabled state styling */
+}
+
+/* TODO: Style the categories section */
+.categories {
+    /* TODO: Categories section layout */
+}
+
+.categories-nav {
+    /* TODO: Categories navigation layout */
+}
+
+.category-link {
+    /* TODO: Category link styling */
+    /* TODO: Active/selected state */
+    /* TODO: Hover effects */
+}
+
+/* TODO: Style the newsletter section */
+.newsletter {
+    /* TODO: Newsletter section background and spacing */
+}
+
+.newsletter-form {
+    /* TODO: Form layout (inline or stacked) */
+}
+
+.newsletter-form label {
+    /* TODO: Label styling (ensure visibility) */
+}
+
+.newsletter-form input {
+    /* TODO: Input styling */
+    /* TODO: Focus and error states */
+}
+
+.newsletter-form button {
+    /* TODO: Submit button styling */
+}
+
+.privacy-notice {
+    /* TODO: Privacy notice styling */
+}
+
+/* TODO: Style the footer */
+footer {
+    /* TODO: Footer layout with multiple sections */
+    /* TODO: Footer background and spacing */
+}
+
+.footer-section {
+    /* TODO: Footer section styling */
+}
+
+.footer-section h3 {
+    /* TODO: Footer section headings */
+}
+
+.footer-nav {
+    /* TODO: Footer navigation styling */
+}
+
+.footer-nav a {
+    /* TODO: Footer link styling */
+}
+
+.social-links {
+    /* TODO: Social media links styling */
+}
+
+.social-links a {
+    /* TODO: Social link styling with icons */
+}
+
+.copyright {
+    /* TODO: Copyright section styling */
+}
+
+/* TODO: Implement responsive breakpoints */
+@media (max-width: 768px) {
+    /* TODO: Mobile styles */
+    
+    header {
+        /* TODO: Mobile header layout */
+    }
+    
+    .nav-toggle {
+        /* TODO: Show mobile menu toggle */
+    }
+    
+    header nav {
+        /* TODO: Mobile navigation menu */
+    }
+    
+    .products-grid {
+        /* TODO: Single column on mobile */
+    }
+    
+    .hero {
+        /* TODO: Mobile hero adjustments */
+    }
+    
+    .newsletter-form {
+        /* TODO: Stack form elements on mobile */
+    }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+    /* TODO: Tablet styles */
+    
+    .products-grid {
+        /* TODO: 2-3 columns on tablet */
+    }
+}
+
+@media (min-width: 1025px) {
+    /* TODO: Desktop styles */
+    
+    .nav-toggle {
+        /* TODO: Hide mobile menu toggle on desktop */
+    }
+    
+    .products-grid {
+        /* TODO: 4+ columns on desktop */
+    }
+}
+
+/* TODO: Add reduced motion preferences */
+@media (prefers-reduced-motion: reduce) {
+    /* TODO: Disable animations for users who prefer reduced motion */
+}
+
+/* TODO: Ensure color contrast meets WCAG AA standards */
+/* TODO: Test with high contrast mode */
+
+/* TODO: Add print styles */
+@media print {
+    /* TODO: Print-friendly styles */
+}
