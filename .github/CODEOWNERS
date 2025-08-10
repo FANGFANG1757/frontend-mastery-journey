@@ -1,0 +1,30 @@
+# 🎯 Frontend Mastery Journey - Code Owners
+
+# Global ownership - Claude Code as primary reviewer for all study materials
+* @claude-code
+
+# Week-specific ownership for structured learning progression
+weeks/ @claude-code
+projects/ @claude-code
+
+# Critical study plan files require Claude Code review
+CLAUDE.md @claude-code
+PROGRESS.md @claude-code
+RESOURCES.md @claude-code
+
+# Weekly deliverables and major milestones
+weeks/week-*/README.md @claude-code
+projects/*/README.md @claude-code
+
+# Workflow and automation files
+.github/ @claude-code
+
+# Learning documentation requires review for quality and completeness
+notes/ @claude-code
+
+# Special focus areas requiring expert review
+weeks/week-01-html-semantics/ @claude-code # Accessibility expertise critical
+weeks/week-08-testing/ @claude-code # Testing standards important
+weeks/week-12-cicd-polish/ @claude-code # Professional workflow setup
+weeks/week-21-portfolio/ @claude-code # Job readiness critical
+weeks/week-24-applications/ @claude-code # Career preparation final check

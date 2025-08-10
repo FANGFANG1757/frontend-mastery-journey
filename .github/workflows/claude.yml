@@ -1,6 +1,15 @@
-name: Claude Code
+name: Claude Code Review
 
 on:
+  # Automatic review on PR events
+  pull_request:
+    types: [opened, synchronize, ready_for_review]
+    branches: [ main ]
+    paths: 
+      - 'weeks/**'
+      - 'projects/**'
+      - '.github/workflows/**'
+  # Manual trigger with @claude mentions
   issue_comment:
     types: [created]
   pull_request_review_comment:
@@ -13,6 +22,7 @@ on:
 jobs:
   claude:
     if: |
+      (github.event_name == 'pull_request' && github.event.pull_request.draft == false) ||
       (github.event_name == 'issue_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review_comment' && contains(github.event.comment.body, '@claude')) ||
       (github.event_name == 'pull_request_review' && contains(github.event.review.body, '@claude')) ||
@@ -20,8 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: read
-      issues: read
+      pull-requests: write # Required for Claude to write inline comments
+      issues: write # Required for Claude to write issue comments
+      repository-projects: read # Required for Claude to read project context
       id-token: write
       actions: read # Required for Claude to read CI results on PRs
     steps:
@@ -36,27 +47,66 @@ jobs:
         with:
           claude_code_oauth_token: ${{ secrets.CLAUDE_CODE_OAUTH_TOKEN }}
 
-          # This is an optional setting that allows Claude to read CI results on PRs
+          # Enable automatic review mode for PR events
+          direct_prompt: |
+            Please provide an automatic code review with INLINE COMMENTS directly on specific lines of code. 
+            
+            IMPORTANT: Use GitHub's inline review feature to comment on specific lines/functions/blocks of code that need attention.
+            
+            For each file changed, review line-by-line and provide inline comments on:
+            - Code quality issues (specific lines)
+            - Accessibility problems (specific HTML elements/CSS rules)
+            - Performance bottlenecks (specific functions/selectors)
+            - Security vulnerabilities (specific code patterns)
+            - Best practice violations (specific implementations)
+            - Missing or inadequate comments (specific complex code)
+            
+            Focus on being constructive and educational. For each inline comment:
+            1. Point out the specific issue
+            2. Explain why it's problematic
+            3. Suggest a concrete improvement
+            4. Provide a code example if helpful
+            
+            Only add a general PR comment if there are overall architectural or high-level concerns.
+
+          # Allow Claude to read CI results and run basic commands
           additional_permissions: |
             actions: read
           
-          # Optional: Specify model (defaults to Claude Sonnet 4, uncomment for Claude Opus 4.1)
-          # model: "claude-opus-4-1-20250805"
+          # Enable tools for testing and linting
+          allowed_tools: "Bash(npm install),Bash(npm run build),Bash(npm run test),Bash(npm run lint),Bash(npm run typecheck)"
           
-          # Optional: Customize the trigger phrase (default: @claude)
-          # trigger_phrase: "/claude"
+          # Use sticky comments for automatic reviews
+          use_sticky_comment: true
           
-          # Optional: Trigger when specific user is assigned to an issue
-          # assignee_trigger: "claude-bot"
-          
-          # Optional: Allow Claude to run specific commands
-          # allowed_tools: "Bash(npm install),Bash(npm run build),Bash(npm run test:*),Bash(npm run lint:*)"
-          
-          # Optional: Add custom instructions for Claude to customize its behavior for your project
-          # custom_instructions: |
-          #   Follow our coding standards
-          #   Ensure all new code has tests
-          #   Use TypeScript for new files
+          # Custom instructions for Frontend Mastery Journey project
+          custom_instructions: |
+            You are reviewing submissions for a 6-month frontend mastery journey targeting junior developer roles in Australia.
+            
+            INLINE COMMENT REQUIREMENTS:
+            - Use GitHub's inline review feature to comment on specific lines
+            - Each inline comment should be educational and constructive
+            - Focus on specific code improvements rather than general advice
+            - Provide concrete examples and alternatives
+            
+            REVIEW FOCUS AREAS:
+            - HTML: Semantic structure, accessibility attributes, WCAG 2.2 AA compliance
+            - CSS: Performance, maintainability, responsive design, mobile-first approach
+            - JavaScript: Best practices, performance, error handling, modern ES6+ patterns
+            - General: Code organization, naming conventions, documentation
+            
+            INLINE COMMENT EXAMPLES:
+            - "Consider using <main> instead of <div> for better semantics"
+            - "Add alt attribute for screen reader accessibility"
+            - "This CSS selector is inefficient - consider using a class instead"
+            - "Use const/let instead of var for better scoping"
+            
+            AUSTRALIAN JOB MARKET ALIGNMENT:
+            - Emphasize accessibility (government sector requirements)
+            - Focus on performance (mobile-heavy market)
+            - Highlight professional practices (enterprise expectations)
+            
+            Only provide a general PR summary if there are architectural concerns that span multiple files.
           
           # Optional: Custom environment variables for Claude
           # claude_env: |
