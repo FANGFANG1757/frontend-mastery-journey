@@ -7,10 +7,20 @@ This repository contains a comprehensive 6-month study plan to transition from f
 **Timeline**: January 2025 - June 2025 (24 weeks)  
 **Track Options**: Core Frontend (Weeks 1-12) → Choose Advanced Frontend OR Full-Stack (Weeks 13-20) → Job Readiness (Weeks 21-24)
 
-## Repository Structure
+## Repository Structure & Professional Workflow
 ```
 frontend-mastery-journey/
-├── weeks/                      # Weekly projects and exercises
+├── README.md                   # Repository usage guide and workflow
+├── CLAUDE.md                  # This file - Context for Claude Code reviews
+├── PROGRESS.md                # Weekly progress and skills tracking
+├── RESOURCES.md               # Comprehensive learning resources
+├── .github/                   # Professional development workflow
+│   ├── workflows/             # Automated CI/CD pipeline
+│   │   ├── week-review.yml    # Quality gates and validation
+│   │   └── claude-review.yml  # Claude Code review automation
+│   ├── PULL_REQUEST_TEMPLATE.md # Structured week completion reviews
+│   └── CODEOWNERS            # Claude Code as core reviewer
+├── weeks/                     # Weekly projects and exercises
 │   ├── week-01-html-semantics/ # Current: TechShop e-commerce project
 │   ├── week-02-css-layout/     # CSS Grid/Flexbox mastery
 │   └── ...                     # All 24 weeks structured
@@ -18,13 +28,10 @@ frontend-mastery-journey/
 │   ├── project-1-job-tracker/  # Weeks 9-12: Main SPA project
 │   ├── project-2-portfolio/    # Weeks 19-20: Portfolio/job board
 │   └── capstone/              # Final showcase project
-├── notes/                     # Learning tracking and preparation
-│   ├── daily-log.md           # Daily learning entries
-│   ├── interview-prep/        # Technical interview preparation
-│   └── job-applications/      # Job search tracking
-├── PROGRESS.md               # Weekly progress and skills tracking
-├── RESOURCES.md              # Comprehensive learning resources
-└── README.md                 # Project overview and current status
+└── notes/                     # Learning tracking and preparation
+    ├── daily-log.md           # Daily learning entries
+    ├── interview-prep/        # Technical interview preparation
+    └── job-applications/      # Job search tracking
 ```
 
 ## Complete 24-Week Study Plan
@@ -273,30 +280,99 @@ frontend-mastery-journey/
 - [ ] Salary negotiation prepared
 - [ ] Employment secured or strong pipeline established
 
-## Important Notes for Claude
+## Professional Development Workflow (ESTABLISHED)
 
-### When Helping With This Project:
-1. **Always refer to current week** - Check PROGRESS.md for current status
-2. **Maintain quality standards** - Accessibility, performance, testing requirements
-3. **Focus on Australian context** - Job market, companies, salary expectations
-4. **Encourage documentation** - README updates, learning logs, case studies
-5. **Professional development focus** - This is career preparation, not just learning
+### 🤖 Claude Code Review Integration
+This repository now features a **professional code review workflow** with Claude Code as the core reviewer:
 
-### File Priorities:
-1. **Current week folder** - Primary development focus
-2. **PROGRESS.md** - Track completion and skill development
-3. **Daily log** - Maintain learning accountability
-4. **Project folders** - Major deliverables for portfolio
+#### **Automated Review Process**:
+1. **Student Creates PR** → GitHub Actions automatically trigger quality gates
+2. **Quality Validation** → Accessibility, performance, testing, documentation checks
+3. **Claude Code Review Request** → Automated technical assessment and career guidance
+4. **Feedback & Iteration** → Student addresses recommendations for professional growth
+5. **Approval & Advancement** → Week completion verified before progressing
 
-### Quality Gates:
-- No project moves to "complete" without meeting accessibility standards
-- All code must be tested (unit tests minimum)
-- All projects must be deployed with public URLs
-- Documentation is required, not optional
+#### **GitHub Actions Workflow** (.github/workflows/):
+- **week-review.yml**: Validates completion criteria, runs quality checks
+- **claude-review.yml**: Triggers Claude Code review requests with detailed analysis
+- **Quality Gates**: Accessibility ≥90, testing coverage, documentation requirements
+- **Progress Tracking**: Ensures PROGRESS.md and daily-log.md are updated
 
-### Career Focus:
-This is a structured program to achieve employment in 6 months. Every decision should consider: "Does this help land a junior developer role in Australia?" Balance learning depth with practical application and portfolio development.
+#### **Professional Standards Enforced**:
+- ✅ **Code Quality**: ESLint, Prettier, TypeScript strict mode
+- ✅ **Accessibility**: WCAG 2.2 AA compliance (Lighthouse ≥90)
+- ✅ **Testing**: Unit tests minimum, E2E for major features
+- ✅ **Documentation**: README updates, learning logs, case studies
+- ✅ **Deployment**: Public URLs required for all projects
+- ✅ **Git Workflow**: Meaningful commits, professional PR descriptions
 
-**Current Status**: Week 1 - HTML Semantics + Accessibility (TechShop e-commerce project)  
+### **Claude Code Review Focus Areas**:
+- **Technical Excellence**: Code standards, best practices, performance optimization
+- **Accessibility Expertise**: WCAG compliance, screen reader support, keyboard navigation
+- **Career Readiness**: Professional development practices, portfolio quality
+- **Learning Progression**: Skill development, concept mastery, week advancement criteria
+- **Australian Job Market**: Skills alignment with AU employer expectations
+
+## Important Notes for Claude Code Reviews
+
+### When Reviewing This Project:
+1. **Check Current Status** - Always refer to PROGRESS.md for current week and completion status
+2. **Enforce Quality Standards** - Accessibility ≥90, performance, testing, documentation requirements
+3. **Australian Context** - Focus on job market, companies, salary expectations in Australia
+4. **Professional Development** - This is career preparation, not just learning - maintain high standards
+5. **Weekly Advancement** - Only approve advancement when ALL criteria are met
+
+### Review Process Guidelines:
+1. **Technical Assessment** - Code quality, best practices, performance, accessibility
+2. **Learning Validation** - Verify concepts are properly understood and implemented
+3. **Career Preparation** - Ensure professional practices and portfolio quality
+4. **Progress Tracking** - Confirm documentation and learning logs are updated
+5. **Advancement Decision** - Clear approval or feedback for week completion
+
+### File Review Priorities:
+1. **Current week folder** (`weeks/week-XX-*/`) - Primary implementation focus
+2. **PROGRESS.md** - Weekly progress tracking and skill development validation
+3. **Daily log** (`notes/daily-log.md`) - Learning accountability and insights
+4. **Project folders** (`projects/`) - Major deliverables for portfolio development
+5. **Week README** - Learning documentation and case study development
+
+### Automated Quality Gates (DO NOT BYPASS):
+- ✅ **Accessibility Standards**: Lighthouse accessibility score ≥90 (WCAG 2.2 AA)
+- ✅ **Testing Coverage**: Unit tests minimum, integration tests for complex features
+- ✅ **Public Deployment**: All projects must have live, accessible URLs
+- ✅ **Documentation**: README updates, learning logs, progress tracking required
+- ✅ **Code Quality**: ESLint/Prettier passing, TypeScript strict mode
+- ✅ **Professional Git**: Meaningful commits, clean history, proper PR descriptions
+
+### Week Advancement Criteria (STRICT):
+**A week is NOT complete until ALL criteria are met:**
+1. **Core Implementation**: All learning objectives demonstrated in working code
+2. **Quality Standards**: Accessibility, performance, testing requirements fulfilled
+3. **Documentation**: Learning logs updated, README case study written
+4. **Deployment**: Project live at public URL with proper functionality
+5. **Professional Practices**: Git workflow, commit quality, PR standards maintained
+
+### Career-Focused Review Approach:
+**Every review decision should consider**: *"Does this prepare the student for a junior developer role in Australia?"*
+
+- **Code Quality**: Industry-standard practices and maintainable code
+- **Accessibility**: Government and enterprise requirements (WCAG compliance)
+- **Professional Communication**: Technical documentation and explanation skills
+- **Problem-Solving**: Debugging, testing, and iterative improvement
+- **Learning Progression**: Building on previous weeks, preparing for advanced topics
+
+---
+
+## Current Project Status
+
+**Active Week**: Week 1 - HTML Semantics + Accessibility (TechShop e-commerce project)  
+**Current Phase**: Professional workflow established, ready for implementation  
 **Next Milestone**: Week 12 - Core Frontend Foundation Complete  
-**Ultimate Goal**: Junior Frontend Developer role in Australian market by July 2025
+**Ultimate Goal**: Junior Frontend Developer employment in Australian market by July 2025
+
+**Repository Status**: 
+- ✅ Professional CI/CD workflow operational
+- ✅ Claude Code review integration active  
+- ✅ Quality gates and automated validation functional
+- 🟡 Week 1 implementation in progress
+- ⏳ 23 weeks remaining to career readiness

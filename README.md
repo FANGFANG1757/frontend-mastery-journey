@@ -15,25 +15,29 @@
 
 ```
 frontend-mastery-journey/
-├── README.md                    # This file - main study plan overview
-├── STUDY_PLAN.md               # Detailed 24-week plan with objectives
+├── README.md                    # This file - how to use this repository
+├── CLAUDE.md                   # Context for Claude Code reviews
 ├── PROGRESS.md                 # Weekly progress tracking
 ├── RESOURCES.md                # Curated learning resources
+├── .github/                    # Professional CI/CD workflow
+│   ├── workflows/              # Automated quality gates
+│   ├── PULL_REQUEST_TEMPLATE.md # Week completion review template  
+│   └── CODEOWNERS             # Claude Code as core reviewer
 ├── weeks/
-│   ├── week-01-html-semantics/  # Week 1: HTML + Accessibility
-│   ├── week-02-css-layout/      # Week 2: Flexbox + Grid
-│   ├── week-03-js-fundamentals/ # Week 3: JS Core Concepts
-│   ├── week-04-typescript/      # Week 4: TypeScript + Git
-│   ├── week-05-react-core/      # Week 5: React Fundamentals
-│   └── ...                     # Weeks 6-24
+│   ├── week-01-html-semantics/ # Week 1: HTML + Accessibility
+│   ├── week-02-css-layout/     # Week 2: Flexbox + Grid
+│   ├── week-03-js-fundamentals/# Week 3: JS Core Concepts
+│   ├── week-04-typescript/     # Week 4: TypeScript + Git
+│   ├── week-05-react-core/     # Week 5: React Fundamentals
+│   └── ...                    # Weeks 6-24
 ├── projects/
-│   ├── project-1-job-tracker/   # Weeks 9-12: Frontend SPA
-│   ├── project-2-portfolio/     # Weeks 19-20: Portfolio/Job Board
-│   └── capstone/               # Final project showcase
+│   ├── project-1-job-tracker/ # Weeks 9-12: Frontend SPA
+│   ├── project-2-portfolio/   # Weeks 19-20: Portfolio/Job Board
+│   └── capstone/              # Final project showcase
 └── notes/
-    ├── daily-log.md            # Daily learning entries
-    ├── interview-prep/         # Technical interview preparation
-    └── job-applications/       # Application tracking
+    ├── daily-log.md           # Daily learning entries
+    ├── interview-prep/        # Technical interview preparation
+    └── job-applications/      # Application tracking
 ```
 
 ## 🎯 Learning Tracks
@@ -60,20 +64,82 @@ frontend-mastery-journey/
 - **Deliverable**: Professional portfolio + active job search
 - **Target**: 15-25 quality applications to AU companies
 
-## 📋 Weekly Rhythm
+## 🛠 How to Use This Repository
 
-### Daily Structure (2-3 hours)
-- **Learn** (45-60 min): Official docs + articles
-- **Build** (60-90 min): Code features + commit
-- **Test/Polish** (30-45 min): Tests + refactoring
-- **Document** (10-15 min): Update learning log
+### 📋 Weekly Development Workflow
 
-### Weekly Deliverables
-- ✅ Working feature deployed live
-- ✅ At least one PR merged
-- ✅ Tests written and passing
-- ✅ Learning log updated
-- ✅ Progress documented
+#### 1. **Start Weekly Work**
+```bash
+# Create feature branch for the week
+git checkout main
+git pull origin main  
+git checkout -b week-X-implementation
+
+# Navigate to week directory
+cd weeks/week-XX-topic-name/
+```
+
+#### 2. **Daily Development Cycle (2-3 hours)**
+- **Learn** (45-60 min): Study official docs + supplementary materials
+- **Build** (60-90 min): Implement features with meaningful commits
+- **Test/Polish** (30-45 min): Add tests, refactor, accessibility checks
+- **Document** (10-15 min): Update daily log and learning notes
+
+#### 3. **Commit & Push Regularly**
+```bash
+# Make meaningful commits throughout the week
+git add .
+git commit -m "feat: implement semantic HTML structure
+
+- Add proper landmark elements (header, nav, main, footer)
+- Implement skip navigation link
+- Add ARIA labels for improved accessibility"
+
+git push origin week-X-implementation
+```
+
+#### 4. **Week Completion Review Process**
+```bash
+# When week is complete, create PR for review
+gh pr create --title "🎯 Week X: [Topic] Completion" --body-file -
+```
+
+**The PR will automatically**:
+- ✅ Trigger automated quality gates (accessibility, performance, tests)
+- ✅ Request Claude Code review via GitHub Actions
+- ✅ Validate all acceptance criteria using comprehensive PR template
+- ✅ Check progress tracking updates (PROGRESS.md, daily-log.md)
+
+#### 5. **Address Review Feedback**
+- Claude Code will provide detailed technical review
+- Address any requested changes or improvements
+- Update progress tracking and documentation
+- Get final approval before merging
+
+#### 6. **Merge & Advance**
+```bash
+# After approval, merge and move to next week
+gh pr merge --squash
+git checkout main
+git pull origin main
+```
+
+### 🎯 Quality Standards (Automatically Enforced)
+
+#### **Every Week Must Include**:
+- [ ] **Working Implementation**: Core features functional and deployed
+- [ ] **Accessibility**: Lighthouse accessibility score ≥90
+- [ ] **Responsive Design**: Mobile-first, works on all device sizes
+- [ ] **Documentation**: README updated with learnings and case study
+- [ ] **Progress Tracking**: PROGRESS.md and daily-log.md updated
+- [ ] **Professional Git**: Meaningful commits, clean history
+
+#### **Automated Checks**:
+- ✅ **Code Quality**: Linting, formatting, TypeScript strict mode
+- ✅ **Testing**: Unit tests where applicable, E2E for major features
+- ✅ **Performance**: Core Web Vitals monitoring
+- ✅ **Accessibility**: WCAG 2.2 AA compliance validation
+- ✅ **Deployment**: Public URL required for project validation
 
 ## 🌟 Success Metrics
 
@@ -118,20 +184,62 @@ frontend-mastery-journey/
 
 [📂 Week 1 Project →](./weeks/week-01-html-semantics/)
 
-## 🎯 Next Steps
+## 🚀 Getting Started
 
-1. **Complete Week 1**: Finish TechShop homepage implementation
-2. **Week 2 Prep**: Set up CSS layout practice environment
-3. **Daily Habit**: Maintain learning log consistency
-4. **Community**: Join frontend development communities
+### 📋 **First Time Setup**
+```bash
+# Clone the repository
+git clone https://github.com/FANGFANG1757/frontend-mastery-journey.git
+cd frontend-mastery-journey
 
-## 📚 Quick Resources
+# Install GitHub CLI if not already installed
+# https://cli.github.com/
 
-- [MDN Web Docs](https://developer.mozilla.org/)
-- [Web.dev](https://web.dev/)
-- [React Documentation](https://react.dev/)
-- [TypeScript Handbook](https://www.typescriptlang.org/docs/)
-- [Frontend Mentor](https://www.frontendmentor.io/) - Practice projects
+# Create your first feature branch
+git checkout -b week-1-implementation
+
+# Navigate to Week 1 project
+cd weeks/week-01-html-semantics/
+
+# Install dependencies and start developing
+npm install
+npm run dev
+```
+
+### 🎯 **Current Week: Week 1**
+**Focus**: TechShop E-commerce Homepage (HTML Semantics + Accessibility)
+
+**Quick Start**:
+1. Implement semantic HTML structure in `weeks/week-01-html-semantics/index.html`
+2. Add accessibility features (skip links, ARIA, keyboard navigation)
+3. Create responsive CSS with mobile-first approach
+4. Deploy to Netlify/Vercel and achieve Lighthouse accessibility ≥90
+5. Create PR when complete for Claude Code review
+
+[📂 **Start Week 1 →**](./weeks/week-01-html-semantics/)
+
+## 🤖 Claude Code Integration
+
+This repository features **automated Claude Code reviews** for every week completion:
+
+### **How It Works**:
+1. **Create PR** → Automated quality gates run
+2. **Claude Code Review** → Technical assessment and career guidance  
+3. **Address Feedback** → Improve based on expert recommendations
+4. **Get Approval** → Advance to next week with confidence
+
+### **What Claude Code Reviews**:
+- ✅ **Technical Quality**: Code standards, best practices, performance
+- ✅ **Accessibility**: WCAG compliance, screen reader support
+- ✅ **Career Readiness**: Professional development practices
+- ✅ **Learning Progression**: Skill development and concept mastery
+
+## 📚 **Additional Resources**
+
+- [📖 Complete Learning Resources](./RESOURCES.md)
+- [📊 Detailed Progress Tracking](./PROGRESS.md) 
+- [🤖 Claude Context Documentation](./CLAUDE.md)
+- [🎯 Weekly Development Workflow](./.github/PULL_REQUEST_TEMPLATE.md)
 
 ---
 
