@@ -30,8 +30,9 @@ jobs:
     runs-on: ubuntu-latest
     permissions:
       contents: read
-      pull-requests: write # Required for Claude to write comments
-      issues: write # Required for Claude to write comments
+      pull-requests: write # Required for Claude to write inline comments
+      issues: write # Required for Claude to write issue comments
+      repository-projects: read # Required for Claude to read project context
       id-token: write
       actions: read # Required for Claude to read CI results on PRs
     steps:
@@ -48,15 +49,25 @@ jobs:
 
           # Enable automatic review mode for PR events
           direct_prompt: |
-            Please provide an automatic code review with inline comments for this PR. Focus on:
-            - Code quality and best practices
-            - Accessibility compliance (WCAG 2.2 AA)
-            - Performance considerations
-            - Security issues
-            - Testing coverage
-            - Professional development standards
+            Please provide an automatic code review with INLINE COMMENTS directly on specific lines of code. 
             
-            Provide specific, actionable inline comments on the changed code.
+            IMPORTANT: Use GitHub's inline review feature to comment on specific lines/functions/blocks of code that need attention.
+            
+            For each file changed, review line-by-line and provide inline comments on:
+            - Code quality issues (specific lines)
+            - Accessibility problems (specific HTML elements/CSS rules)
+            - Performance bottlenecks (specific functions/selectors)
+            - Security vulnerabilities (specific code patterns)
+            - Best practice violations (specific implementations)
+            - Missing or inadequate comments (specific complex code)
+            
+            Focus on being constructive and educational. For each inline comment:
+            1. Point out the specific issue
+            2. Explain why it's problematic
+            3. Suggest a concrete improvement
+            4. Provide a code example if helpful
+            
+            Only add a general PR comment if there are overall architectural or high-level concerns.
 
           # Allow Claude to read CI results and run basic commands
           additional_permissions: |
@@ -72,22 +83,30 @@ jobs:
           custom_instructions: |
             You are reviewing submissions for a 6-month frontend mastery journey targeting junior developer roles in Australia.
             
-            Focus on:
-            - Weekly learning objectives completion
-            - WCAG 2.2 AA accessibility compliance (Lighthouse ≥90)
-            - Professional code quality and best practices
-            - Git workflow and commit message quality
-            - Documentation and case study development
-            - Progress tracking validation
+            INLINE COMMENT REQUIREMENTS:
+            - Use GitHub's inline review feature to comment on specific lines
+            - Each inline comment should be educational and constructive
+            - Focus on specific code improvements rather than general advice
+            - Provide concrete examples and alternatives
             
-            For week completion reviews, verify:
-            - All TODO comments resolved with proper implementations
-            - Projects deployed to public URLs
-            - PROGRESS.md and learning logs updated
-            - Accessibility requirements met
-            - Professional development practices followed
+            REVIEW FOCUS AREAS:
+            - HTML: Semantic structure, accessibility attributes, WCAG 2.2 AA compliance
+            - CSS: Performance, maintainability, responsive design, mobile-first approach
+            - JavaScript: Best practices, performance, error handling, modern ES6+ patterns
+            - General: Code organization, naming conventions, documentation
             
-            Provide specific, actionable feedback aligned with Australian job market expectations.
+            INLINE COMMENT EXAMPLES:
+            - "Consider using <main> instead of <div> for better semantics"
+            - "Add alt attribute for screen reader accessibility"
+            - "This CSS selector is inefficient - consider using a class instead"
+            - "Use const/let instead of var for better scoping"
+            
+            AUSTRALIAN JOB MARKET ALIGNMENT:
+            - Emphasize accessibility (government sector requirements)
+            - Focus on performance (mobile-heavy market)
+            - Highlight professional practices (enterprise expectations)
+            
+            Only provide a general PR summary if there are architectural concerns that span multiple files.
           
           # Optional: Custom environment variables for Claude
           # claude_env: |
