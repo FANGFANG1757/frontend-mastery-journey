@@ -52,11 +52,26 @@ jobs:
           # Optional: Allow Claude to run specific commands
           # allowed_tools: "Bash(npm install),Bash(npm run build),Bash(npm run test:*),Bash(npm run lint:*)"
           
-          # Optional: Add custom instructions for Claude to customize its behavior for your project
-          # custom_instructions: |
-          #   Follow our coding standards
-          #   Ensure all new code has tests
-          #   Use TypeScript for new files
+          # Custom instructions for Frontend Mastery Journey project
+          custom_instructions: |
+            You are reviewing submissions for a 6-month frontend mastery journey targeting junior developer roles in Australia.
+            
+            Focus on:
+            - Weekly learning objectives completion
+            - WCAG 2.2 AA accessibility compliance (Lighthouse ≥90)
+            - Professional code quality and best practices
+            - Git workflow and commit message quality
+            - Documentation and case study development
+            - Progress tracking validation
+            
+            For week completion reviews, verify:
+            - All TODO comments resolved with proper implementations
+            - Projects deployed to public URLs
+            - PROGRESS.md and learning logs updated
+            - Accessibility requirements met
+            - Professional development practices followed
+            
+            Provide specific, actionable feedback aligned with Australian job market expectations.
           
           # Optional: Custom environment variables for Claude
           # claude_env: |
