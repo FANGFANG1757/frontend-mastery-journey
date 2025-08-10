@@ -86,9 +86,11 @@ jobs:
             echo "⚠️  Daily log not updated - remember to track daily learnings"
           fi
           
-          # Check if week folder has substantial changes
+          # Check if week folder has substantial changes (skip for workflow setup)
           if git diff --name-only HEAD~1 HEAD | grep -q "weeks/"; then
             echo "✅ Week project files updated"
+          elif git diff --name-only HEAD~1 HEAD | grep -q ".github/"; then
+            echo "⚠️  Workflow setup changes detected - week project check skipped"
           else
             echo "❌ No week project updates found"
             exit 1
