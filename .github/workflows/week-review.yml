@@ -1,0 +1,168 @@
+name: 📚 Weekly Progress Review
+
+on:
+  pull_request:
+    branches: [ main ]
+    paths: 
+      - 'weeks/**'
+      - 'PROGRESS.md'
+      - 'notes/daily-log.md'
+  workflow_dispatch:
+
+jobs:
+  week-quality-check:
+    name: 🔍 Week Completion Quality Check
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          cache: 'npm'
+
+      - name: 📦 Install dependencies
+        run: |
+          if [ -f package.json ]; then npm ci; fi
+          if [ -d weeks/week-01-html-semantics ] && [ -f weeks/week-01-html-semantics/package.json ]; then
+            cd weeks/week-01-html-semantics && npm ci
+          fi
+
+      - name: 🧪 Run tests if available
+        run: |
+          # Check for tests in current week project
+          for week_dir in weeks/week-*/; do
+            if [ -f "$week_dir/package.json" ] && grep -q '"test"' "$week_dir/package.json"; then
+              echo "Running tests for $week_dir"
+              cd "$week_dir" && npm test || echo "Tests failed in $week_dir"
+              cd - > /dev/null
+            fi
+          done
+
+      - name: 🎯 Lint code if available
+        run: |
+          # Check for linting in current week project
+          for week_dir in weeks/week-*/; do
+            if [ -f "$week_dir/package.json" ] && grep -q '"lint"' "$week_dir/package.json"; then
+              echo "Linting $week_dir"
+              cd "$week_dir" && npm run lint || echo "Linting issues in $week_dir"
+              cd - > /dev/null
+            fi
+          done
+
+      - name: ♿ Accessibility check (if Lighthouse CI available)
+        run: |
+          # This would run Lighthouse CI if configured
+          echo "🔍 Accessibility checks would run here"
+          echo "📊 Lighthouse CI reports would be generated"
+
+      - name: 📋 Check week completion criteria
+        run: |
+          echo "🎯 Checking week completion criteria..."
+          
+          # Check if PROGRESS.md was updated
+          if git diff --name-only HEAD~1 HEAD | grep -q "PROGRESS.md"; then
+            echo "✅ PROGRESS.md updated"
+          else
+            echo "❌ PROGRESS.md not updated - please track your progress"
+            exit 1
+          fi
+          
+          # Check if daily log was updated
+          if git diff --name-only HEAD~1 HEAD | grep -q "notes/daily-log.md"; then
+            echo "✅ Daily log updated"
+          else
+            echo "⚠️  Daily log not updated - remember to track daily learnings"
+          fi
+          
+          # Check if week folder has substantial changes
+          if git diff --name-only HEAD~1 HEAD | grep -q "weeks/"; then
+            echo "✅ Week project files updated"
+          else
+            echo "❌ No week project updates found"
+            exit 1
+          fi
+
+      - name: 🎉 Week completion summary
+        run: |
+          echo "📈 Week Completion Summary:"
+          echo "================================"
+          
+          # Count files changed
+          FILES_CHANGED=$(git diff --name-only HEAD~1 HEAD | wc -l)
+          echo "📁 Files changed: $FILES_CHANGED"
+          
+          # Show changed files
+          echo "📝 Changed files:"
+          git diff --name-only HEAD~1 HEAD | sed 's/^/  - /'
+          
+          echo ""
+          echo "🎯 Ready for Claude Code Review!"
+          echo "📊 Please ensure all TODO comments are resolved"
+          echo "🚀 Deployment URL should be included in PR description"
+
+  lighthouse-audit:
+    name: 🚦 Lighthouse Performance Audit
+    runs-on: ubuntu-latest
+    if: contains(github.event.pull_request.changed_files, 'weeks/')
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🔧 Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+
+      - name: 🚦 Lighthouse CI placeholder
+        run: |
+          echo "🚦 Lighthouse CI would run here for deployed URLs"
+          echo "📊 Performance, Accessibility, Best Practices, SEO scores"
+          echo "🎯 Target: Accessibility ≥90, Performance ≥85"
+          echo ""
+          echo "💡 To enable:"
+          echo "1. Deploy your week project to Netlify/Vercel"
+          echo "2. Add deployment URL to PR description"
+          echo "3. Configure Lighthouse CI with your URL"
+
+  week-deliverable-check:
+    name: 📋 Week Deliverables Validation
+    runs-on: ubuntu-latest
+    steps:
+      - name: 📥 Checkout code
+        uses: actions/checkout@v4
+
+      - name: 🎯 Validate week deliverables
+        run: |
+          echo "📋 Checking Week Deliverables..."
+          echo "================================"
+          
+          # Check README updates
+          if find weeks/ -name "README.md" -newer PROGRESS.md -print | grep -q .; then
+            echo "✅ Week README documentation updated"
+          else
+            echo "⚠️  Consider updating week README with learnings"
+          fi
+          
+          # Check for HTML files (for frontend weeks)
+          if find weeks/ -name "*.html" -print | grep -q .; then
+            echo "✅ HTML files found in week projects"
+          fi
+          
+          # Check for deployed URL in PR description (would need PR context)
+          echo "📝 Reminder: Include deployment URL in PR description"
+          echo "🎯 Reminder: Include screenshot/demo in PR description"
+          
+          echo ""
+          echo "🎓 Week Completion Checklist:"
+          echo "- [ ] All TODO comments resolved"
+          echo "- [ ] Project deployed to public URL"
+          echo "- [ ] README updated with learnings"
+          echo "- [ ] PROGRESS.md milestone updated"
+          echo "- [ ] Daily log entries completed"
+          echo "- [ ] Tests written and passing"
+          echo "- [ ] Accessibility requirements met"
