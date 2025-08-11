@@ -19,7 +19,7 @@
 
   <body>
     <!-- TODO: Add skip link for accessibility (should link to #main) -->
-    <a href="#main" class="skip link">Skip to main content</a>
+    <a href="#main" class="skip-link">Skip to main content</a>
 
     <header>
       <!-- TODO: Create header container with logo, navigation, and action buttons -->
@@ -34,11 +34,11 @@
       <!-- TODO: Create main navigation with semantic markup -->
       <nav aria-label="Main navigation">
         <ul>
-          <a href="#" aria-current="page">Home</a>
-          <a href="/shop">Shop all</a>
-          <a href="/about">About us</a>
-          <a href="/contact">Contact</a>
-          <a href="/FAQ">FAQ</a>
+          <li><a href="#" aria-current="page">Home</a></li>
+          <li><a href="/shop">Shop all</a></li>
+          <li><a href="/about">About us</a></li>
+         <li><a href="/contact">Contact</a></li>
+          <li><a href="/FAQ">FAQ</a></li>
         </ul>
       </nav>
       <!-- Navigation items: Home, Shop All (with dropdown), About Us, Contact, FAQ -->
@@ -99,7 +99,7 @@
                 * Add to Cart button with proper ARIA label
         -->
       <section>
-        <h1>New Arrivals</h1>
+        <h2>New Arrivals</h2>
         <div>
           <article>
             <img
@@ -241,16 +241,17 @@
                 * Submit button
                 * Privacy notice for screen readers
         -->
-      <section class="newsletter" aria-labelledby="newletter-title">
+      <section class="newsletter" aria-labelledby="newsletter-title">
         <h2>Stay Connected</h2>
         <p>
           Get 10% off your first order when you subscribe to our newsletter! ✨
         </p>
         <form action="" aria-label="Newsletter signup">
-          <label for="Newsletter-email">Email address</label>
+          <label for="newsletter-email">Email address</label>
           <input
             type="email"
             name="email"
+            id="newsletter-email"
             required
             aria-required="true"
             aria-describedby="Privacy-notice"
@@ -259,10 +260,8 @@
           <button type="submit">subscribe</button>
           <p>We respet your privacy. Unsubscribe at any time.</p>
         </form>
-      </section>1
+      </section>
     </main>
-
-    <footer>
       <!-- TODO: Create footer with multiple sections -->
       <footer>
         <!-- TODO: Add "Customer Service" section -->
