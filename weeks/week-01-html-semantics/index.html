@@ -25,10 +25,10 @@
       <!-- TODO: Create header container with logo, navigation, and action buttons -->
 
       <!-- TODO: Add company logo with proper alt text -->
-      <a href=""
-        ><img
+      <a href="/" class="logo" aria-label="Wuli Home homepage">
+        <img
           src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg"
-          alt="Store logo"
+          alt="Wuli home"
       /></a>
 
       <!-- TODO: Create main navigation with semantic markup -->
@@ -77,7 +77,10 @@
         </div>
         <img
           src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/coffee.jpg"
-          alt="hero section background img"
+          alt="Cozy coffee cup 
+  arrangement creating a 
+  warm, inviting home 
+  atmosphere"
         />
       </section>
 
@@ -120,7 +123,9 @@
             />
             <h3>Kitty Short Glass Tumbler</h3>
             <p>Kitty Short Glass Tumbler with Glass Straw 400ML</p>
-            <p><span class="sr-only">Price:</span><data value="12">$8</data></p>
+            <p>
+              <span class="sr-only">Price: </span><data value="12">$8</data>
+            </p>
             <button type="button" aria-label="Add to cart">Add to cart</button>
           </article>
           <article>
@@ -153,58 +158,60 @@
             - Categories: Kitchen Essentials, Home Decor, Bath & Body, Lifestyle
             - Each category with image and label
         -->
-      <section>
+      <section class="categories">
         <h2>Shop by Category</h2>
-        <nav aria-label="product Categories">
-          <ul>
-            <li>
-              <a href=""
+        <nav aria-label="product Categories" category-nav>
+          <ul class="category-grid">
+            <li class="category-item">
+              <a href="/categories/kitchen-essentials" class="category-link"
                 ><img
                   src="https://wulihome.ca/cdn/shop/collections/DFC62387-D134-4B5B-BD8E-1EAF97E74A9E.jpg?v=1753597264"
-                  alt="Kitchen Essentials"
+                  alt="Cute ceramic 
+  mugs, bowls and kitchen 
+  accessories"
                 />
-                <h3>Kitchen Essentials</h3>
-                <p>Cute functional kitchenware</p></a
-              >
+                <h3 class="category-title">Kitchen Essentials</h3>
+                <p class="category-description">Cute functional kitchenware</p>
+              </a>
             </li>
             <li>
-              <a href=""
+              <a href="/categories/home-decor" class="category-link"
                 ><img
                   src="https://wulihome.ca/cdn/shop/collections/home-decor-968300.jpg?v=1753597491&width=750"
-                  alt="Home decor"
+                  alt="Sprinkle a little personality into your space with our charming home decor pieces."
                 />
-                <h3>Home Decor</h3>
-                <p>
+                <h3 class="category-title">Home Decor</h3>
+                <p class="category-description">
                   Sprinkle a little personality into your space with our
                   charming home decor pieces. Where style meets coziness!
-                </p></a
-              >
+                </p>
+              </a>
             </li>
             <li>
-              <a href=""
+              <a href="/categories/bath-and-body" class="category-link"
                 ><img
-                  src="https://wulihome.ca/cdn/shop/collections/bath-matrugs-236299.jpg?v=1735885779Ï"
-                  alt="Bath & body"
+                  src="https://wulihome.ca/cdn/shop/collections/bath-matrugs-236299.jpg?v=1735885779"
+                  alt="Cozy up your bathroom with our soft and stylish mats."
                 />
-                <h3>Bath & body</h3>
-                <p>
+                <h3 class="category-title">Bath & body</h3>
+                <p class="category-description">
                   Cozy up your bathroom with our soft and stylish mats. Perfect
                   for a touch of comfort and charm!
-                </p></a
-              >
+                </p>
+              </a>
             </li>
             <li>
-              <a href=""
+              <a href="/categories/Lifestyle"
                 ><img
                   src="https://wulihome.ca/cdn/shop/collections/home-storage-730313.jpg?v=1738288690&width=750"
-                  alt="liftstyle"
+                  alt="Modern living room with cozy furniture and warm lighting"
                 />
-                <h3>liftstyle</h3>
-                <p>
+                <h3 class="category-title">lifestyle</h3>
+                <p class="category-description">
                   Get organized in style with our chic and functional storage
                   solutions. Perfect for every corner of your home!
-                </p></a
-              >
+                </p>
+              </a>
             </li>
           </ul>
         </nav>
@@ -258,7 +265,7 @@
             placeholder="Enter your email address"
           />
           <button type="submit">subscribe</button>
-          <p>We respet your privacy. Unsubscribe at any time.</p>
+          <p>We respect your privacy. Unsubscribe at any time.</p>
         </form>
       </section>
     </main>
@@ -270,11 +277,11 @@
         <h3>Customer Service</h3>
         <ul>
           <li>
-            <a href="">Contact Us</a>
+            <a href="#">Contact Us</a>
           </li>
-          <li><a href="">Shipping Info</a></li>
-          <li><a href="">Returns & exchanges</a></li>
-          <li><a href="">FAQ</a></li>
+          <li><a href="#">Shipping Info</a></li>
+          <li><a href="#">Returns & exchanges</a></li>
+          <li><a href="#">FAQ</a></li>
         </ul>
       </section>
       <!-- TODO: Add "About" section -->
@@ -282,10 +289,10 @@
       <section aria-label="About Us">
         <h3>About</h3>
         <ul>
-          <li><a href="">Our Story</a></li>
-          <li><a href="">sustainability</a></li>
-          <li><a href="">Careers</a></li>
-          <li><a href="">Press</a></li>
+          <li><a href="about">Our Story</a></li>
+          <li><a href="#">sustainability</a></li>
+          <li><a href="#">Careers</a></li>
+          <li><a href="#">Press</a></li>
         </ul>
       </section>
       <!-- TODO: Add "Connect" section with social media links -->
@@ -358,11 +365,11 @@
           &copy; 2025 Wuli Home. All rights reserved.Made with ❤️ in Toronto
         </p>
         <ul>
-          <li><a href="">Privacy Policy</a></li>
-          <li><a href="">Terms of Service</a></li>
-          <li><a href="">Cookie Policy</a></li>
-          <li><a href="">Accessibility Statement</a></li>
-          <li><a href="">sitemap</a></li>
+          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="#">Terms of Service</a></li>
+          <li><a href="#">Cookie Policy</a></li>
+          <li><a href="#">Accessibility Statement</a></li>
+          <li><a href="#">sitemap</a></li>
         </ul>
       </div>
     </footer>
