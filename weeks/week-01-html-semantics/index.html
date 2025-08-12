@@ -21,7 +21,7 @@
     <!-- TODO: Add skip link for accessibility (should link to #main) -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
-    <header>
+    <header class="header-container">
       <!-- TODO: Create header container with logo, navigation, and action buttons -->
 
       <!-- TODO: Add company logo with proper alt text -->
@@ -44,12 +44,13 @@
       <!-- Navigation items: Home, Shop All (with dropdown), About Us, Contact, FAQ -->
 
       <!-- TODO: Add header action buttons (search, cart with count, user account) -->
-      <div>
+      <div class="header-actions">
         <button type="button" aria-label="Search">
           <i class="fas fa-search" aria-hidden="true"></i>
         </button>
-        <button type="button" aria-label="Cart">
+        <button class="cart-button" type="button" aria-label="Shopping cart with 1 item">
           <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
+          <span class="cart-button cart-count" aria-hidden="true"">1</span>
         </button>
         <button type="button" aria-label="User account">
           <i class="fa-solid fa-user" aria-hidden="true"></i>
@@ -67,7 +68,7 @@
             - Hero image with proper alt text
         -->
       <section class="hero">
-        <div>
+        <div class="hero-content">
           <h1>Creating cozy moments in every corner</h1>
           <p>
             Welcome to Wuli Home - Your destination for cute and functional home
@@ -75,11 +76,11 @@
           </p>
           <a href="#shop" class="cta-button">Shop now</a>
         </div>
-        <img
+        <!--  <img
           src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/coffee.jpg"
           alt="Cozy coffee cup arrangement creating a warm, inviting home atmosphere"
-        />
-      </section>
+        /> -->
+      </section> 
 
       <!-- TODO: Add announcement bar for promotions -->
       <section class="announcement-bar" aria-label="promotions">
@@ -256,7 +257,9 @@
             placeholder="Enter your email address"
           />
           <button type="submit">subscribe</button>
-          <p id="privacy-notice">We respect your privacy. Unsubscribe at any time.</p>
+          <p id="privacy-notice">
+            We respect your privacy. Unsubscribe at any time.
+          </p>
         </form>
       </section>
     </main>
