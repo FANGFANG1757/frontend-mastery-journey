@@ -9,6 +9,9 @@
       name="description"
       content="Shop cute and functional home essentials at Wuli home. Free shipping over $50."
     />
+    <meta name="keywords" content="home decor, kitchenware, bute home accessories">
+    <meta name="author" content="Wuli Home">
+    <link rel="canonical" href="https://wulihome.ca">
     <!-- TODO: Add Font Awesome CDN for icons -->
     <link
       rel="stylesheet"
@@ -18,20 +21,24 @@
   </head>
 
   <body>
-    <!-- TODO: Add skip link for accessibility (should link to #main) -->
+    <!-- TODO: Add skip link for accessibility (should link to #main)
+         CSS: Uses .skip-link class -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <header class="header-container">
-      <!-- TODO: Create header container with logo, navigation, and action buttons -->
+      <!-- TODO: Create header container with logo, navigation, and action buttons
+           CSS: Uses .header-container class -->
 
-      <!-- TODO: Add company logo with proper alt text -->
+      <!-- TODO: Add company logo with proper alt text
+           CSS: Uses .logo class -->
       <a href="/" class="logo" aria-label="Wuli Home homepage">
         <img
           src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg"
           alt="Wuli home"
       /></a>
 
-      <!-- TODO: Create main navigation with semantic markup -->
+      <!-- TODO: Create main navigation with semantic markup
+           CSS: Styles applied to header nav ul, header nav a -->
       <nav aria-label="Main navigation">
         <ul>
           <li><a href="#" aria-current="page">Home</a></li>
@@ -43,14 +50,15 @@
       </nav>
       <!-- Navigation items: Home, Shop All (with dropdown), About Us, Contact, FAQ -->
 
-      <!-- TODO: Add header action buttons (search, cart with count, user account) -->
+      <!-- TODO: Add header action buttons (search, cart with count, user account)
+           CSS: Uses .header-actions, .cart-button, .cart-count -->
       <div class="header-actions">
         <button type="button" aria-label="Search">
           <i class="fas fa-search" aria-hidden="true"></i>
         </button>
         <button class="cart-button" type="button" aria-label="Shopping cart with 1 item">
           <i class="fa-solid fa-cart-shopping" aria-hidden="true"></i>
-          <span class="cart-button cart-count" aria-hidden="true"">1</span>
+          <span class="cart-button cart-count" aria-hidden="true">1</span>
         </button>
         <button type="button" aria-label="User account">
           <i class="fa-solid fa-user" aria-hidden="true"></i>
@@ -60,7 +68,8 @@
     </header>
 
     <main id="main">
-      <!-- TODO: Create hero section -->
+      <!-- TODO: Create hero section
+           CSS: Uses .hero and .hero-content classes -->
       <!-- Include: 
             - Main heading "Creating cozy moments in every corner"
             - Subtitle about Wuli Home
@@ -82,75 +91,80 @@
         /> -->
       </section> 
 
-      <!-- TODO: Add announcement bar for promotions -->
+      <!-- TODO: Add announcement bar for promotions
+           CSS: Uses .announcement-bar class -->
       <section class="announcement-bar" aria-label="promotions">
         <p>✨Free gift wrapping on all orders over $50</p>
       </section>
-      <!-- TODO: Create "New Arrivals" section -->
+      <!-- TODO: Create "New Arrivals" section
+           CSS: Uses .new-arrivals class -->
       <!-- Include:
             - Section heading
             - Product grid with 4-6 product cards
             - Each product card should be an <article> with:
+            CSS: Grid uses .products-grid, cards use .product-card 
                 * Product image with descriptive alt text
                 * Product name as heading
                 * Product description
                 * Price (with screen reader friendly markup)
                 * Add to Cart button with proper ARIA label
         -->
-      <section>
+      <section class="new-arrivals">
         <h2>New Arrivals</h2>
-        <div>
-          <article>
+        <div class="products-grid">
+          <article class="product-card">
             <img
               src="https://wulihome.ca/cdn/shop/files/CB602798-AEA5-4EC5-891F-99DAC9488C09.jpg?v=1754803669&width=823"
               alt="Cute bear ceramic mug"
             />
             <h3>Cute Bear Ceramic Mug with Lid</h3>
-            <p>Cute Bear Ceramic Mug with Lid 400ML Capacity</p>
+            <p class="product-description">Cute Bear Ceramic Mug with Lid 400ML Capacity</p>
             <p>
               <span class="sr-only">Price: </span><data value="12">$12</data>
             </p>
             <button type="button" aria-label="Add to cart">Add to cart</button>
           </article>
-          <article>
+          <article class="product-card">
             <img
               src="https://wulihome.ca/cdn/shop/files/6822D51A-4568-4018-B19F-212B0F1F03F2.jpg?v=1754801648&width=823"
               alt="Kitty Short Glass Tumbler"
             />
             <h3>Kitty Short Glass Tumbler</h3>
-            <p>Kitty Short Glass Tumbler with Glass Straw 400ML</p>
+            <p class="product-description">Kitty Short Glass Tumbler with Glass Straw 400ML</p>
             <p><span class="sr-only">Price: </span><data value="8">$8</data></p>
             <button type="button" aria-label="Add to cart">Add to cart</button>
           </article>
-          <article>
+          <article class="product-card">
             <img
               src="https://wulihome.ca/cdn/shop/files/947C3E1C-A1F0-433C-88B1-DF59A95660F2.jpg?v=1754713740&width=823"
               alt="Wavy Rim Ceramic Yogurt Bowl"
             />
             <h3>Kitty Wavy Rim Ceramic Yogurt Bowl</h3>
-            <p>Kitty Wavy Rim Ceramic Yogurt Bowl 300ML</p>
+            <p class="product-description">Kitty Wavy Rim Ceramic Yogurt Bowl 300ML</p>
             <p><span class="sr-only">Price: </span><data value="8">$8</data></p>
             <button type="button" aria-label="Add to cart">Add to cart</button>
           </article>
-          <article>
+          <article class="product-card">
             <img
               src="https://wulihome.ca/cdn/shop/files/5A1C206F-E68A-4DF6-9859-160D23A10BF4.jpg?v=1754540723&width=823"
               alt="Hand-Painted Cake Ceramic Dessert Plate "
             />
             <h3>Hand-Painted Cake Ceramic Dessert Plate</h3>
-            <p>Hand-Painted Cake Ceramic Dessert Plate, 7.8-Inch</p>
+            <p class="product-description">Hand-Painted Cake Ceramic Dessert Plate, 7.8-Inch</p>
             <p><span class="sr-only">Price: </span><data value="8">$8</data></p>
             <button type="button" aria-label="Add to cart">Add to cart</button>
           </article>
         </div>
       </section>
 
-      <!-- TODO: Create "Shop by Category" section -->
+      <!-- TODO: Create "Shop by Category" section
+           CSS: Uses .categories class -->
       <!-- Include:
             - Section heading
             - Category navigation grid
             - Categories: Kitchen Essentials, Home Decor, Bath & Body, Lifestyle
             - Each category with image and label
+            CSS: .category-grid, .category-item, .category-link, .category-title, .category-description
         -->
       <section class="categories">
         <h2>Shop by Category</h2>
@@ -166,7 +180,7 @@
                 <p class="category-description">Cute functional kitchenware</p>
               </a>
             </li>
-            <li>
+            <li class="category-item">
               <a href="/categories/home-decor" class="category-link"
                 ><img
                   src="https://wulihome.ca/cdn/shop/collections/home-decor-968300.jpg?v=1753597491&width=750"
@@ -179,7 +193,7 @@
                 </p>
               </a>
             </li>
-            <li>
+            <li class="category-item">
               <a href="/categories/bath-and-body" class="category-link"
                 ><img
                   src="https://wulihome.ca/cdn/shop/collections/bath-matrugs-236299.jpg?v=1735885779"
@@ -192,7 +206,7 @@
                 </p>
               </a>
             </li>
-            <li>
+            <li class="category-item">
               <a href="/categories/Lifestyle" class="category-link"
                 ><img
                   src="https://wulihome.ca/cdn/shop/collections/home-storage-730313.jpg?v=1738288690&width=750"
@@ -209,7 +223,8 @@
         </nav>
       </section>
 
-      <!-- TODO: Add "About Wuli Home" preview section -->
+      <!-- TODO: Add "About Wuli Home" preview section
+           CSS: Needs .about-preview class -->
       <!-- Include:
             - Section heading
             - Brief company description
@@ -230,7 +245,8 @@
         >
       </section>
 
-      <!-- TODO: Create newsletter signup section -->
+      <!-- TODO: Create newsletter signup section
+           CSS: Uses .newsletter class -->
       <!-- Include:
             - Section heading "Stay Connected"
             - Benefit text (e.g., "Get 10% off your first order")
@@ -263,9 +279,11 @@
         </form>
       </section>
     </main>
-    <!-- TODO: Create footer with multiple sections -->
+    <!-- TODO: Create footer with multiple sections
+         CSS: Needs .footer-container class -->
     <footer>
-      <!-- TODO: Add "Customer Service" section -->
+      <!-- TODO: Add "Customer Service" section
+           CSS: Needs .footer-section class -->
       <!-- Links: Contact Us, Shipping Info, Returns & Exchanges, FAQ -->
       <section aria-label="Customer Service">
         <h3>Customer Service</h3>
@@ -278,7 +296,8 @@
           <li><a href="#">FAQ</a></li>
         </ul>
       </section>
-      <!-- TODO: Add "About" section -->
+      <!-- TODO: Add "About" section
+           CSS: Needs .footer-section class -->
       <!-- Links: Our Story, Sustainability, Careers, Press -->
       <section aria-label="About Us">
         <h3>About</h3>
@@ -289,7 +308,8 @@
           <li><a href="#">Press</a></li>
         </ul>
       </section>
-      <!-- TODO: Add "Connect" section with social media links -->
+      <!-- TODO: Add "Connect" section with social media links
+           CSS: Needs .footer-section and .social-links classes -->
       <!-- Include: Instagram, Facebook, Pinterest, TikTok -->
       <!-- Each link needs proper ARIA label -->
       <section aria-label="Connect">
@@ -338,7 +358,8 @@
         </ul>
       </section>
 
-      <!-- TODO: Add "Payment Methods" section -->
+      <!-- TODO: Add "Payment Methods" section
+           CSS: Needs .footer-section and .payment-methods classes -->
       <!-- Include payment icons with appropriate labels -->
       <section aria-label="Payment methods">
         <h3>Payment methods</h3>
@@ -352,7 +373,8 @@
         </ul>
       </section>
 
-      <!-- TODO: Add footer bottom with copyright and legal links -->
+      <!-- TODO: Add footer bottom with copyright and legal links
+           CSS: Needs .footer-bottom class -->
       <!-- Include: Copyright notice, Privacy Policy, Terms of Service, Accessibility -->
       <div>
         <p>
