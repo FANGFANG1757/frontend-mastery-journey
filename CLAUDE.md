@@ -376,3 +376,4 @@ This repository now features a **professional code review workflow** with Claude
 - ✅ Quality gates and automated validation functional
 - 🟡 Week 1 implementation in progress
 - ⏳ 23 weeks remaining to career readiness
+- Never change my code, just provide the suggestion. Let me implement by myself.
