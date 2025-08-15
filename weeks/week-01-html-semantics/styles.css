@@ -84,7 +84,7 @@ body {
   background-color: var(--bg-white);
 }
 .container {
-  max-width: 1200px;
+  max-width: 1500px;
   margin: 0 auto;
   padding: 0 1rem;
 }
@@ -104,11 +104,11 @@ body {
   /* TODO: Position off-screen initially */
   position: absolute;
   z-index: 999;
-  background-color: #000;
-  color: #f8b4d9;
+  background-color: var(--bg-cream);
+  color: var(--secondary-color);
   text-decoration: none;
-  border-radius: 0 0 4px 0;
-  padding: 1em;
+  border-radius: 0 0 var(--radius-md) 0;
+  padding: var(--spacing-md);
   transform: translateY(-100%);
   /* TODO: Show on focus with proper styling */
   /* TODO: Match Wuli Home's soft aesthetic */
@@ -120,7 +120,7 @@ body {
 /* TODO: Style the header */
 header {
   position: sticky;
-  background-color: #fff;
+  background-color: var(--bg-cream);
   top: 0;
   z-index: 100;
 
@@ -134,7 +134,7 @@ header {
   display: flex;
   padding: 1rem 2rem;
   justify-content: space-between;
-  background-color: #f8b4d9;
+  background-color: var(--primary-color);
   align-items: center;
   /* TODO: Container for header content */
   /* TODO: Max-width and centering */
@@ -164,14 +164,14 @@ header nav ul {
 header nav a {
   text-decoration: none;
   padding: 0.5rem 1rem;
-  color: #000;
+  color: var(--text-primary);
   /* TODO: Navigation link styling */
   /* TODO: Hover effects with soft transitions */
   /* TODO: Active state for current page */
 }
 header nav a:hover,
 header nav a:focus {
-  color: cadetblue;
+  color: var(--accent-color);
   transition: all 0.3s;
   text-decoration: underline;
 }
@@ -179,7 +179,7 @@ header nav a:focus {
 /* TODO: Header action buttons (search, cart, user) */
 .header-actions {
   display: flex;
-  gap: 1rem;
+  gap: var(--spacing-md);
   align-items: center;
   flex-wrap: wrap;
 
@@ -188,7 +188,7 @@ header nav a:focus {
 }
 
 .header-actions button {
-  background: rgb(70, 157, 223);
+  background: var(--accent-color);
   border-radius: 50%;
 
   /* TODO: Button reset and custom styling */
@@ -197,7 +197,7 @@ header nav a:focus {
 }
 .header-actions button:hover,
 .header-actions button:focus {
-  background: #ffd6a5;
+  background: var(--primary-color);
   transition: all 0.3s;
 }
 
@@ -207,8 +207,8 @@ header nav a:focus {
 }
 .cart-count {
   position: absolute;
-  color: white;
-  background: pink;
+  color: var(--neutral-light);
+  background: var(--primary-color);
   border-radius: 50%;
   width: 14px;
   height: 14px;
@@ -216,10 +216,10 @@ header nav a:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  top: 0.3rem;
-  right: 0.5rem;
+  top: var(--spacing-xs);
+  right: var(--spacing-xs);
   opacity: 0.9;
-  border: 1px solid white;
+  border: 1px solid var(--bg-white);
   font-size: 12px;
   /* TODO: Cart count badge */
   /* TODO: Position absolute over cart icon */
@@ -255,8 +255,8 @@ header nav a:focus {
 }
 
 .hero h1 {
-  color: #ef4444;
-  font-size: 2rem;
+  color: var(--primary-color);
+  font-size: var(--font-size-3xl);
   font-weight: bold;
   line-height: 2;
   /* TODO: Main heading typography */
@@ -264,18 +264,18 @@ header nav a:focus {
   /* TODO: Soft color treatment */
 }
 .hero p {
-  font-size: 1.5;
+  font-size: var(--font-size-2xl);
   color: white;
-  margin-bottom: 2rem;
+  margin-bottom: var(--spacing-2xl);
 }
 
 .cta-button {
-  background: pink;
+  background: var(--secondary-color);
   text-decoration: none;
   padding: 1rem 2rem;
   border-radius: 20px;
-  font-size: 1.5rem;
-  color: white;
+  font-size: var(--font-size-2xl);
+  color: var(--neutral-light);
   /* TODO: Primary call-to-action button */
   /* TODO: Pink background with white text */
   /* TODO: Rounded corners */
@@ -284,7 +284,7 @@ header nav a:focus {
 }
 .cta-button:hover,
 .cta-button:focus {
-  color: mediumaquamarine;
+  color: var(--accent-color);
 }
 
 /* TODO: Style announcement bar */
@@ -294,7 +294,7 @@ header nav a:focus {
   justify-content: center;
   padding: 0.5rem 0;
   font-size: 1.5rem;
-  color: #475569;
+  color: var(--text-secondary);
 
   /* TODO: Soft background color (peach or mint) */
   /* TODO: Center text with icon */
@@ -312,7 +312,7 @@ header nav a:focus {
 
 .new-arrivals h2 {
   padding: 1rem 0;
-  color: #475569;
+  color: var(--text-secondary);
   font-size: 2.5rem;
   text-align: center;
   font-weight: 600;
@@ -325,11 +325,17 @@ header nav a:focus {
 /* TODO: Product grid */
 .products-grid {
   display: grid;
-  grid-template-columns:repeat(auto-fill, minmax(280px, 1fr)); 
-  gap: 2rem;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: var(--spacing-2xl);
   /* TODO: CSS Grid layout */
   /* TODO: Responsive columns (1 on mobile, 2 on tablet, 4 on desktop) */
   /* TODO: Gap between products */
+}
+@media (max-width: 768px) {
+  .products-grid {
+    grid-template-columns: repeat(2 1fr);
+    gap: var(--spacing-md);
+  }
 }
 
 .product-card {
@@ -354,10 +360,10 @@ header nav a:focus {
 }
 
 .product-card img {
-    width: 100%;
-    height: 250px;
-    object-fit: cover;
-    background: #f5f5f5;
+  width: 100%;
+  height: 250px;
+  object-fit: cover;
+  background: var(--bg-white);
   /* TODO: Product image styling */
   /* TODO: Border radius on top corners */
   /* TODO: Aspect ratio for consistency */
@@ -365,52 +371,87 @@ header nav a:focus {
 }
 
 .product-card h3 {
-    padding: 1rem;
-    font-size: 1.1rem;
-    color: #333;
-    font-weight: 600;
-    line-height: 1.4;
+  padding: var(--spacing-md);
+  font-size: 1.1rem;
+  color: var(--text-primary);
+  font-weight: 600;
+  line-height: 1.4;
   /* TODO: Product name styling */
   /* TODO: Font size and weight */
   /* TODO: Color and spacing */
 }
 
 .product-description {
-    padding: 1rem;
-    color: #666;
-    font-size: 0.9rem;
-    line-height: 1.4;
+  padding: 1rem;
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  line-height: 1.4;
 
   /* TODO: Product description text */
   /* TODO: Smaller, secondary color */
 }
 
 .price {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: var(--primary-color);
+  padding: 1rem;
   /* TODO: Price styling */
   /* TODO: Bold or different color */
   /* TODO: Spacing */
 }
 
 .product-card button {
+  background: var(--primary-color);
+  color: white;
+  border-radius: 8px;
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  padding: 0.75rem;
+  transition: background 0.3s, transform 0.2s;
+  width: 100%;
   /* TODO: Add to cart button */
   /* TODO: Full width in card */
   /* TODO: Soft pink background */
   /* TODO: Rounded corners */
   /* TODO: Hover and focus states */
 }
+.product-card button:hover {
+  background: var(--primary-color);
+  transform: scale(1.02);
+}
 
+.product-card button:focus {
+  outline: 2px solid var(--focus-color);
+  outline-offset: 2px;
+}
 /* TODO: Style Shop by Category section */
 .categories {
+  padding: 4rem 2rem;
+  max-width: 1500px;
+  margin: 0 auto;
+  background: var(--bg-cream);
   /* TODO: Section background (cream or light) */
   /* TODO: Padding and spacing */
 }
 
 .category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  list-style: none;
   /* TODO: Grid layout for categories */
   /* TODO: 2x2 on mobile, 4 columns on desktop */
 }
 
 .category-grid a {
+  display: flex;
+  flex-direction: column;
+  color: var(--text-primary);
+  text-decoration: none;
+  background: var(--bg-white);
+  border-radius: var(--radius-md);
   /* TODO: Category card styling */
   /* TODO: Image with text overlay or below */
   /* TODO: Rounded corners */
@@ -419,17 +460,36 @@ header nav a:focus {
 
 /* TODO: Style About preview section */
 .about-preview {
+  padding: var(--spacing-xl);
+  background: var(--accent-color);
   /* TODO: Section styling */
   /* TODO: Center text */
   /* TODO: Max-width for readability */
 }
 
 .about-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  line-height: var(--spacing-xl);
+  max-width: 100%;
+
   /* TODO: Content container */
   /* TODO: Line height and spacing */
 }
-
-.text-link {
+.about-content h2 {
+  font-size: var(--font-size-3xl);
+  padding: var(--spacing-md, auto);
+  color: var(--text-primary);
+}
+.about-content p {
+  font-size: var(--font-size-2xl) padding var(--spacing-md) auto;
+  color: var(--text-secondary);
+}
+.about-link {
+  color: var(--primary-color);
+  font-size: var(--font-size-lg);
+  cursor: pointer;
   /* TODO: Inline link styling */
   /* TODO: Pink color with underline */
   /* TODO: Arrow animation on hover */
@@ -437,16 +497,30 @@ header nav a:focus {
 
 /* TODO: Style newsletter section */
 .newsletter {
+  background: linear-gradient(
+    200deg,
+    var(--primary-color) 0%,
+    var(--secondary-color) 50%,
+    var(--bg-cream) 100%
+  );
+  padding: var(--spacing-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   /* TODO: Section background (soft gradient) */
   /* TODO: Padding and centering */
 }
 
 .newsletter h2 {
+  color: var(--text-primary);
+  font-size: var(--font-size-3xl);
+  padding: var(--radius-md);
   /* TODO: Newsletter heading */
   /* TODO: Friendly, inviting style */
 }
 
 .newsletter form {
+  padding: var(--spacing-md);
   /* TODO: Form layout */
   /* TODO: Max-width and centering */
 }
@@ -457,15 +531,39 @@ header nav a:focus {
 }
 
 .newsletter input[type="email"] {
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border-color);
+  font-size: var(--font-size-base);
+  background: var(--bg-white);
+  transition: border-color 0.3s, box-shadow 0.3s;
   /* TODO: Email input styling */
   /* TODO: Rounded corners */
   /* TODO: Border and padding */
   /* TODO: Focus state with pink outline */
 }
+.newsletter input[type="email"]:focus {
+  border-color: var(--primary-color);
+  box-shadow: 0 0 0 3px rgba(248, 180, 217, 0.2);
+}
+.newsletter input[type="email"]::placeholder {
+  color: var(--text-secondary);
+}
 
 .newsletter button[type="submit"] {
+  background: var(--primary-color);
+  border-radius: var(--radius-lg);
+  color: var(--bg-white);
+  font-size: var(--font-size-base);
+  font-weight: 600;
+  border: none;
+  cursor: pointer;
+  transition: background 0.3s, transform 0.3s;
   /* TODO: Submit button styling */
   /* TODO: Match CTA button style */
+}
+.newsletter button[type="submit"]:hover {
+  background: var(--focus-color);
+  transform: translateY(-2px);
 }
 
 /* TODO: Style footer */
@@ -475,48 +573,91 @@ footer {
 }
 
 .footer-container {
+  background: var(--bg-cream);
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
   /* TODO: Footer content container */
   /* TODO: Grid layout for sections */
   /* TODO: Responsive columns */
 }
 
 .footer-section {
+  display: grid;
+  flex-direction: column;
+  gap: var(--spacing-md);
+  align-items: center;
   /* TODO: Individual footer section */
   /* TODO: Spacing and typography */
 }
 
 .footer-section h3 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: uppercase;
+  text-align: center;
+
   /* TODO: Footer section headings */
   /* TODO: Smaller, uppercase style */
   /* TODO: Soft color */
 }
 
 .footer-section ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  padding: 0;
+  margin: 0;
+  align-items: center;
   /* TODO: Remove list styles */
   /* TODO: Spacing between items */
 }
 
 .footer-section a {
+  text-decoration: none;
+  color: var(--text-secondary);
+  font-size: var(--font-size-base);
+
   /* TODO: Footer link styling */
   /* TODO: Subtle color */
   /* TODO: Hover effects */
 }
 
 .social-links {
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  align-items: center;
+  gap: var(--spacing-sm);
   /* TODO: Social media links layout */
   /* TODO: Horizontal with gap */
 }
+.social-links ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
 
 .social-links a {
-  /* TODO: Social icon styling */
   /* TODO: Round buttons */
   /* TODO: Brand colors on hover */
 }
 
 .payment-methods {
+  display: flex;
+  flex-direction: column;
+  gap: var(--spacing-sm);
+  align-items: center;
+
   /* TODO: Payment icons layout */
   /* TODO: Horizontal list */
   /* TODO: Icon sizing */
+}
+.payment-methods ul{
+  list-style: none;
 }
 
 .footer-bottom {
