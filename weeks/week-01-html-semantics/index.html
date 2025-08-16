@@ -38,7 +38,8 @@
         <img
           src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg"
           alt="Wuli Home"
-      /></a>
+        />
+      </a>
 
       <!-- TODO: Create main navigation with semantic markup
            CSS: Styles applied to header nav ul, header nav a -->
@@ -288,7 +289,11 @@
         <p>
           Get 10% off your first order when you subscribe to our newsletter! ✨
         </p>
-        <form class="newsletter-form" action="/submit" aria-label="Newsletter signup">
+        <form
+          class="newsletter-form"
+          action="/submit"
+          aria-label="Newsletter signup"
+        >
           <label for="newsletter-email">Email address</label>
           <input
             type="email"
@@ -312,100 +317,100 @@
       <!-- TODO: Add "Customer Service" section
            CSS: Needs .footer-section class -->
       <!-- Links: Contact Us, Shipping Info, Returns & Exchanges, FAQ -->
-       <div class="footer-container">
-      <section class="footer-section" aria-label="Customer Service">
-        <h3>Customer Service</h3>
-        <ul>
-          <li>
-            <a href="#">Contact Us</a>
-          </li>
-          <li><a href="#">Shipping Info</a></li>
-          <li><a href="#">Returns & exchanges</a></li>
-          <li><a href="#">FAQ</a></li>
-        </ul>
-      </section>
-      <!-- TODO: Add "About" section
+      <div class="footer-container">
+        <section class="footer-section" aria-label="Customer Service">
+          <h3>Customer Service</h3>
+          <ul>
+            <li>
+              <a href="#">Contact Us</a>
+            </li>
+            <li><a href="#">Shipping Info</a></li>
+            <li><a href="#">Returns & exchanges</a></li>
+            <li><a href="#">FAQ</a></li>
+          </ul>
+        </section>
+        <!-- TODO: Add "About" section
            CSS: Needs .footer-section class -->
-      <!-- Links: Our Story, Sustainability, Careers, Press -->
-      <section class="footer-section" aria-label="About Us">
-        <h3>About</h3>
-        <ul>
-          <li><a href="about">Our Story</a></li>
-          <li><a href="#">sustainability</a></li>
-          <li><a href="#">Careers</a></li>
-          <li><a href="#">Press</a></li>
-        </ul>
-      </section>
-      <!-- TODO: Add "Connect" section with social media links
+        <!-- Links: Our Story, Sustainability, Careers, Press -->
+        <section class="footer-section" aria-label="About Us">
+          <h3>About</h3>
+          <ul>
+            <li><a href="about">Our Story</a></li>
+            <li><a href="#">sustainability</a></li>
+            <li><a href="#">Careers</a></li>
+            <li><a href="#">Press</a></li>
+          </ul>
+        </section>
+        <!-- TODO: Add "Connect" section with social media links
            CSS: Needs .footer-section and .social-links classes -->
-      <!-- Include: Instagram, Facebook, Pinterest, TikTok -->
-      <!-- Each link needs proper ARIA label -->
-      
-      <section class="social-links" aria-label="Connect">
-        <h3>Connect</h3>
-        <ul>
-          <li>
-            <a
-              href="https://instagram.com/wulihome"
-              aria-label="Follow us on Instagram"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fa-brands fa-instagram" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a
-              href="https://facebook.com/wulihome"
-              aria-label="Like us on Facebook"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fa-brands fa-facebook" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a
-              href="https://pinterest.com/wulihome"
-              aria-label="Follow us on Pinterest"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fa-brands fa-pinterest" aria-hidden="true"></i
-            ></a>
-          </li>
-          <li>
-            <a
-              href="https://tiktok.com/@wulihome"
-              aria-label="Follow us on TikTok"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
-            </a>
-          </li>
-        </ul>
-      </section>
-      <!-- TODO: Add "Payment Methods" section
+        <!-- Include: Instagram, Facebook, Pinterest, TikTok -->
+        <!-- Each link needs proper ARIA label -->
+
+        <section class="social-links" aria-label="Connect">
+          <h3>Connect</h3>
+          <ul>
+            <li>
+              <a
+                href="https://instagram.com/wulihome"
+                aria-label="Follow us on Instagram"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-instagram" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://facebook.com/wulihome"
+                aria-label="Like us on Facebook"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-facebook" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://pinterest.com/wulihome"
+                aria-label="Follow us on Pinterest"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-pinterest" aria-hidden="true"></i
+              ></a>
+            </li>
+            <li>
+              <a
+                href="https://tiktok.com/@wulihome"
+                aria-label="Follow us on TikTok"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <i class="fa-brands fa-tiktok" aria-hidden="true"></i>
+              </a>
+            </li>
+          </ul>
+        </section>
+        <!-- TODO: Add "Payment Methods" section
            CSS: Needs .footer-section and .payment-methods classes -->
-      <!-- Include payment icons with appropriate labels -->
-      <section class="payment-methods" aria-label="Payment methods">
-        <h3>Payment methods</h3>
-        <ul>
-          <li>
-            <i class="fa-brands fa-cc-amex" aria-hidden="true"> </i>
-          </li>
-          <li><i class="fa-brands fa-apple-pay" aria-hidden="true"></i></li>
-          <li><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
-          <li><i class="fa-brands fa-google-pay" aria-hidden="true"></i></li>
-        </ul>
-      </section>
-       </div>
+        <!-- Include payment icons with appropriate labels -->
+        <section class="payment-methods" aria-label="Payment methods">
+          <h3>Payment methods</h3>
+          <ul>
+            <li>
+              <i class="fa-brands fa-cc-amex" aria-hidden="true"> </i>
+            </li>
+            <li><i class="fa-brands fa-apple-pay" aria-hidden="true"></i></li>
+            <li><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+            <li><i class="fa-brands fa-google-pay" aria-hidden="true"></i></li>
+          </ul>
+        </section>
+      </div>
 
       <!-- TODO: Add footer bottom with copyright and legal links
            CSS: Needs .footer-bottom class -->
       <!-- Include: Copyright notice, Privacy Policy, Terms of Service, Accessibility -->
-      <div class="footer-bottom"> 
+      <div class="footer-bottom">
         <p>
           &copy; 2025 Wuli Home. All rights reserved. Made with ❤️ in Toronto
         </p>
@@ -414,7 +419,7 @@
           <li><a href="#">Terms of Service</a></li>
           <li><a href="#">Cookie Policy</a></li>
           <li><a href="#">Accessibility Statement</a></li>
-          <li><a href="#">sitemap</a></li>
+          <li><a href="#">Sitemap</a></li>
         </ul>
       </div>
     </footer>
