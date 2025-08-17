@@ -41,9 +41,9 @@ h3 {
   --neutral-light: #f1f5f9; /* Light gray */
   --neutral-dark: #475569; /* Dark gray */
   --text-primary: #1e293b; /* Almost black */
-  --text-secondary: #64748b; /* Medium gray */
+  --text-secondary: #475569; /* Darker gray for better contrast */
   --bg-white: #ffffff;
-  --bg-cream: #fefce8; /* Cream background */
+  --bg-cream: #fffbf5; /* Cream background with better contrast */
   --border-color: #e2e8f0;
   --focus-color: #f472b6; /* Pink focus */
   --success-color: #10b981;
@@ -758,7 +758,7 @@ body {
 }
 @media (max-width: 640px) {
   .hero {
-    min-height: 35vh;
+    min-height: 50vh;
     align-items: flex-end;
     padding-bottom: 2rem;
   }
@@ -831,12 +831,12 @@ body {
 
 /* TODO: Style announcement bar */
 .announcement-bar {
-  background-color: mintcream;
+  background-color: var(--bg-cream);
   display: flex;
   justify-content: center;
-  padding: 0.5rem 0;
-  font-size: 1.5rem;
-  color: var(--text-secondary);
+  padding: 0.5rem 1rem;
+  font-size: clamp(0.875rem, 2vw, 1rem);
+  color: var(--text-primary);
   /* TODO: Soft background color (peach or mint) */
   /* TODO: Center text with icon */
   /* TODO: Padding and font size */
@@ -866,9 +866,9 @@ body {
 /* TODO: Product grid */
 .products-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-  gap: var(--spacing-2xl);
-  padding: 0 var(--spacing-lg);
+  grid-template-columns: repeat(auto-fill, minmax(min(260px, 100%), 1fr));
+  gap: var(--spacing-xl);
+  padding: 0 var(--spacing-md);
 }
 /* TODO: CSS Grid layout */
 /* TODO: Responsive columns (1 on mobile, 2 on tablet, 4 on desktop) */
