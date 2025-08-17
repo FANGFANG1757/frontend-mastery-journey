@@ -1,87 +1,1170 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechShop - Your Electronics Store</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
-    <!-- TODO: Implement skip link for accessibility -->
-    
-    <!-- TODO: Create semantic header with logo and navigation -->
-    <header>
-        <!-- TODO: Add company logo with proper alt text -->
-         <img src="https://www.google.com/webhp?hl=en&sa=X&ved=0ahUKEwjApY-J4_-OAxXtnq8BHTzxEwIQPAgI" alt="">
-        
-        <!-- TODO: Implement main navigation with proper ARIA labels -->
-        <nav>
-            <!-- TODO: Add navigation links (Home, Products, About, Contact, Cart) -->
-            <a href="/">Home</a>
-            <a href="/products">Products</a>
-            <a href="/about">About</a>
-            <a href="/contact">Contact</a>
-            <a href="/cart">Cart</a>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wuli Home - Creating cozy moments in every corner</title>
+    <!-- TODO: Add meta description for SEO -->
+    <meta
+      name="description"
+      content="Shop cute and functional home essentials at Wuli home. Free shipping over $50."
+    />
+    <meta
+      name="keywords"
+      content="home decor, kitchenware, cute home accessories"
+    />
+    <meta name="author" content="Wuli Home" />
+    <link rel="canonical" href="https://wulihome.ca" />
+    <!-- TODO: Add Font Awesome CDN for icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <!-- TODO: Add skip link for accessibility (should link to #main)
+         CSS: Uses .skip-link class -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <header class="site-header" id="site-header">
+      <div class="header-container">
+        <!-- Mobile menu toggle -->
+        <button
+          class="mobile-menu-toggle"
+          aria-label="Toggle navigation menu"
+          aria-expanded="false"
+          aria-controls="main-nav"
+        >
+          <span class="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+          </span>
+        </button>
+
+        <!-- Logo -->
+        <a
+          href="/"
+          class="logo"
+          aria-label="Wuli Home - Return to homepage"
+        >
+          <img
+            src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg"
+            alt="Wuli Home"
+            width="120"
+            height="40"
+            loading="eager"
+            fetchpriority="high"
+          />
+        </a>
+
+        <!-- Main Navigation -->
+        <nav class="main-nav" id="main-nav" aria-label="Main navigation">
+          <ul class="nav-list">
+            <li class="nav-item">
+              <a href="/" class="nav-link" aria-current="page">Home</a>
+            </li>
+            <li class="nav-item has-dropdown">
+              <button
+                class="nav-link dropdown-toggle"
+                aria-expanded="false"
+                aria-haspopup="true"
+              >
+                Shop All
+                <i
+                  class="fas fa-chevron-down dropdown-icon"
+                  aria-hidden="true"
+                ></i>
+              </button>
+              <ul class="dropdown-menu" role="menu">
+                <li role="none">
+                  <a href="/new-arrivals" role="menuitem">New Arrivals</a>
+                </li>
+                <li role="none">
+                  <a href="/bestsellers" role="menuitem">Bestsellers</a>
+                </li>
+                <li role="none">
+                  <a href="/kitchen" role="menuitem">Kitchen Essentials</a>
+                </li>
+                <li role="none">
+                  <a href="/home-decor" role="menuitem">Home Decor</a>
+                </li>
+                <li role="none">
+                  <a href="/bath-body" role="menuitem">Bath & Body</a>
+                </li>
+                <li role="none">
+                  <a href="/lifestyle" role="menuitem">Lifestyle</a>
+                </li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a href="/about" class="nav-link">About Us</a>
+            </li>
+            <li class="nav-item">
+              <a href="/contact" class="nav-link">Contact</a>
+            </li>
+            <li class="nav-item">
+              <a href="/faq" class="nav-link">FAQ</a>
+            </li>
+          </ul>
         </nav>
+
+        <!-- Header Actions -->
+        <div class="header-actions">
+          <!-- Search -->
+          <button
+            class="action-btn search-toggle"
+            aria-label="Search products"
+            aria-controls="search-overlay"
+            aria-expanded="false"
+          >
+            <i class="fas fa-search" aria-hidden="true"></i>
+          </button>
+
+          <!-- Wishlist -->
+          <button
+            class="action-btn wishlist-toggle"
+            aria-label="Wishlist (3 items)"
+            data-count="3"
+          >
+            <i class="fas fa-heart" aria-hidden="true"></i>
+            <span class="wishlist-count" aria-hidden="true">3</span>
+          </button>
+
+          <!-- Cart -->
+          <button
+            class="action-btn cart-toggle"
+            aria-label="Shopping cart (1 item)"
+            aria-controls="cart-overlay"
+            data-count="1"
+          >
+            <i class="fas fa-shopping-cart" aria-hidden="true"></i>
+            <span class="cart-count" aria-hidden="true">1</span>
+          </button>
+
+          <!-- Account -->
+          <div class="account-dropdown">
+            <button
+              class="action-btn account-toggle"
+              aria-label="Account menu"
+              aria-expanded="false"
+              aria-haspopup="true"
+            >
+              <i class="fas fa-user" aria-hidden="true"></i>
+            </button>
+            <ul class="account-menu" role="menu">
+              <li role="none"><a href="/login" role="menuitem">Sign In</a></li>
+              <li role="none">
+                <a href="/register" role="menuitem">Create Account</a>
+              </li>
+              <li role="none">
+                <a href="/orders" role="menuitem">Order History</a>
+              </li>
+              <li role="none">
+                <a href="/profile" role="menuitem">My Profile</a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Search Overlay -->
+      <div class="search-overlay" id="search-overlay" aria-hidden="true">
+        <div class="search-container">
+          <form
+            class="search-form"
+            role="search"
+            aria-label="Product search"
+          >
+            <div class="search-input-wrapper">
+              <input
+                type="search"
+                placeholder="Search for cute home essentials..."
+                aria-label="Search products"
+                autocomplete="off"
+                class="search-input"
+              />
+              <button
+                type="submit"
+                class="search-submit"
+                aria-label="Submit search"
+              >
+                <i class="fas fa-search" aria-hidden="true"></i>
+              </button>
+            </div>
+            <button
+              type="button"
+              class="search-close"
+              aria-label="Close search"
+            >
+              <i class="fas fa-times" aria-hidden="true"></i>
+            </button>
+          </form>
+
+          <!-- Quick Search Suggestions -->
+          <div class="search-suggestions">
+            <h3>Popular Searches</h3>
+            <ul class="suggestion-list">
+              <li><a href="/search?q=mugs">Cute Mugs</a></li>
+              <li><a href="/search?q=bowls">Ceramic Bowls</a></li>
+              <li><a href="/search?q=kitchen">Kitchen Essentials</a></li>
+              <li><a href="/search?q=decor">Home Decor</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- Mobile Menu Overlay -->
+      <div class="mobile-menu-overlay" aria-hidden="true">
+        <nav class="mobile-nav" aria-label="Mobile navigation">
+          <ul class="mobile-nav-list">
+            <li><a href="/" aria-current="page">Home</a></li>
+            <li>
+              <button class="mobile-dropdown-toggle">
+                Shop All
+                <i class="fas fa-chevron-down" aria-hidden="true"></i>
+              </button>
+              <ul class="mobile-dropdown">
+                <li><a href="/new-arrivals">New Arrivals</a></li>
+                <li><a href="/bestsellers">Bestsellers</a></li>
+                <li><a href="/kitchen">Kitchen Essentials</a></li>
+                <li><a href="/home-decor">Home Decor</a></li>
+                <li><a href="/bath-body">Bath & Body</a></li>
+                <li><a href="/lifestyle">Lifestyle</a></li>
+              </ul>
+            </li>
+            <li><a href="/about">About Us</a></li>
+            <li><a href="/contact">Contact</a></li>
+            <li><a href="/faq">FAQ</a></li>
+          </ul>
+
+          <div class="mobile-menu-footer">
+            <a href="/login" class="mobile-login-btn">Sign In</a>
+            <a href="/register" class="mobile-register-btn">Create Account</a>
+          </div>
+        </nav>
+      </div>
     </header>
 
-    <!-- TODO: Implement main content area with proper landmark -->
-    <main>
-        <!-- TODO: Create hero section with featured product -->
-        <section>
-            <!-- TODO: Add hero heading and promotional content -->
-            <!-- TODO: Include hero image with proper alt text and aspect-ratio -->
-            <!-- TODO: Add call-to-action button with proper focus states -->
-        </section>
+    <main id="main">
+      <!-- TODO: Create hero section
+           CSS: Uses .hero and .hero-content classes -->
+      <!-- Include: 
+            - Main heading "Creating cozy moments in every corner"
+            - Subtitle about Wuli Home
+            - Call-to-action button "Shop Now"
+            - Hero image with proper alt text
+        -->
+      <section class="hero">
+        <div class="hero-background">
+          <picture>
+            <source
+              media="(min-width: 768px)"
+              srcset="
+                https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/cup-on-a-table.jpg
+              "
+              width="1200"
+              height="600"
+            />
+            <source
+              media="(max-width: 767px)"
+              srcset="
+                https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/cup-on-a-table.jpg
+              "
+              width="800"
+              height="800"
+            />
+            <img
+              src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/cup-on-a-table.jpg"
+              alt="Cozy coffee cup arrangement creating a warm, inviting home
+   atmosphere"
+              width="1200"
+              height="600"
+              fetchpriority="high"
+              loading="eager"
+              class="hero-image"
+            />
+          </picture>
+          <div class="hero-overlay" aria-hidden="true"></div>
+        </div>
+        <div class="hero-content">
+          <h1>Creating cozy moments in every corner</h1>
+          <p class="hero-subtitle">
+            Welcome to Wuli Home - Your destination for cute and functional home
+            essentials
+          </p>
+          <a href="#new-arrivals" class="cta-button" role="button"
+            >Shop now
+            <span class="cta-icon" aria-hidden="true">
+              <i class="fas fa-arrow-down"></i>
+            </span>
+          </a>
+        </div>
+        <!--  <img
+          src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844028/samples/coffee.jpg"
+          alt="Cozy coffee cup arrangement creating a warm, inviting home atmosphere"
+        /> -->
+      </section>
 
-        <!-- TODO: Add featured products section -->
-        <section>
-            <!-- TODO: Add section heading with proper hierarchy -->
-            
-            <!-- TODO: Create product grid using CSS Grid -->
-            <div class="products-grid">
-                <!-- TODO: Create product cards as articles -->
-                <article>
-                    <!-- TODO: Add product image with proper alt text -->
-                    <!-- TODO: Add product name as heading -->
-                    <!-- TODO: Add product price -->
-                    <!-- TODO: Add "Add to Cart" button with proper ARIA attributes -->
-                </article>
-                
-                <!-- TODO: Repeat for 5-6 more products -->
+      <!-- TODO: Add announcement bar for promotions
+           CSS: Uses .announcement-bar class -->
+      <section class="announcement-bar" aria-label="Promotions">
+        <p>✨Free gift wrapping on all orders over $50</p>
+      </section>
+      <!-- TODO: Create "New Arrivals" section
+           CSS: Uses .new-arrivals class -->
+      <!-- Include:
+            - Section heading
+            - Product grid with 4-6 product cards
+            - Each product card should be an <article> with:
+            CSS: Grid uses .products-grid, cards use .product-card 
+                * Product image with descriptive alt text
+                * Product name as heading
+                * Product description
+                * Price (with screen reader friendly markup)
+                * Add to Cart button with proper ARIA label
+        -->
+      <section class="new-arrivals">
+        <h2>New Arrivals</h2>
+        <div class="products-grid" role="list">
+          <article
+            class="product-card"
+            role="listitem"
+            itemscope
+            itemtype="https://schema.org/Product"
+          >
+            <meta itemprop="brand" content="Wuli Home" />
+            <link itemprop="url" href="/products/bear-ceramic-mug" />
+
+            <div class="product-image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    https://wulihome.ca/cdn/shop/files/CB602798-AEA5-4EC5-891F-99DAC9488C09.jpg?v=1754803669&width=400&format=webp
+                  "
+                />
+                <img
+                  src="https://wulihome.ca/cdn/shop/files/CB602798-AEA5-4EC5-891F-99DAC9488C09.jpg?v=1754803669&width=400"
+                  alt="Cute bear ceramic mug with lid and handle"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  class="product-image"
+                  itemprop="image"
+                />
+              </picture>
+              <span class="product-badge new">New</span>
             </div>
-        </section>
 
-        <!-- TODO: Add categories section -->
-        <section>
-            <!-- TODO: Add categories heading -->
-            
-            <!-- TODO: Create category navigation -->
-            <nav>
-                <!-- TODO: Add category links with proper labeling -->
-            </nav>
-        </section>
+            <div class="product-content">
+              <h3 class="product-title" itemprop="name">
+                <a href="/products/bear-ceramic-mug" class="product-link">
+                  Cute Bear Ceramic Mug with Lid
+                </a>
+              </h3>
+              <p class="product-description" itemprop="description">
+                Cute Bear Ceramic Mug with Lid 400ML Capacity
+              </p>
 
-        <!-- TODO: Add newsletter signup section -->
-        <section>
-            <!-- TODO: Add newsletter heading -->
-            <!-- TODO: Create accessible form with proper labels -->
-            <form>
-                <!-- TODO: Add email input with label and validation -->
-                <!-- TODO: Add submit button -->
-                <!-- TODO: Include privacy notice -->
-            </form>
-        </section>
+              <div
+                class="product-pricing"
+                itemprop="offers"
+                itemscope
+                itemtype="https://schema.org/Offer"
+              >
+                <meta itemprop="priceCurrency" content="AUD" />
+                <meta
+                  itemprop="availability"
+                  href="https://schema.org/InStock"
+                />
+                <span class="sr-only">Price:</span>
+                <data value="12" class="price" itemprop="price">$12</data>
+              </div>
+
+              <button
+                type="button"
+                class="add-to-cart-btn"
+                aria-label="Add Cute Bear Ceramic Mug to cart"
+                data-product-id="bear-mug"
+                data-product-name="Cute Bear Ceramic Mug with Lid"
+                data-product-price="12"
+              >
+                <span class="btn-text">Add to cart</span>
+                <span class="btn-loading" aria-hidden="true">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            role="listitem"
+            itemscope
+            itemtype="https://schema.org/Product"
+          >
+            <meta itemprop="brand" content="Wuli Home" />
+            <link itemprop="url" href="/products/kitty-glass-tumbler" />
+
+            <div class="product-image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    https://wulihome.ca/cdn/shop/files/6822D51A-4568-4018-B19F-212B0F1F03F2.jpg?v=1754801648&width=400&format=webp
+                  "
+                />
+                <img
+                  src="https://wulihome.ca/cdn/shop/files/6822D51A-4568-4018-B19F-212B0F1F03F2.jpg?v=1754801648&width=400"
+                  alt="Kitty short glass tumbler with glass straw"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  class="product-image"
+                  itemprop="image"
+                />
+              </picture>
+              <span class="product-badge sale">Sale</span>
+            </div>
+
+            <div class="product-content">
+              <h3 class="product-title" itemprop="name">
+                <a href="/products/kitty-glass-tumbler" class="product-link">
+                  Kitty Short Glass Tumbler
+                </a>
+              </h3>
+              <p class="product-description" itemprop="description">
+                Kitty Short Glass Tumbler with Glass Straw 400ML
+              </p>
+
+              <div
+                class="product-pricing"
+                itemprop="offers"
+                itemscope
+                itemtype="https://schema.org/Offer"
+              >
+                <meta itemprop="priceCurrency" content="AUD" />
+                <meta
+                  itemprop="availability"
+                  href="https://schema.org/InStock"
+                />
+                <span class="sr-only">Price:</span>
+                <data value="8" class="price" itemprop="price">$8</data>
+                <data value="10" class="price-original">$10</data>
+              </div>
+
+              <button
+                type="button"
+                class="add-to-cart-btn"
+                aria-label="Add Kitty Short Glass Tumbler to cart"
+                data-product-id="kitty-tumbler"
+                data-product-name="Kitty Short Glass Tumbler"
+                data-product-price="8"
+              >
+                <span class="btn-text">Add to cart</span>
+                <span class="btn-loading" aria-hidden="true">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            role="listitem"
+            itemscope
+            itemtype="https://schema.org/Product"
+          >
+            <meta itemprop="brand" content="Wuli Home" />
+            <link
+              itemprop="url"
+              href="/products/kitty-wavy-rim-ceramic-yogurt-bowl"
+            />
+            <div class="product-image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    https://wulihome.ca/cdn/shop/files/947C3E1C-A1F0-433C-88B1-DF59A95660F2.jpg?v=1754713740&width=823
+                  "
+                />
+                <img
+                  src="https://wulihome.ca/cdn/shop/files/947C3E1C-A1F0-433C-88B1-DF59A95660F2.jpg?v=1754713740&width=823"
+                  alt="Kitty wavy rim ceramic yogurt bowl"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  class="product-image"
+                  itemprop="image"
+                />
+              </picture>
+              <span class="product-badge sale">Sale</span>
+            </div>
+            <div class="product-content">
+              <h3 class="product-title" itemprop="name">
+                <a href="/products/kitty-wavy-rim-ceramic-yogurt-bowl" class="product-link">
+                  Kitty Wavy Rim Ceramic Yogurt Bowl
+                </a>
+              </h3>
+              <p class="product-description" itemprop="description">
+                Kitty Wavy Rim Ceramic Yogurt Bowl 300ML
+              </p>
+
+              <div
+                class="product-pricing"
+                itemprop="offers"
+                itemscope
+                itemtype="https://schema.org/Offer"
+              >
+                <meta itemprop="priceCurrency" content="AUD" />
+                <meta
+                  itemprop="availability"
+                  href="https://schema.org/InStock"
+                />
+                <span class="sr-only">Price:</span>
+                <data value="8" class="price" itemprop="price">$8</data>
+                <data value="10" class="price-original">$10</data>
+              </div>
+
+              <button
+                type="button"
+                class="add-to-cart-btn"
+                aria-label="Add Kitty Wavy Rim Ceramic Yogurt Bowl to cart"
+                data-product-id="kitty-wavy-rim-ceramic-yogurt-bowl"
+                data-product-name="Kitty Wavy Rim Ceramic Yogurt Bowl"
+                data-product-price="8"
+              >
+                <span class="btn-text">Add to cart</span>
+                <span class="btn-loading" aria-hidden="true">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+          </article>
+          <article
+            class="product-card"
+            role="listitem"
+            itemscope
+            itemtype="https://schema.org/Product"
+          >
+            <meta itemprop="brand" content="Wuli Home" />
+            <link itemprop="url" href="/products/kitty-glass-tumbler" />
+
+            <div class="product-image-wrapper">
+              <picture>
+                <source
+                  type="image/webp"
+                  srcset="
+                    https://wulihome.ca/cdn/shop/files/5A1C206F-E68A-4DF6-9859-160D23A10BF4.jpg?v=1754540723&width=823
+                  "
+                />
+                <img
+                  src="https://wulihome.ca/cdn/shop/files/5A1C206F-E68A-4DF6-9859-160D23A10BF4.jpg?v=1754540723&width=823"
+                  alt="Hand-painted cake ceramic dessert plate"
+                  width="400"
+                  height="400"
+                  loading="lazy"
+                  decoding="async"
+                  class="product-image"
+                  itemprop="image"
+                />
+              </picture>
+              <span class="product-badge sale">Sale</span>
+            </div>
+
+            <div class="product-content">
+              <h3 class="product-title" itemprop="name">
+                <a
+                  href="/products/hand-painted-cake-ceramic-dessert-plate"
+                  class="product-link"
+                >
+                  Hand-Painted Cake Ceramic Dessert Plate
+                </a>
+              </h3>
+              <p class="product-description" itemprop="description">
+                Hand-Painted Cake Ceramic Dessert Plate, 7.8-Inch
+              </p>
+
+              <div
+                class="product-pricing"
+                itemprop="offers"
+                itemscope
+                itemtype="https://schema.org/Offer"
+              >
+                <meta itemprop="priceCurrency" content="AUD" />
+                <meta
+                  itemprop="availability"
+                  href="https://schema.org/InStock"
+                />
+                <span class="sr-only">Price:</span>
+                <data value="8" class="price" itemprop="price">$8</data>
+                <data value="10" class="price-original">$10</data>
+              </div>
+
+              <button
+                type="button"
+                class="add-to-cart-btn"
+                aria-label="Add Hand-Painted Cake Ceramic Dessert Plate to cart"
+                data-product-id="hand-painted-cake-plate"
+                data-product-name="Hand-Painted Cake Ceramic Dessert Plate"
+                data-product-price="8"
+              >
+                <span class="btn-text">Add to cart</span>
+                <span class="btn-loading" aria-hidden="true">
+                  <i class="fas fa-spinner fa-spin"></i>
+                </span>
+              </button>
+            </div>
+          </article>
+          <!-- <article class="product-card">
+            <img
+              src="https://wulihome.ca/cdn/shop/files/5A1C206F-E68A-4DF6-9859-160D23A10BF4.jpg?v=1754540723&width=823"
+              alt="Hand-Painted Cake Ceramic Dessert Plate "
+            />
+            <h3>Hand-Painted Cake Ceramic Dessert Plate</h3>
+            <p class="product-description">
+              Hand-Painted Cake Ceramic Dessert Plate, 7.8-Inch
+            </p>
+            <p>
+              <span class="sr-only">Price: </span
+              ><data value="8" class="price">$8</data>
+            </p>
+            <button type="button" aria-label="Add to cart">Add to cart</button>
+          </article> -->
+        </div>
+      </section>
+
+      <!-- TODO: Create "Shop by Category" section
+           CSS: Uses .categories class -->
+      <!-- Include:
+            - Section heading
+            - Category navigation grid
+            - Categories: Kitchen Essentials, Home Decor, Bath & Body, Lifestyle
+            - Each category with image and label
+            CSS: .category-grid, .category-item, .category-link, .category-title, .category-description
+        -->
+      <section class="categories" aria-labelledby="categories-heading">
+        <div class="categories-container">
+          <h2>Shop by Category</h2>
+          <nav aria-label="Product Categories" class="category-nav">
+            <ul class="category-grid" role="list">
+              <li class="category-item" role="listitem">
+                <a
+                  href="/categories/kitchen-essentials"
+                  class="category-link"
+                  aria-describedby="kitchen-desc"
+                >
+                  <div class="category-image-wrapper">
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcset="
+                          https://wulihome.ca/cdn/shop/collections/DFC62387-D134-4B5B-BD8E-1EAF97E74A9E.jpg?v=1753597264&format=webp&width=400
+                        "
+                      />
+                      <img
+                        src="https://wulihome.ca/cdn/shop/collections/DFC62387-D134-4B5B-BD8E-1EAF97E74A9E.jpg?v=1753597264&width=400"
+                        alt="Cute ceramic mugs, bowls and kitchen accessories
+   display"
+                        width="400"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        class="category-image"
+                      />
+                    </picture>
+                    <div class="category-overlay" aria-hidden="true"></div>
+                  </div>
+                  <div class="category-content">
+                    <h3 class="category-title">Kitchen Essentials</h3>
+                    <p class="category-description" id="kitchen-desc">
+                      Cute functional kitchenware for your daily cooking needs
+                    </p>
+                    <span class="category-cta" aria-hidden="true">
+                      Shop now
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li class="category-item" role="listitem">
+                <a
+                  href="/categories/home-decor"
+                  class="category-link"
+                  aria-describedby="decor-desc"
+                >
+                  <div class="category-image-wrapper">
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcset="
+                          https://wulihome.ca/cdn/shop/collections/home-decor-968300.jpg?v=1753597491&width=400&format=webp
+                        "
+                      />
+                      <img
+                        src="https://wulihome.ca/cdn/shop/collections/home-decor-968300.jpg?v=1753597491&width=400"
+                        alt="Charming home decor pieces to add personality to
+   your space"
+                        width="400"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        class="category-image"
+                      />
+                    </picture>
+                    <div class="category-overlay" aria-hidden="true"></div>
+                  </div>
+                  <div class="category-content">
+                    <h3 class="category-title">Home Decor</h3>
+                    <p class="category-description" id="decor-desc">
+                      Sprinkle personality into your space with charming decor
+                      pieces
+                    </p>
+                    <span class="category-cta" aria-hidden="true">
+                      Shop now
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li class="category-item" role="listitem">
+                <a
+                  href="/categories/bath-and-body"
+                  class="category-link"
+                  aria-describedby="bath-desc"
+                >
+                  <div class="category-image-wrapper">
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcset="
+                          https://wulihome.ca/cdn/shop/collections/bath-matrugs-236299.jpg?v=1735885779&width=400&format=webp
+                        "
+                      />
+                      <img
+                        src="https://wulihome.ca/cdn/shop/collections/bath-matrugs-236299.jpg?v=1735885779&width=400"
+                        alt="Soft and stylish bathroom mats for comfort and 
+  charm"
+                        width="400"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        class="category-image"
+                      />
+                    </picture>
+                    <div class="category-overlay" aria-hidden="true"></div>
+                  </div>
+                  <div class="category-content">
+                    <h3 class="category-title">Bath & Body</h3>
+                    <p class="category-description" id="bath-desc">
+                      Cozy up your bathroom with soft and stylish comfort
+                      accessories
+                    </p>
+                    <span class="category-cta" aria-hidden="true">
+                      Shop now
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                  </div>
+                </a>
+              </li>
+              <li class="category-item" role="listitem">
+                <a
+                  href="/categories/lifestyle"
+                  class="category-link"
+                  aria-describedby="lifestyle-desc"
+                >
+                  <div class="category-image-wrapper">
+                    <picture>
+                      <source
+                        type="image/webp"
+                        srcset="
+                          https://wulihome.ca/cdn/shop/collections/home-storage-730313.jpg?v=1738288690&width=400&format=webp
+                        "
+                      />
+                      <img
+                        src="https://wulihome.ca/cdn/shop/collections/home-storage-730313.jpg?v=1738288690&width=400"
+                        alt="Chic and functional storage solutions for 
+  organized living"
+                        width="400"
+                        height="300"
+                        loading="lazy"
+                        decoding="async"
+                        class="category-image"
+                      />
+                    </picture>
+                    <div class="category-overlay" aria-hidden="true"></div>
+                  </div>
+                  <div class="category-content">
+                    <h3 class="category-title">Lifestyle</h3>
+                    <p class="category-description" id="lifestyle-desc">
+                      Get organized in style with chic and functional storage
+                      solutions
+                    </p>
+                    <span class="category-cta" aria-hidden="true">
+                      Shop now
+                      <i class="fas fa-arrow-right"></i>
+                    </span>
+                  </div>
+                </a>
+              </li>
+            </ul>
+          </nav>
+        </div>
+      </section>
+
+      <!-- TODO: Add "About Wuli Home" preview section
+           CSS: Needs .about-preview class -->
+      <!-- Include:
+            - Section heading
+            - Brief company description
+            - "Learn more" link
+        -->
+      <section class="about-preview" id="about-preview">
+        <div class="about-container">
+          <div class="about-content">
+            <h2 id="about-heading">About Wuli Home</h2>
+            <p class="about-subtitle">Since 2022</p>
+            <p class="about-description">
+              Since 2022 Wuli Home has been bringing fun and style to everyday
+              life since 2022. We create adorable, quality home essentials that
+              make every moment feel special. We're based in Toronto. Thanks for
+              making us part of your home!
+            </p>
+            <div class="about-stats">
+              <div class="stat-item">
+                <span class="stat-number" data-count="10000">10K+</span>
+                <span class="stat-label">Happy Customers</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="500">500+</span>
+                <span class="stat-label">Unique Products</span>
+              </div>
+              <div class="stat-item">
+                <span class="stat-number" data-count="4.8">4.8★</span>
+                <span class="stat-label">Average Rating</span>
+              </div>
+            </div>
+            <a class="about-link" href="/about"
+              ><i class="fa-solid fa-arrow-right" aria-hidden="true"></i>Learn
+              more</a
+            >
+          </div>
+          <div class="about-image">
+            <picture>
+              <source
+                type="image/webp"
+                srcset="
+                  https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg?format=webp&width=600
+                "
+              />
+              <img
+                src="https://res.cloudinary.com/dqeozlhyd/image/upload/v1754844317/IMG_logo_uqyv0w.jpg?width=600"
+                alt="Wuli Home team creating cute home essentials in Toronto"
+                width="600"
+                height="600"
+                loading="lazy"
+                decoding="async"
+              />
+            </picture>
+            <div class="about-badge">
+              <i class="fas fa-heart"></i>
+              <span>Made with love in Toronto</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- TODO: Create newsletter signup section
+           CSS: Uses .newsletter class -->
+      <!-- Include:
+            - Section heading "Stay Connected"
+            - Benefit text (e.g., "Get 10% off your first order")
+            - Accessible form with:
+                * Email input with proper label
+                * Required attribute and ARIA attributes
+                * Submit button
+                * Privacy notice for screen readers
+        -->
+      <section class="newsletter" aria-labelledby="newsletter-heading">
+        <div class="newsletter-container">
+          <h2 about-preview>Stay Connected</h2>
+          <p class="newsletter-tagline">
+            Get 10% off your first order when you subscribe to our newsletter!
+            ✨
+          </p>
+          <form
+            class="newsletter-form"
+            action="/api/newsletter/subscribe"
+            method="POST"
+            novalidate
+            aria-live="polite"
+            aria-atomic="true"
+          >
+            <div class="form-group">
+              <label for="newsletter-email" class="form-label"
+                >Email address
+                <span class="required" aria-label="required">*</span></label
+              >
+              <div class="input-wrapper">
+                <input
+                  class="form-input"
+                  type="email"
+                  name="email"
+                  id="newsletter-email"
+                  required
+                  aria-required="true"
+                  aria-invalid="false"
+                  aria-describedby="email-hint email-error"
+                  placeholder="your@email.com"
+                  autocomplete="email"
+                  pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+                />
+                <button
+                  type="submit"
+                  class="submit-btn"
+                  aria-label="Subscribe to newsletter"
+                >
+                  <span class="btn-text">Subscribe</span>
+                  <span class="btn-loading" aria-hidden="true">
+                    <i class="fas fa-spinner fa-spin"></i>
+                  </span>
+                  <span class="btn-success" aria-hidden="true">
+                    <i class="fas fa-check"></i>
+                  </span>
+                </button>
+              </div>
+              <span id="email-hint" class="form-hint">
+                We'll never share your email with anyone else.
+              </span>
+              <span
+                id="email-error"
+                class="form-error"
+                role="alert"
+                aria-live="assertive"
+              >
+              </span>
+
+              <div class="form-success" role="status" aria-live="polite">
+                <i class="fas fa-check-circle"></i>
+                <p>
+                  Welcome to the Wuli family! Check your email for your discount
+                  code.
+                </p>
+              </div>
+            </div>
+            <div class="form-footer">
+              <label class="consent-label">
+                <input
+                  type="checkbox"
+                  name="consent"
+                  id="newsletter-consent"
+                  class="consent-checkbox"
+                  aria-describedby="consent-text"
+                />
+                <span id="consent-text">
+                  I agree to receive marketing emails from Wuli Home
+                </span>
+              </label>
+
+              <p class="privacy-notice" id="privacy-notice">
+                By subscribing, you agree to our
+                <a href="/privacy-policy" target="_blank" rel="noopener"
+                  >Privacy Policy</a
+                >
+                and
+                <a href="/terms" target="_blank" rel="noopener"
+                  >Terms of Service</a
+                >. Unsubscribe at any time.
+              </p>
+            </div>
+          </form>
+        </div>
+      </section>
     </main>
+    <!-- TODO: Create footer with multiple sections
+         CSS: Needs .footer-container class -->
+    <footer class="footer" role="contentinfo" aria-label="Site footer">
+      <!-- TODO: Add "Customer Service" section
+           CSS: Needs .footer-section class -->
+      <!-- Links: Contact Us, Shipping Info, Returns & Exchanges, FAQ -->
+      <div class="footer-main">
+        <div class="footer-container">
+          <section class="footer-section" aria-label="Customer Service">
+            <h3 id="customer-service-heading">Customer Service</h3>
+            <ul class="footer-links">
+              <li>
+                <a href="/contact">Contact Us</a>
+              </li>
+              <li><a href="/shipping">Shipping Info</a></li>
+              <li><a href="/returns">Returns & exchanges</a></li>
+              <li><a href="/faq">FAQ</a></li>
+              <li><a href="/size-guide">Size Guide</a></li>
+            </ul>
+          </section>
+          <!-- TODO: Add "About" section
+           CSS: Needs .footer-section class -->
+          <!-- Links: Our Story, Sustainability, Careers, Press -->
+          <section class="footer-section" aria-label="About Us">
+            <h3 id="about-heading-footer">About</h3>
+            <ul class="footer-links">
+              <li><a href="/about">Our Story</a></li>
+              <li><a href="/sustainability">sustainability</a></li>
+              <li><a href="/careers">Careers</a></li>
+              <li><a href="/press">Press</a></li>
+              <li><a href="/reviews">Customer Reviews</a></li>
+            </ul>
+          </section>
+          <!-- TODO: Add "Connect" section with social media links
+           CSS: Needs .footer-section and .social-links classes -->
+          <!-- Include: Instagram, Facebook, Pinterest, TikTok -->
+          <!-- Each link needs proper ARIA label -->
 
-    <!-- TODO: Implement semantic footer -->
-    <footer>
-        <!-- TODO: Add footer navigation sections -->
-        <!-- TODO: Include company information -->
-        <!-- TODO: Add social media links with proper alt text -->
-        <!-- TODO: Include copyright notice -->
+          <section class="footer-section" aria-label="Connect">
+            <h3 id="connect-heading">Connect</h3>
+            <ul class="social-links" role="list">
+              <li>
+                <a
+                  href="https://instagram.com/wulihome"
+                  aria-label="Follow us on Instagram"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-instagram" aria-hidden="true"></i>
+                  <span class="social-text">Instagram</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://facebook.com/wulihome"
+                  aria-label="Like us on Facebook"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-facebook" aria-hidden="true"></i
+                  ><span class="social-text">Facebook</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://pinterest.com/wulihome"
+                  aria-label="Follow us on Pinterest"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-pinterest" aria-hidden="true"></i>
+                  <span class="social-text">Pinterest</span></a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://tiktok.com/@wulihome"
+                  aria-label="Follow us on TikTok"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <i class="fa-brands fa-tiktok" aria-hidden="true"></i
+                  ><span class="social-text">TikTok</span>
+                </a>
+              </li>
+            </ul>
+            <div class="footer-newsletter">
+              <p>Subscribe for exclusive offers!</p>
+              <a href="#newsletter" class="footer-subscribe-btn">
+                Subscribe
+                <i class="fas fa-envelope" aria-hidden="true"></i>
+              </a>
+            </div>
+          </section>
+          <!-- TODO: Add "Payment Methods" section
+           CSS: Needs .footer-section and .payment-methods classes -->
+          <!-- Include payment icons with appropriate labels -->
+          <section class="footer-section" aria-label="Payment methods">
+            <h3 id="payment-heading">Payment methods</h3>
+            <div
+              class="payment-methods"
+              role="list"
+              aria-label="Accepted 
+  payment methods"
+            >
+              <div class="payment-icon" role="listitem">
+                <i class="fab fa-cc-visa" aria-label="Visa"></i>
+              </div>
+              <div class="payment-icon" role="listitem">
+                <i class="fab fa-cc-mastercard" aria-label="Mastercard"></i>
+              </div>
+              <div class="payment-icon" role="listitem">
+                <i
+                  class="fab fa-cc-amex"
+                  aria-label="American 
+  Express"
+                ></i>
+              </div>
+              <div class="payment-icon" role="listitem">
+                <i class="fab fa-cc-paypal" aria-label="PayPal"></i>
+              </div>
+              <div class="payment-icon" role="listitem">
+                <i class="fab fa-apple-pay" aria-label="Apple Pay"></i>
+              </div>
+              <div class="payment-icon" role="listitem">
+                <i class="fab fa-google-pay" aria-label="Google Pay"></i>
+              </div>
+            </div>
+            <div class="security-badges">
+              <div class="security-badge">
+                <i class="fas fa-lock" aria-label="SSL Secured"></i>
+                <span>SSL Secured</span>
+              </div>
+              <div class="security-badge">
+                <i class="fas fa-shield-alt" aria-label="Trusted Shop"></i>
+                <span>Trusted Shop</span>
+              </div>
+              <div class="security-badge">
+                <i class="fas fa-certificate" aria-label="Verified Seller"></i>
+                <span>Verified</span>
+              </div>
+            </div>
+            <!-- <ul>
+            <li>
+              <i class="fa-brands fa-cc-amex" aria-hidden="true"> </i>
+            </li>
+            <li><i class="fa-brands fa-apple-pay" aria-hidden="true"></i></li>
+            <li><i class="fa-brands fa-cc-visa" aria-hidden="true"></i></li>
+            <li><i class="fa-brands fa-google-pay" aria-hidden="true"></i></li>
+          </ul> -->
+          </section>
+        </div>
+      </div>
+
+      <!-- TODO: Add footer bottom with copyright and legal links
+           CSS: Needs .footer-bottom class -->
+      <!-- Include: Copyright notice, Privacy Policy, Terms of Service, Accessibility -->
+      <div class="footer-bottom">
+        <div class="footer-bottom-container">
+          <div class="footer-copyright">
+            <p>&copy; 2025 Wuli Home. All rights reserved.</p>
+            <p class="footer-tagline">
+              Made with <i class="fas fa-heart" aria-label="love"></i> in
+              Toronto
+            </p>
+          </div>
+
+          <nav class="footer-legal" aria-label="Legal information">
+            <ul>
+              <li><a href="/privacy-policy">Privacy Policy</a></li>
+              <li><a href="/terms">Terms of Service</a></li>
+              <li><a href="/cookies">Cookie Policy</a></li>
+              <li><a href="/accessibility">Accessibility</a></li>
+              <li><a href="/sitemap">Sitemap</a></li>
+            </ul>
+          </nav>
+        </div>
+      </div>
     </footer>
 
     <script src="script.js"></script>
-</body>
+  </body>
 </html>
