@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Week 2: CSS Grid & Flexbox - Outdoor Gear Shop</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Skip to main content for accessibility -->
+    <a href="#main" class="skip-link">Skip to main content</a>
+
+    <!-- TODO: Use Flexbox for the header layout -->
+    <header class="site-header">
+        <nav class="nav-container" aria-label="Main navigation">
+            <div class="logo">
+                <a href="/" aria-label="Outdoor Gear Shop Home">
+                    <span>Outdoor Gear</span>
+                </a>
+            </div>
+            
+            <!-- TODO: Implement responsive hamburger menu with Flexbox -->
+            <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">
+                <span class="hamburger"></span>
+            </button>
+            
+            <!-- TODO: Use Flexbox for horizontal navigation -->
+            <ul class="nav-menu">
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#new">New Arrivals</a></li>
+                <li><a href="#sale">Sale</a></li>
+                <li><a href="#about">About</a></li>
+            </ul>
+            
+            <!-- TODO: Use Flexbox to align these items to the right -->
+            <div class="nav-actions">
+                <button aria-label="Search products">
+                    <span>Search</span>
+                </button>
+                <button aria-label="Account">
+                    <span>Account</span>
+                </button>
+                <button aria-label="Shopping cart">
+                    <span>Cart (0)</span>
+                </button>
+            </div>
+        </nav>
+    </header>
+
+    <main id="main">
+        <!-- TODO: Use CSS Grid for the hero section with overlapping text -->
+        <section class="hero-section" aria-labelledby="hero-heading">
+            <div class="hero-content">
+                <h1 id="hero-heading">Winter Gear Sale</h1>
+                <p>Up to 40% off selected items</p>
+                <!-- TODO: Style button with Flexbox for icon + text -->
+                <a href="#products" class="cta-button">
+                    Shop Now
+                    <span aria-hidden="true">→</span>
+                </a>
+            </div>
+            <div class="hero-image">
+                <!-- TODO: Implement responsive image with aspect-ratio -->
+                <img src="https://via.placeholder.com/1200x600" alt="Winter outdoor scene with hikers">
+            </div>
+        </section>
+
+        <!-- TODO: Use Flexbox for filter bar -->
+        <section class="filter-bar" aria-label="Product filters">
+            <div class="filter-container">
+                <!-- TODO: Create responsive filter layout with Flexbox wrap -->
+                <div class="filter-group">
+                    <button class="filter-button" aria-expanded="false" aria-controls="category-filter">
+                        Category
+                        <span aria-hidden="true">▼</span>
+                    </button>
+                    <!-- TODO: Position dropdown with CSS -->
+                    <div id="category-filter" class="filter-dropdown" hidden>
+                        <label><input type="checkbox"> Jackets</label>
+                        <label><input type="checkbox"> Pants</label>
+                        <label><input type="checkbox"> Accessories</label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <button class="filter-button" aria-expanded="false" aria-controls="size-filter">
+                        Size
+                        <span aria-hidden="true">▼</span>
+                    </button>
+                    <div id="size-filter" class="filter-dropdown" hidden>
+                        <label><input type="checkbox"> XS</label>
+                        <label><input type="checkbox"> S</label>
+                        <label><input type="checkbox"> M</label>
+                        <label><input type="checkbox"> L</label>
+                        <label><input type="checkbox"> XL</label>
+                    </div>
+                </div>
+                
+                <div class="filter-group">
+                    <button class="filter-button" aria-expanded="false" aria-controls="color-filter">
+                        Color
+                        <span aria-hidden="true">▼</span>
+                    </button>
+                    <div id="color-filter" class="filter-dropdown" hidden>
+                        <label><input type="checkbox"> Black</label>
+                        <label><input type="checkbox"> Blue</label>
+                        <label><input type="checkbox"> Green</label>
+                        <label><input type="checkbox"> Red</label>
+                    </div>
+                </div>
+                
+                <!-- TODO: Use margin-left: auto to push sort to the right -->
+                <div class="sort-group">
+                    <label for="sort-select" class="visually-hidden">Sort products</label>
+                    <select id="sort-select" class="sort-select">
+                        <option>Featured</option>
+                        <option>Price: Low to High</option>
+                        <option>Price: High to Low</option>
+                        <option>Newest</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <!-- TODO: Main CSS Grid layout for products -->
+        <section class="products-section" id="products" aria-labelledby="products-heading">
+            <h2 id="products-heading" class="visually-hidden">Products</h2>
+            
+            <!-- TODO: Implement responsive grid with minmax() and auto-fit -->
+            <div class="products-grid">
+                <!-- Product Card 1 -->
+                <article class="product-card">
+                    <!-- TODO: Use aspect-ratio for consistent image sizing -->
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x500" alt="Insulated Winter Jacket">
+                        <!-- TODO: Position badge with absolute positioning -->
+                        <span class="product-badge">Sale</span>
+                    </div>
+                    
+                    <!-- TODO: Use Flexbox for product info layout -->
+                    <div class="product-info">
+                        <h3 class="product-title">Insulated Winter Jacket</h3>
+                        <p class="product-description">Waterproof and windproof protection</p>
+                        
+                        <!-- TODO: Use Flexbox for price alignment -->
+                        <div class="product-price">
+                            <span class="price-current">$189.00</span>
+                            <span class="price-original">$279.00</span>
+                            <span class="price-discount">-32%</span>
+                        </div>
+                        
+                        <!-- TODO: Style color options with Flexbox -->
+                        <div class="product-colors" aria-label="Available colors">
+                            <button class="color-option" aria-label="Black" style="background-color: black;"></button>
+                            <button class="color-option" aria-label="Navy" style="background-color: navy;"></button>
+                            <button class="color-option" aria-label="Green" style="background-color: green;"></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product Card 2 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x500" alt="Trail Running Shoes">
+                        <span class="product-badge">New</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Trail Running Shoes</h3>
+                        <p class="product-description">Lightweight with superior grip</p>
+                        <div class="product-price">
+                            <span class="price-current">$129.00</span>
+                        </div>
+                        <div class="product-colors" aria-label="Available colors">
+                            <button class="color-option" aria-label="Gray" style="background-color: gray;"></button>
+                            <button class="color-option" aria-label="Blue" style="background-color: blue;"></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product Card 3 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x500" alt="Hiking Backpack 40L">
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Hiking Backpack 40L</h3>
+                        <p class="product-description">Ergonomic design with rain cover</p>
+                        <div class="product-price">
+                            <span class="price-current">$159.00</span>
+                        </div>
+                        <div class="product-colors" aria-label="Available colors">
+                            <button class="color-option" aria-label="Black" style="background-color: black;"></button>
+                            <button class="color-option" aria-label="Red" style="background-color: red;"></button>
+                            <button class="color-option" aria-label="Blue" style="background-color: blue;"></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Product Card 4 -->
+                <article class="product-card">
+                    <div class="product-image">
+                        <img src="https://via.placeholder.com/400x500" alt="Merino Wool Base Layer">
+                        <span class="product-badge">Sale</span>
+                    </div>
+                    <div class="product-info">
+                        <h3 class="product-title">Merino Wool Base Layer</h3>
+                        <p class="product-description">Temperature regulating comfort</p>
+                        <div class="product-price">
+                            <span class="price-current">$69.00</span>
+                            <span class="price-original">$89.00</span>
+                            <span class="price-discount">-22%</span>
+                        </div>
+                        <div class="product-colors" aria-label="Available colors">
+                            <button class="color-option" aria-label="Gray" style="background-color: gray;"></button>
+                            <button class="color-option" aria-label="Navy" style="background-color: navy;"></button>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- TODO: Add more product cards (aim for 12 total) -->
+                <!-- Copy and modify the above product card structure -->
+            </div>
+
+            <!-- TODO: Use Flexbox for pagination -->
+            <nav class="pagination" aria-label="Product pagination">
+                <button class="pagination-prev" aria-label="Previous page">
+                    <span aria-hidden="true">←</span> Previous
+                </button>
+                <div class="pagination-numbers">
+                    <button aria-current="page">1</button>
+                    <button>2</button>
+                    <button>3</button>
+                    <button>4</button>
+                    <button>5</button>
+                </div>
+                <button class="pagination-next" aria-label="Next page">
+                    Next <span aria-hidden="true">→</span>
+                </button>
+            </nav>
+        </section>
+
+        <!-- TODO: Use CSS Grid for footer layout -->
+        <footer class="site-footer">
+            <div class="footer-content">
+                <!-- TODO: Create responsive footer columns with Grid -->
+                <div class="footer-section">
+                    <h3>Shop</h3>
+                    <ul>
+                        <li><a href="#">New Arrivals</a></li>
+                        <li><a href="#">Best Sellers</a></li>
+                        <li><a href="#">Sale</a></li>
+                        <li><a href="#">Gift Cards</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>Help</h3>
+                    <ul>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Shipping Info</a></li>
+                        <li><a href="#">Returns</a></li>
+                        <li><a href="#">Size Guide</a></li>
+                    </ul>
+                </div>
+                
+                <div class="footer-section">
+                    <h3>About</h3>
+                    <ul>
+                        <li><a href="#">Our Story</a></li>
+                        <li><a href="#">Sustainability</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                
+                <!-- TODO: Use Flexbox for newsletter signup -->
+                <div class="footer-section footer-newsletter">
+                    <h3>Stay Connected</h3>
+                    <form class="newsletter-form">
+                        <label for="email-input" class="visually-hidden">Email address</label>
+                        <input type="email" id="email-input" placeholder="Enter your email" required>
+                        <button type="submit">Subscribe</button>
+                    </form>
+                    
+                    <!-- TODO: Use Flexbox for social icons -->
+                    <div class="social-links">
+                        <a href="#" aria-label="Facebook">FB</a>
+                        <a href="#" aria-label="Instagram">IG</a>
+                        <a href="#" aria-label="Twitter">TW</a>
+                        <a href="#" aria-label="YouTube">YT</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- TODO: Use Flexbox for copyright bar -->
+            <div class="footer-bottom">
+                <p>&copy; 2025 Outdoor Gear Shop. All rights reserved.</p>
+                <div class="footer-links">
+                    <a href="#">Privacy Policy</a>
+                    <a href="#">Terms of Service</a>
+                    <a href="#">Cookie Settings</a>
+                </div>
+            </div>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>

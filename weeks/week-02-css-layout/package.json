@@ -1,0 +1,27 @@
+{
+  "name": "week-02-css-layout",
+  "version": "1.0.0",
+  "description": "Week 2: CSS Grid and Flexbox layout mastery",
+  "main": "index.html",
+  "scripts": {
+    "dev": "npx live-server --port=3002 --open=/index.html",
+    "start": "npm run dev",
+    "preview": "npx live-server --port=3002 --open=/index.html --no-browser"
+  },
+  "keywords": [
+    "css-grid",
+    "flexbox", 
+    "responsive-design",
+    "layout",
+    "frontend"
+  ],
+  "author": "Frontend Mastery Journey",
+  "license": "MIT",
+  "devDependencies": {
+    "live-server": "^1.2.2"
+  },
+  "browserslist": [
+    "defaults",
+    "not IE 11"
+  ]
+}
