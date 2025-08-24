@@ -839,9 +839,10 @@ button {
 @media (max-width: 767px) {
   /* TODO: Mobile-specific overrides */
   /* TODO: Stack elements vertically */
-  /* TODO: Show mobile menu toggle */
+
   /* TODO: Hide desktop navigation */
 
+  /* Show mobile menu toggle */
   .mobile-menu-toggle {
     display: block;
     position: absolute;
@@ -853,9 +854,9 @@ button {
     cursor: pointer;
     z-index: 1001;
   }
-
+  /* TODO: Hide desktop navigation */
   .nav-menu {
-    display: flex;
+    display: none;
     /* TODO: Position menu for mobile */
     position: fixed;
     top: 0;
@@ -867,10 +868,10 @@ button {
     transition: var(--transition-base);
     z-index: 1000;
     padding-top: var(--spacing-4);
-    flex-direction: column;
   }
   .nav-menu.active {
     left: 0;
+    display: block;
   }
   .nav-menu ul {
     flex-direction: column;
@@ -885,15 +886,33 @@ button {
     border-bottom: var(--color-border-medium);
   }
   .nav-actions {
+    gap: var(--spacing-0);
     /* TODO: Adjust for mobile */
   }
 
   .products-grid {
+    grid-template-columns: 1fr;
+    gap: var(--spacing-3);
+    padding: var(--spacing-2);
     /* TODO: Single column on mobile */
   }
 
   .footer-content {
+    flex-direction: column;
+    gap: var(--spacing-4);
+    text-align: center;
     /* TODO: Stack footer sections */
+  }
+  .footer-section {
+    width: 100%;
+  }
+  .footer-section ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+  .social-links {
+    justify-content: center;
   }
 }
 
@@ -901,9 +920,33 @@ button {
    Container Queries (Modern CSS)
    TODO: Explore container queries
    =================================== */
+/* Container queries for component-level responsiveness */
+.product-card {
+  container-type: inline-size;
+  container-name: product;
+}
 
 /* Example container query structure */
 @container (min-width: 400px) {
+  .product-card {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: var(--spacing-2);
+  }
+  .product-image {
+    grid-row: span 2;
+  }
+  .product-info {
+    align-self: start;
+  }
+  @container product(max-width:399px) {
+    .product-card {
+      text-align: center;
+    }
+    .product-price {
+      justify-content: center;
+    }
+  }
   /* TODO: Style based on container size, not viewport */
 }
 
@@ -920,6 +963,21 @@ button {
 5. Use CSS custom properties for theming
 6. Implement prefers-reduced-motion media query
 */
+.product-image {
+  aspect-ratio: 1/1;
+  object-fit: cover;
+}
+.hero-image {
+  aspect-ratio: 16/9;
+}
+
+/* Performance containment */
+.product-card {
+  contain: layout style;
+}
+footer {
+  content: layout;
+}
 
 @media (prefers-reduced-motion: reduce) {
   * {
