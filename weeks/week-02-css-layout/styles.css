@@ -332,10 +332,8 @@ button {
 .hero-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* grid-template-areas: "content image"; */
+  grid-template-areas: "content image";
   position: relative;
-  /* min-height: 500px; */
-  /* margin-bottom: var(--spacing-16); */
   background: linear-gradient(
     135deg,
     var(--color-primary) 0%,
@@ -346,7 +344,7 @@ button {
   overflow: hidden;
 }
 
-@media (max-width: 768px) {
+@media (min-width: 768px) {
   .hero-section {
     grid-template-columns: 1fr;
     grid-template-areas: "image" "content";
@@ -452,7 +450,7 @@ button {
   top: 100%;
   left: 0;
   background: var(--color-white);
-  border: 1px solid var(--color-border);
+  border: 1px solid var(--color-border-light);
   border-radius: var(--border-radius);
   padding: var(--spacing-sm);
   margin-top: var(--spacing-xs);
@@ -559,7 +557,7 @@ button {
 
 .product-price {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: baseline;
   gap: var(--spacing-2);
   /* TODO: Use Flexbox for price layout */
@@ -810,7 +808,7 @@ button {
   }
   .hero-section {
     grid-template-columns: 1fr 1fr;
-    grid-template-areas: "image" "content";
+    grid-template-areas: "content image";
   }
   /* TODO: Adjust grid columns for tablet */
   /* TODO: Show/hide mobile elements */
