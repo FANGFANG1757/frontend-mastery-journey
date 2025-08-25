@@ -228,7 +228,7 @@ button {
 
 .skip-link {
   position: absolute;
-  top: -40px;
+  top: -50px;
   left: 0;
   background: var(--color-primary);
   color: var(--color-text-inverse);
@@ -315,6 +315,14 @@ button {
   /* TODO: Use Flexbox for action buttons */
   /* TODO: Add margin-left: auto to push to right */
 }
+.nav-actions button {
+  color: var(--color-text-secondary);
+  font-weight: var(--font-weight-medium);
+}
+.nav-actions button:hover {
+  text-decoration: underline;
+  color: var(--color-primary);
+}
 
 /* ===================================
    Hero Section - CSS Grid
@@ -324,10 +332,10 @@ button {
 .hero-section {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  grid-template-areas: "content image";
+  /* grid-template-areas: "content image"; */
   position: relative;
-  min-height: 500px;
-  margin-bottom: var(--spacing-16);
+  /* min-height: 500px; */
+  /* margin-bottom: var(--spacing-16); */
   background: linear-gradient(
     135deg,
     var(--color-primary) 0%,
@@ -338,13 +346,12 @@ button {
   overflow: hidden;
 }
 
-@media (max-width: 768px) 
-{
-   .hero-section {
+@media (max-width: 768px) {
+  .hero-section {
     grid-template-columns: 1fr;
     grid-template-areas: "image" "content";
+  }
 }
-
 .hero-content {
   grid-area: 1/1/2/2;
   z-index: 2;
@@ -877,6 +884,7 @@ button {
   display: block;
 }
 .nav-menu ul {
+  list-style: none;
   flex-direction: column;
   gap: 0;
 }
@@ -892,7 +900,9 @@ button {
   gap: var(--spacing-0);
   /* TODO: Adjust for mobile */
 }
-
+.hero-image {
+  object-fit: cover;
+}
 .products-grid {
   grid-template-columns: 1fr;
   gap: var(--spacing-3);
