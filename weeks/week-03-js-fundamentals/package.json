@@ -1,0 +1,41 @@
+{
+  "name": "week-03-javascript-fundamentals",
+  "version": "1.0.0",
+  "description": "Week 3: JavaScript Fundamentals - Interactive Pokédex",
+  "main": "script.js",
+  "scripts": {
+    "dev": "npx live-server --port=3000 --host=localhost",
+    "lint": "eslint script.js",
+    "test": "echo \"No tests configured yet\""
+  },
+  "keywords": [
+    "javascript",
+    "pokedex",
+    "api",
+    "async",
+    "learning"
+  ],
+  "author": "",
+  "license": "MIT",
+  "devDependencies": {
+    "eslint": "^8.57.0",
+    "live-server": "^1.2.2"
+  },
+  "eslintConfig": {
+    "env": {
+      "browser": true,
+      "es2021": true
+    },
+    "extends": "eslint:recommended",
+    "parserOptions": {
+      "ecmaVersion": "latest",
+      "sourceType": "module"
+    },
+    "rules": {
+      "no-unused-vars": "warn",
+      "no-console": "off",
+      "prefer-const": "warn",
+      "no-var": "error"
+    }
+  }
+}
