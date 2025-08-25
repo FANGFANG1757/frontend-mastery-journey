@@ -56,7 +56,7 @@
   /* Text Colors */
   --color-text-primary: var(--color-gray-900);
   --color-text-secondary: var(--color-gray-700);
-  --color-text-967: var(--color-gray-600);
+  --color-text-muted: var(--color-gray-600);
   --color-text-disabled: var(--color-gray-400);
   --color-text-inverse: var(--color-white);
 
@@ -325,9 +325,6 @@ button {
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-template-areas: "content image";
-  /* TODO: Create a CSS Grid container */
-  /* TODO: Use grid-template-columns and grid-template-rows */
-  /* TODO: Allow content to overlap with grid-area */
   position: relative;
   min-height: 500px;
   margin-bottom: var(--spacing-16);
@@ -339,6 +336,13 @@ button {
   );
   border-radius: var(--border-radius-lg);
   overflow: hidden;
+}
+
+@media (max-width: 768px) 
+{
+   .hero-section {
+    grid-template-columns: 1fr;
+    grid-template-areas: "image" "content";
 }
 
 .hero-content {
@@ -799,6 +803,7 @@ button {
   }
   .hero-section {
     grid-template-columns: 1fr 1fr;
+    grid-template-areas: "image" "content";
   }
   /* TODO: Adjust grid columns for tablet */
   /* TODO: Show/hide mobile elements */
@@ -1032,9 +1037,11 @@ button {
 */
 .product-image {
   aspect-ratio: 1/1;
+  object-fit: cover;
 }
 .hero-image {
   aspect-ratio: 16/9;
+  object-fit: cover;
 }
 
 /* Performance containment */
