@@ -56,7 +56,7 @@
   /* Text Colors */
   --color-text-primary: var(--color-gray-900);
   --color-text-secondary: var(--color-gray-700);
-  --color-text-muted: var(--color-gray-600);
+  --color-text-967: var(--color-gray-600);
   --color-text-disabled: var(--color-gray-400);
   --color-text-inverse: var(--color-white);
 
@@ -541,7 +541,7 @@ button {
 }
 
 .product-description {
-  color: var(--color-text-light);
+  color: var(--color-text-muted);
   font-size: 0.875rem;
   margin-bottom: var(--spacing-sm);
 }
@@ -821,101 +821,168 @@ button {
 
 /* Large Desktop (1440px and up) */
 @media (min-width: 1440px) {
-  @media (min-width: 1440px) {
-    .container,
-    .nav-container,
-    .filter-container,
-    .products-section,
-    .footer-content,
-    .footer-bottom {
-      max-width: var(--container-2xl);
-    }
+  .container,
+  .nav-container,
+  .filter-container,
+  .products-section,
+  .footer-content,
+  .footer-bottom {
+    max-width: var(--container-2xl);
   }
-  /* TODO: Max width containers */
-  /* TODO: Optimize for large screens */
 }
+/* TODO: Max width containers */
+/* TODO: Optimize for large screens */
 
 /* Mobile First Approach - Start with mobile styles above */
-@media (max-width: 767px) {
-  /* TODO: Mobile-specific overrides */
-  /* TODO: Stack elements vertically */
 
-  /* TODO: Hide desktop navigation */
+/* TODO: Mobile-specific overrides */
+/* TODO: Stack elements vertically */
 
-  /* Show mobile menu toggle */
+/* TODO: Hide desktop navigation */
+
+/* Show mobile menu toggle */
+.mobile-menu-toggle {
+  display: block;
+  position: absolute;
+  right: var(--spacing-1);
+  top: 50%;
+  transform: translateY(-50%);
+  background: none;
+  border: none;
+  cursor: pointer;
+  z-index: 1001;
+}
+/* TODO: Hide desktop navigation */
+.nav-menu {
+  display: none;
+  /* TODO: Position menu for mobile */
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 80%;
+  height: 100vh;
+  background: var(--color-bg-primary);
+  box-shadow: var(--shadow-base);
+  transition: var(--transition-base);
+  z-index: 1000;
+  padding-top: var(--spacing-4);
+}
+.nav-menu.active {
+  left: 0;
+  display: block;
+}
+.nav-menu ul {
+  flex-direction: column;
+  gap: 0;
+}
+.nav-menu li {
+  width: 100%;
+}
+.nav-menu a {
+  display: block;
+  padding: var(--spacing-2) var(--spacing-2);
+  border-bottom: var(--color-border-medium);
+}
+.nav-actions {
+  gap: var(--spacing-0);
+  /* TODO: Adjust for mobile */
+}
+
+.products-grid {
+  grid-template-columns: 1fr;
+  gap: var(--spacing-3);
+  padding: var(--spacing-2);
+  /* TODO: Single column on mobile */
+}
+
+.footer-content {
+  flex-direction: column;
+  gap: var(--spacing-4);
+  text-align: center;
+  /* TODO: Stack footer sections */
+}
+.footer-section {
+  width: 100%;
+}
+.footer-section ul {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.social-links {
+  justify-content: center;
+}
+
+@media (min-width: 769px) {
+  /* Hide mobile menu toggle on desktop */
   .mobile-menu-toggle {
-    display: block;
-    position: absolute;
-    right: var(--spacing-1);
-    top: 50%;
-    transform: translateY(-50%);
-    background: none;
-    border: none;
-    cursor: pointer;
-    z-index: 1001;
-  }
-  /* TODO: Hide desktop navigation */
-  .nav-menu {
     display: none;
-    /* TODO: Position menu for mobile */
-    position: fixed;
-    top: 0;
-    left: -100%;
-    width: 80%;
-    height: 100vh;
-    background: var(--color-bg-primary);
-    box-shadow: var(--shadow-base);
-    transition: var(--transition-base);
-    z-index: 1000;
-    padding-top: var(--spacing-4);
-  }
-  .nav-menu.active {
-    left: 0;
-    display: block;
-  }
-  .nav-menu ul {
-    flex-direction: column;
-    gap: 0;
-  }
-  .nav-menu li {
-    width: 100%;
-  }
-  .nav-menu a {
-    display: block;
-    padding: var(--spacing-2) var(--spacing-2);
-    border-bottom: var(--color-border-medium);
-  }
-  .nav-actions {
-    gap: var(--spacing-0);
-    /* TODO: Adjust for mobile */
   }
 
-  .products-grid {
-    grid-template-columns: 1fr;
-    gap: var(--spacing-3);
-    padding: var(--spacing-2);
-    /* TODO: Single column on mobile */
-  }
-
-  .footer-content {
-    flex-direction: column;
-    gap: var(--spacing-4);
-    text-align: center;
-    /* TODO: Stack footer sections */
-  }
-  .footer-section {
-    width: 100%;
-  }
-  .footer-section ul {
+  /* Show desktop navigation */
+  .nav-menu {
     display: flex;
-    flex-direction: column;
-    align-items: center;
+    position: static;
+    left: auto;
+    width: auto;
+    height: auto;
+    background: transparent;
+    box-shadow: none;
+    padding-top: 0;
   }
+
+  .nav-menu ul {
+    flex-direction: row;
+    gap: var(--spacing-3);
+  }
+
+  .nav-menu li {
+    width: auto;
+  }
+
+  .nav-menu a {
+    padding: var(--spacing-1) var(--spacing-2);
+    border-bottom: none;
+  }
+
+  .nav-actions {
+    gap: var(--spacing-2);
+  }
+
+  /* Products Grid - 2 columns on tablet */
+  .products-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--spacing-4);
+    padding: var(--spacing-4);
+  }
+
+  /* Footer - Row layout on tablet/desktop */
+  .footer-content {
+    flex-direction: row;
+    gap: var(--spacing-6);
+    text-align: left;
+  }
+
+  .footer-section {
+    width: auto;
+    flex: 1;
+  }
+
+  .footer-section ul {
+    align-items: flex-start;
+  }
+
   .social-links {
-    justify-content: center;
+    justify-content: flex-start;
   }
 }
 
+@media (min-width: 1024px) {
+  /* Products Grid - 3 columns on desktop */
+  .products-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
 /* ===================================
    Container Queries (Modern CSS)
    TODO: Explore container queries
@@ -965,7 +1032,6 @@ button {
 */
 .product-image {
   aspect-ratio: 1/1;
-  object-fit: cover;
 }
 .hero-image {
   aspect-ratio: 16/9;
@@ -976,7 +1042,7 @@ button {
   contain: layout style;
 }
 footer {
-  content: layout;
+  contain: layout;
 }
 
 @media (prefers-reduced-motion: reduce) {
