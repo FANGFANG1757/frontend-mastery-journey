@@ -59,9 +59,17 @@ const state = {
 // Output: (Function) - debounced version of the input function
 // Example: const debouncedSearch = debounce(handleSearch, 300);
 function debounce(func, delay) {
-  // Your implementation here
-  // Hint: Use setTimeout and clearTimeout
+  let timeoutId;
+  return function (...args) {
+    clearTimeout(timeoutId);
+    timeoutId = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
 }
+
+// Your implementation here
+// Hint: Use setTimeout and clearTimeout
 
 // TODO: Implement throttle function for scroll events
 // Input: func (Function) - the function to throttle
@@ -70,6 +78,16 @@ function debounce(func, delay) {
 // Example: const throttledScroll = throttle(handleScroll, 100);
 function throttle(func, limit) {
   // Your implementation here
+  let inThrottle;
+  return function (...args) {
+    if (!inThrottle) {
+      func.apply(this, args);
+      inThrottle = true;
+      setTimeout(() => {
+        inThrottle = false;
+      }, limit);
+    }
+  };
 }
 
 // TODO: Format Pokemon ID to display as #001, #025, etc.
@@ -77,6 +95,7 @@ function throttle(func, limit) {
 // Output: (String) - formatted ID with # and padded zeros (e.g., "#001", "#025", "#150")
 // Example: formatPokemonId(25) => "#025"
 function formatPokemonId(id) {
+  return `#${String(id).padStart(3, "0")}`;
   // Your implementation here
 }
 
@@ -85,6 +104,14 @@ function formatPokemonId(id) {
 // Output: (String) - string with first letter capitalized (e.g., "Pikachu")
 // Example: capitalizeFirst("bulbasaur") => "Bulbasaur"
 function capitalizeFirst(str) {
+  if (!str) {
+    return "";
+  } else {
+    return (
+      String(str).charAt(0).toUpperCase() + String(str).slice(1).toLowerCase()
+    );
+  }
+
   // Your implementation here
 }
 
@@ -94,6 +121,8 @@ function capitalizeFirst(str) {
 // Example: formatHeight(7) => "0.7 m"
 //          formatHeight(17) => "1.7 m"
 function formatHeight(height) {
+  const meters = height / 10;
+  return `${meters.toFixed(1)}m`;
   // Your implementation here
   // Height is in decimeters, convert to meters
 }
@@ -103,6 +132,8 @@ function formatHeight(height) {
 // Example: formatWeight(69) => "6.9 kg"
 //          formatWeight(905) => "90.5 kg"
 function formatWeight(weight) {
+  const kg = weight / 10;
+  return `${kg.toFixed(1)}kg`;
   // Your implementation here
   // Weight is in hectograms, convert to kg
 }
