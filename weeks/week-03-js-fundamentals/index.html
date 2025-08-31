@@ -1,132 +1,158 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Interactive Pokédex - JavaScript Fundamentals</title>
-    <meta name="description" content="Interactive Pokédex application showcasing JavaScript fundamentals">
-    <link rel="stylesheet" href="styles.css">
-</head>
-<body>
+    <meta
+      name="description"
+      content="Interactive Pokédex application showcasing JavaScript fundamentals"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
     <!-- Skip to main content for accessibility -->
     <a href="#main" class="skip-link">Skip to main content</a>
 
     <!-- Header with search and filters -->
     <header class="header" role="banner">
-        <div class="container">
-            <div class="header-content">
-                <h1 class="logo">
-                    <span class="logo-text">Pokédex</span>
-                    <span class="logo-subtitle">Gotta Catch 'Em All!</span>
-                </h1>
+      <div class="container">
+        <div class="header-content">
+          <h1 class="logo">
+            <span class="logo-text">Pokédex</span>
+            <span class="logo-subtitle">Gotta Catch 'Em All!</span>
+          </h1>
 
-                <!-- Search bar -->
-                <div class="search-container" role="search">
-                    <!-- TODO: Add search input with proper ARIA labels -->
-                    <input 
-                        type="search" 
-                        id="pokemon-search" 
-                        class="search-input"
-                        placeholder="Search Pokémon..."
-                        aria-label="Search Pokémon by name"
-                    >
-                    <button class="search-clear" aria-label="Clear search">
-                        <!-- TODO: Add clear icon -->
-                        ✕
-                    </button>
-                </div>
+          <!-- Search bar -->
+          <div class="search-container" role="search">
+            <!-- TODO: Add search input with proper ARIA labels -->
+            <input
+              type="search"
+              id="pokemon-search"
+              class="search-input"
+              placeholder="Search Pokémon..."
+              aria-label="Search Pokémon by name"
+            />
+            <button class="search-clear" aria-label="Clear search">
+              <!-- TODO: Add clear icon -->
+              ✕
+            </button>
+          </div>
 
-                <!-- Favorites counter -->
-                <div class="favorites-counter">
-                    <!-- TODO: Update dynamically with JavaScript -->
-                    <span class="favorites-icon">❤️</span>
-                    <span id="favorites-count">0</span>
-                </div>
-            </div>
+          <!-- Favorites counter -->
+          <div class="favorites-counter">
+            <!-- TODO: Update dynamically with JavaScript -->
+            <span class="favorites-icon">❤️</span>
+            <span id="favorites-count">0</span>
+          </div>
         </div>
+      </div>
     </header>
 
     <!-- Main content -->
     <main id="main" class="main">
-        <div class="container">
-            <!-- Filter bar -->
-            <section class="filters" aria-label="Filter options">
-                <h2 class="visually-hidden">Filter Pokémon</h2>
-                
-                <!-- Type filter -->
-                <div class="filter-group">
-                    <label for="type-filter" class="filter-label">Type:</label>
-                    <select id="type-filter" class="filter-select" aria-label="Filter by Pokémon type">
-                        <option value="">All Types</option>
-                        <!-- TODO: Populate with JavaScript -->
-                        <option value="normal">Normal</option>
-                        <option value="fire">Fire</option>
-                        <option value="water">Water</option>
-                        <option value="electric">Electric</option>
-                        <option value="grass">Grass</option>
-                        <option value="ice">Ice</option>
-                        <option value="fighting">Fighting</option>
-                        <option value="poison">Poison</option>
-                        <option value="ground">Ground</option>
-                        <option value="flying">Flying</option>
-                        <option value="psychic">Psychic</option>
-                        <option value="bug">Bug</option>
-                        <option value="rock">Rock</option>
-                        <option value="ghost">Ghost</option>
-                        <option value="dragon">Dragon</option>
-                        <option value="dark">Dark</option>
-                        <option value="steel">Steel</option>
-                        <option value="fairy">Fairy</option>
-                    </select>
-                </div>
+      <div class="container">
+        <!-- Filter bar -->
+        <section class="filters" aria-label="Filter options">
+          <h2 class="visually-hidden">Filter Pokémon</h2>
 
-                <!-- Sort options -->
-                <div class="filter-group">
-                    <label for="sort-select" class="filter-label">Sort by:</label>
-                    <select id="sort-select" class="filter-select" aria-label="Sort Pokémon">
-                        <option value="id">Number</option>
-                        <option value="name">Name</option>
-                        <!-- TODO: Add more sort options with JavaScript -->
-                    </select>
-                </div>
+          <!-- Type filter -->
+          <div class="filter-group">
+            <label for="type-filter" class="filter-label">Type:</label>
+            <select
+              id="type-filter"
+              class="filter-select"
+              aria-label="Filter by Pokémon type"
+            >
+              <option value="">All Types</option>
+              <!-- TODO: Populate with JavaScript -->
+              <option value="normal">Normal</option>
+              <option value="fire">Fire</option>
+              <option value="water">Water</option>
+              <option value="electric">Electric</option>
+              <option value="grass">Grass</option>
+              <option value="ice">Ice</option>
+              <option value="fighting">Fighting</option>
+              <option value="poison">Poison</option>
+              <option value="ground">Ground</option>
+              <option value="flying">Flying</option>
+              <option value="psychic">Psychic</option>
+              <option value="bug">Bug</option>
+              <option value="rock">Rock</option>
+              <option value="ghost">Ghost</option>
+              <option value="dragon">Dragon</option>
+              <option value="dark">Dark</option>
+              <option value="steel">Steel</option>
+              <option value="fairy">Fairy</option>
+            </select>
+          </div>
 
-                <!-- View toggle -->
-                <div class="filter-group">
-                    <button class="view-toggle" id="view-favorites" aria-pressed="false">
-                        <!-- TODO: Toggle between all and favorites -->
-                        Show Favorites Only
-                    </button>
-                </div>
+          <!-- Sort options -->
+          <div class="filter-group">
+            <label for="sort-select" class="filter-label">Sort by:</label>
+            <select
+              id="sort-select"
+              class="filter-select"
+              aria-label="Sort Pokémon"
+            >
+              <option value="id">Number</option>
+              <option value="name">Name</option>
+              <!-- TODO: Add more sort options with JavaScript -->
+            </select>
+          </div>
 
-                <!-- Results count -->
-                <div class="results-count" aria-live="polite" aria-atomic="true">
-                    <!-- TODO: Update dynamically -->
-                    Showing <span id="results-number">0</span> Pokémon
-                </div>
-            </section>
+          <!-- View toggle -->
+          <div class="filter-group">
+            <button
+              class="view-toggle"
+              id="view-favorites"
+              aria-pressed="false"
+            >
+              <!-- TODO: Toggle between all and favorites -->
+              Show Favorites Only
+            </button>
+          </div>
 
-            <!-- Loading state -->
-            <div id="loading-state" class="loading-container" aria-hidden="true">
-                <div class="loading-spinner"></div>
-                <p class="loading-text">Loading Pokédex...</p>
-            </div>
+          <!-- Results count -->
+          <div class="results-count" aria-live="polite" aria-atomic="true">
+            <!-- TODO: Update dynamically -->
+            Showing <span id="results-number">0</span> Pokémon
+          </div>
+        </section>
 
-            <!-- Error state -->
-            <div id="error-state" class="error-container" role="alert" aria-hidden="true">
-                <p class="error-message">
-                    <!-- TODO: Update error message dynamically -->
-                    Failed to load Pokémon data. Please try again.
-                </p>
-                <button class="retry-button" id="retry-load">
-                    Retry
-                </button>
-            </div>
+        <!-- Loading state -->
+        <div
+          id="loading-state"
+          class="loading-container hidden"
+          aria-hidden="true"
+        >
+          <div class="loading-spinner"></div>
+          <p class="loading-text">Loading Pokédex...</p>
+        </div>
 
-            <!-- Pokémon grid -->
-            <section id="pokemon-grid" class="pokemon-grid" aria-label="Pokémon list">
-                <!-- TODO: Populate with JavaScript -->
-                <!-- Example card structure (will be generated by JS) -->
-                <!--
+        <!-- Error state -->
+        <div
+          id="error-state"
+          class="error-container hidden"
+          role="alert"
+          aria-hidden="true"
+        >
+          <p class="error-message">
+            <!-- TODO: Update error message dynamically -->
+            Failed to load Pokémon data. Please try again.
+          </p>
+          <button class="retry-button" id="retry-load">Retry</button>
+        </div>
+
+        <!-- Pokémon grid -->
+        <section
+          id="pokemon-grid"
+          class="pokemon-grid hidden"
+          aria-label="Pokémon list"
+        >
+          <!-- TODO: Populate with JavaScript -->
+          <!-- Example card structure (will be generated by JS) -->
+          <!--
                 <article class="pokemon-card" data-pokemon-id="25" tabindex="0">
                     <div class="pokemon-image-container">
                         <img src="" alt="Pikachu" class="pokemon-image" loading="lazy">
@@ -143,108 +169,122 @@
                     </div>
                 </article>
                 -->
-            </section>
+        </section>
 
-            <!-- Load more button -->
-            <div class="load-more-container">
-                <button id="load-more" class="load-more-button" aria-label="Load more Pokémon">
-                    <!-- TODO: Implement pagination or infinite scroll -->
-                    Load More Pokémon
-                </button>
-            </div>
+        <!-- Load more button -->
+        <div class="load-more-container">
+          <button
+            id="load-more"
+            class="load-more-button"
+            aria-label="Load more Pokémon"
+          >
+            <!-- TODO: Implement pagination or infinite scroll -->
+            Load More Pokémon
+          </button>
         </div>
+      </div>
     </main>
 
     <!-- Pokémon detail modal -->
-    <div id="pokemon-modal" class="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" aria-hidden="true">
-        <div class="modal-overlay" tabindex="-1"></div>
-        <div class="modal-content">
-            <button class="modal-close" aria-label="Close modal">✕</button>
-            
-            <div class="modal-header">
-                <!-- TODO: Populate with JavaScript -->
-                <img id="modal-image" src="" alt="" class="modal-pokemon-image">
-                <div class="modal-title-section">
-                    <h2 id="modal-title" class="modal-pokemon-name">
-                        <!-- Pokémon name -->
-                    </h2>
-                    <span id="modal-number" class="modal-pokemon-number">
-                        <!-- #001 -->
-                    </span>
-                </div>
-            </div>
+    <div
+      id="pokemon-modal"
+      class="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-labelledby="modal-title"
+      aria-hidden="true"
+    >
+      <div class="modal-overlay" tabindex="-1"></div>
+      <div class="modal-content">
+        <button class="modal-close" aria-label="Close modal">✕</button>
 
-            <div class="modal-body">
-                <!-- Types -->
-                <div class="modal-section">
-                    <h3>Types</h3>
-                    <div id="modal-types" class="modal-types">
-                        <!-- TODO: Populate types -->
-                    </div>
-                </div>
-
-                <!-- Stats -->
-                <div class="modal-section">
-                    <h3>Base Stats</h3>
-                    <div id="modal-stats" class="modal-stats">
-                        <!-- TODO: Populate stats with bars -->
-                        <div class="stat-row">
-                            <span class="stat-name">HP</span>
-                            <div class="stat-bar">
-                                <div class="stat-fill" style="width: 0%"></div>
-                            </div>
-                            <span class="stat-value">0</span>
-                        </div>
-                        <!-- More stats... -->
-                    </div>
-                </div>
-
-                <!-- Abilities -->
-                <div class="modal-section">
-                    <h3>Abilities</h3>
-                    <div id="modal-abilities" class="modal-abilities">
-                        <!-- TODO: Populate abilities -->
-                    </div>
-                </div>
-
-                <!-- Physical characteristics -->
-                <div class="modal-section">
-                    <h3>Physical</h3>
-                    <div class="modal-physical">
-                        <div class="physical-stat">
-                            <span class="physical-label">Height:</span>
-                            <span id="modal-height">--</span>
-                        </div>
-                        <div class="physical-stat">
-                            <span class="physical-label">Weight:</span>
-                            <span id="modal-weight">--</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="modal-footer">
-                <button id="modal-favorite" class="modal-favorite-btn">
-                    <!-- TODO: Toggle favorite status -->
-                    Add to Favorites
-                </button>
-            </div>
+        <div class="modal-header">
+          <!-- TODO: Populate with JavaScript -->
+          <img id="modal-image" src="" alt="" class="modal-pokemon-image" />
+          <div class="modal-title-section">
+            <h2 id="modal-title" class="modal-pokemon-name">
+              <!-- Pokémon name -->
+            </h2>
+            <span id="modal-number" class="modal-pokemon-number">
+              <!-- #001 -->
+            </span>
+          </div>
         </div>
+
+        <div class="modal-body">
+          <!-- Types -->
+          <div class="modal-section">
+            <h3>Types</h3>
+            <div id="modal-types" class="modal-types">
+              <!-- TODO: Populate types -->
+            </div>
+          </div>
+
+          <!-- Stats -->
+          <div class="modal-section">
+            <h3>Base Stats</h3>
+            <div id="modal-stats" class="modal-stats">
+              <!-- TODO: Populate stats with bars -->
+              <div class="stat-row">
+                <span class="stat-name">HP</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: 0%"></div>
+                </div>
+                <span class="stat-value">0</span>
+              </div>
+              <!-- More stats... -->
+            </div>
+          </div>
+
+          <!-- Abilities -->
+          <div class="modal-section">
+            <h3>Abilities</h3>
+            <div id="modal-abilities" class="modal-abilities">
+              <!-- TODO: Populate abilities -->
+            </div>
+          </div>
+
+          <!-- Physical characteristics -->
+          <div class="modal-section">
+            <h3>Physical</h3>
+            <div class="modal-physical">
+              <div class="physical-stat">
+                <span class="physical-label">Height:</span>
+                <span id="modal-height">--</span>
+              </div>
+              <div class="physical-stat">
+                <span class="physical-label">Weight:</span>
+                <span id="modal-weight">--</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button id="modal-favorite" class="modal-favorite-btn">
+            <!-- TODO: Toggle favorite status -->
+            Add to Favorites
+          </button>
+        </div>
+      </div>
     </div>
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container">
-            <p class="footer-text">
-                Data provided by <a href="https://pokeapi.co/" target="_blank" rel="noopener">PokéAPI</a>
-            </p>
-            <p class="footer-note">
-                Week 3: JavaScript Fundamentals - Frontend Mastery Journey
-            </p>
-        </div>
+      <div class="container">
+        <p class="footer-text">
+          Data provided by
+          <a href="https://pokeapi.co/" target="_blank" rel="noopener"
+            >PokéAPI</a
+          >
+        </p>
+        <p class="footer-note">
+          Week 3: JavaScript Fundamentals - Frontend Mastery Journey
+        </p>
+      </div>
     </footer>
 
     <!-- JavaScript -->
     <script src="script.js"></script>
-</body>
+  </body>
 </html>

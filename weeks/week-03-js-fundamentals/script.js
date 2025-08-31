@@ -141,6 +141,7 @@ function formatWeight(weight) {
 // ============================================================================
 // LocalStorage Functions
 // ============================================================================
+const FAV_LOCAL_STORAGE_KEY = "POKEMON_FAV";
 
 // TODO: Load favorites from localStorage
 // Input: none
@@ -150,6 +151,8 @@ function formatWeight(weight) {
 function loadFavorites() {
   // Your implementation here
   // Return a Set of favorite Pokemon IDs
+  const pokemonIds = JSON.parse(localStorage.getItem(FAV_LOCAL_STORAGE_KEY));
+  return new Set(pokemonIds);
 }
 
 // TODO: Save favorites to localStorage
@@ -160,6 +163,10 @@ function loadFavorites() {
 function saveFavorites() {
   // Your implementation here
   // Convert Set to array before saving
+  localStorage.setItem(
+    FAV_LOCAL_STORAGE_KEY,
+    JSON.stringify(Array.from(state.favorites))
+  );
 }
 
 // TODO: Toggle favorite status for a Pokemon
@@ -171,8 +178,17 @@ function saveFavorites() {
 function toggleFavorite(pokemonId) {
   // Your implementation here
   // Add/remove from state.favorites
+  const isFavorite = state.favorites.has(pokemonId);
+  if (isFavorite) {
+    state.favorites.delete(pokemonId);
+  } else {
+    state.favorites.add(pokemonId);
+  }
   // Update localStorage
-  // Update UI
+  saveFavorites();
+
+  return !isFavorite;
+  // TODO: Update UI
 }
 
 // ============================================================================
@@ -189,11 +205,27 @@ async function fetchPokemonList(offset = 0, limit = POKEMON_LIMIT) {
   try {
     // Your implementation here
     // 1. Set loading state
+    state.isLoading = true;
+    state.error = null;
     // 2. Fetch from `${API_BASE_URL}/pokemon?offset=${offset}&limit=${limit}`
+    const response = await fetch(
+      `${API_BASE_URL}/pokemon?offset=${offset}&limit=${limit}`
+    );
+    if (!response.ok) {
+      throw new Error(`HTTP error! status:${response.status}`);
+    }
+
     // 3. Return results array
+    const data = await response.json();
+    return data.results;
+
     // 4. Handle errors appropriately
   } catch (error) {
+    state.error = error.message;
+    throw error;
     // Handle error
+  } finally {
+    state.isLoading = false;
   }
 }
 
@@ -207,8 +239,17 @@ async function fetchPokemonDetails(pokemonUrl) {
   try {
     // Your implementation here
     // Fetch detailed data from the provided URL
+    const response = await fetch(pokemonUrl);
+    if (!response.ok) {
+      throw new Error(`HTTP error! status:${response.status}`);
+    }
+    const data = await response.json();
+    return data;
+
     // Transform data to needed format
   } catch (error) {
+    console.error("Error fetching Pokemon Details:", error);
+    throw error;
     // Handle error
   }
 }
@@ -221,12 +262,24 @@ async function fetchPokemonDetails(pokemonUrl) {
 async function loadInitialPokemon() {
   // Your implementation here
   // 1. Show loading state
+  showLoading();
+  state.error = null;
   // 2. Fetch Pokemon list
+  const pokemonList = await fetchPokemonList(0, POKEMON_LIMIT);
+
   // 3. Fetch details for each Pokemon (consider Promise.all)
+  const detailPromises = pokemonList.map((pokemon) =>
+    fetchPokemonDetails(pokemon.url)
+  );
+  const pokemonDetails = await Promise.all(detailPromises);
   // 4. Transform data to include needed properties
+  const pokemons = pokemonDetails.map(transformPokemonData);
   // 5. Update state
+  state.allPokemon = pokemons;
   // 6. Render Pokemon grid
+  renderPokemonGrid(state.allPokemon);
   // 7. Hide loading state
+  hideLoading();
 }
 
 // TODO: Load more Pokemon (for pagination)
@@ -237,6 +290,21 @@ async function loadInitialPokemon() {
 async function loadMorePokemon() {
   // Your implementation here
   // Similar to loadInitialPokemon but append to existing data
+  if (state.isLoading || !state.hasMore) {
+    return;
+  } else {
+    state.isLoading = true;
+    state.offset += POKEMON_LIMIT;
+    const pokemonList = await fetchPokemonList(state.offset, POKEMON_LIMIT);
+    const detailPromises = pokemonList.map((pokemon) =>
+      fetchPokemonDetails(pokemon.url)
+    );
+    const pokemonDetails = await Promise.all(detailPromises);
+    const transformedPokemon = pokemonDetails.map(transformPokemonData);
+    state.allPokemon = [...state.allPokemon, ...transformedPokemon];
+    const filtered = filterPokemon();
+    renderPokemonGrid(filtered);
+  }
 }
 
 // ============================================================================
@@ -249,6 +317,23 @@ async function loadMorePokemon() {
 // Example Input: {id: 25, name: "pikachu", height: 4, weight: 60, types: [{type: {name: "electric"}}], ...}
 // Example Output: {id: 25, name: "Pikachu", formattedId: "#025", height: "0.4 m", weight: "6.0 kg", types: ["electric"], ...}
 function transformPokemonData(pokemonData) {
+  console.log(pokemonData);
+  return {
+    id: pokemonData.id,
+    name: capitalizeFirst(pokemonData.name),
+    formattedId: formatPokemonId(pokemonData.id),
+    sprite: pokemonData.sprites.front_default,
+    types: pokemonData.types.map((typeInfo) => typeInfo.type.name),
+    height: formatHeight(pokemonData.height),
+    weight: formatWeight(pokemonData.weight),
+    stats: pokemonData.stats.map((statInfo) => {
+      return { name: statInfo.stat.name, baseValue: statInfo.base_stat };
+    }),
+    abilities: pokemonData.abilities.map(
+      (abilityInfo) => abilityInfo.ability.name
+    ),
+  };
+
   // Your implementation here
   // Extract and format:
   // - id, name, types, sprite, stats
@@ -269,6 +354,22 @@ function filterPokemon() {
   // 2. Filter by type
   // 3. Show favorites only
   // Return filtered array
+  let filtered = [...state.allPokemon];
+  if (state.currentFilter.search) {
+    const searchTerm = state.currentFilter.search.toLowerCase();
+    filtered = filtered.filter((pokemon) =>
+      pokemon.name.toLowerCase().includes(searchTerm)
+    );
+  }
+  if (state.currentFilter.type) {
+    filtered = filtered.filter((pokemon) =>
+      pokemon.types.includes(state.currentFilter.type)
+    );
+  }
+  if (state.currentFilter.showFavoritesOnly) {
+    filtered = filtered.filter((pokemon) => state.favorites.has(pokemon.id));
+  }
+  return sortPokemon(filtered);
 }
 
 // TODO: Sort Pokemon based on current sort option
@@ -280,6 +381,17 @@ function sortPokemon(pokemonArray) {
   // Your implementation here
   // Sort by: id, name, or other criteria
   // Use array.sort() with appropriate compare function
+  const sorted = [...pokemonArray];
+  switch (state.currentFilter.sortBy) {
+    case "name":
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+    case "id":
+    default:
+      sorted.sort((a, b) => a.id - b.id);
+      break;
+  }
+  return sorted;
 }
 
 // ============================================================================
@@ -292,6 +404,36 @@ function sortPokemon(pokemonArray) {
 // Example: createPokemonCard({id: 25, name: "Pikachu", sprite: "...", types: ["electric"]})
 //          => <article class="pokemon-card">...</article>
 function createPokemonCard(pokemon) {
+  const card = document.createElement("div");
+  card.innerHTML = `<article class="pokemon-card" data-pokemon-id="${
+    pokemon.id
+  }" tabindex="0">
+                    <div class="pokemon-image-container">
+                        <img src="${pokemon.sprite}" alt="${
+    pokemon.name
+  }" class="pokemon-image" loading="lazy">
+                        <button class="favorite-btn" aria-label="Add '${
+                          pokemon.name
+                        }' to favorites">
+                            ❤️
+                        </button>
+                    </div>
+                    <div class="pokemon-info">
+                        <span class="pokemon-number">${
+                          pokemon.formattedId
+                        }</span>
+                        <h3 class="pokemon-name">${pokemon.name}</h3>
+                        <div class="pokemon-types">
+                          ${pokemon.types
+                            .map(
+                              (type) =>
+                                `<span class="type-badge type-${type}">${type}</span>`
+                            )
+                            .join("")}
+                        </div>
+                    </div>
+                </article>`;
+
   // Your implementation here
   // Create card element with:
   // - Image
@@ -301,6 +443,10 @@ function createPokemonCard(pokemon) {
   // - Favorite button
   // Add event listeners
   // Return DOM element
+  card.addEventListener("click", (e) => {
+    handlePokemonClick(pokemon);
+  });
+  return card;
 }
 
 // TODO: Render Pokemon grid
@@ -314,6 +460,18 @@ function renderPokemonGrid(pokemonArray) {
   // 2. Create cards for each Pokemon
   // 3. Append to grid container
   // 4. Update results count
+  const grid = document.getElementById("pokemon-grid");
+  const resultsCount = document.getElementById("results-number");
+  if (!grid) return;
+  grid.innerHTML = "";
+  pokemonArray.forEach((pokemon) => {
+    const card = createPokemonCard(pokemon);
+    grid.appendChild(card);
+  });
+  if (resultsCount) {
+    resultsCount.textContent = `${pokemonArray.length}`;
+  }
+  state.displayedPokemon = pokemonArray;
 }
 
 // TODO: Show loading state
@@ -322,6 +480,12 @@ function renderPokemonGrid(pokemonArray) {
 // Side effects: Shows loading spinner, hides grid, updates state.isLoading
 // Example: showLoading() // displays loading UI
 function showLoading() {
+  state.isLoading = true;
+  const loading = document.getElementById("loading-state");
+  const grid = document.getElementById("pokemon-grid");
+  loading.classList = "loading-container";
+  grid.classList = "pokemon-grid hidden";
+
   // Your implementation here
 }
 
@@ -332,6 +496,11 @@ function showLoading() {
 // Example: hideLoading() // removes loading UI
 function hideLoading() {
   // Your implementation here
+  state.isLoading = false;
+  const loading = document.getElementById("loading-state");
+  const grid = document.getElementById("pokemon-grid");
+  loading.classList = "loading-container hidden";
+  grid.classList = "pokemon-grid ";
 }
 
 // TODO: Show error message
@@ -340,6 +509,18 @@ function hideLoading() {
 // Side effects: Shows error UI with message, hides loading/grid
 // Example: showError("Failed to load Pokemon data")
 function showError(message) {
+  const errorContainer = document.getElementById("error-state");
+  const grid = document.getElementById("pokemon-grid");
+  const loading = document.getElementById("loading-state");
+  if (errorContainer) {
+    const errorMessage = errorContainer.querySelector(".error-message");
+    if (errorMessage) {
+      errorMessage.textContent = message;
+    }
+    errorContainer.classList = "error-container";
+    if (grid) grid.classList = "pokemon-grid hidden";
+    if (loading) loading.classList = "loading-container hidden hidden";
+  }
   // Your implementation here
 }
 
@@ -349,9 +530,12 @@ function showError(message) {
 // Side effects: Updates counter text in header showing favorite count
 // Example: updateFavoritesCounter() // shows "Favorites (3)"
 function updateFavoritesCounter() {
+  const counter = document.querySelector(".favorites-counter");
+  if (counter) {
+    counter.textContent = `Favourite(${state.favorites.size})`;
+  }
   // Your implementation here
 }
-
 // ============================================================================
 // Modal Functions
 // ============================================================================
@@ -367,6 +551,16 @@ function openPokemonModal(pokemon) {
   // 2. Show modal
   // 3. Set focus management
   // 4. Add escape key listener
+  const modal = document.getElementById("pokemon-modal");
+  populateModal(pokemon);
+  modal.setAttribute("aria-hidden", "false");
+  modal.dataset.pokemonId = pokemon.id;
+
+  const closeModal = modal.querySelector(".modal-close");
+  if (closeModal) {
+    closeModal.focus();
+  }
+  document.addEventListener("keydown", handleEscapeKey);
 }
 
 // TODO: Close Pokemon detail modal
@@ -375,6 +569,15 @@ function openPokemonModal(pokemon) {
 // Side effects: Hides modal, removes listeners, restores focus
 // Example: closePokemonModal() // closes currently open modal
 function closePokemonModal() {
+  const modal = document.getElementById("pokemon-modal");
+  modal.setAttribute("aria-hidden", "true");
+  document.removeEventListener("keydown", handleEscapeKey);
+
+  const originalElement = document.querySelector(
+    `[data-pokemon-id="${modal.dataset.pokemonId}"]`
+  );
+  originalElement.focus();
+
   // Your implementation here
   // 1. Hide modal
   // 2. Clean up event listeners
@@ -394,6 +597,62 @@ function populateModal(pokemon) {
   // - Stats with progress bars
   // - Abilities
   // - Physical characteristics
+  const modalImage = document.querySelector(".modal-pokemon-image");
+  if (modalImage) {
+    modalImage.src = pokemon.sprite;
+    modalImage.alt = pokemon.name;
+  }
+  const modalName = document.querySelector(".modal-pokemon-name");
+  if (modalName) {
+    modalName.textContent = pokemon.name;
+  }
+  const modalNumber = document.querySelector(".modal-pokemon-number");
+  if (modalNumber) {
+    modalNumber.textContent = pokemon.formatPokemonId;
+  }
+  const typesInfo = document.querySelector(".modal-types");
+  if (typesInfo) {
+    typesInfo.innerHTML = pokemon.types
+      .map(
+        (type) => `<span class="type-badge 
+  type-${type}">${type}</span>`
+      )
+      .join("");
+  }
+  const abilitiesInfo = document.querySelector(".modal-abilities");
+  if (abilitiesInfo) {
+    abilitiesInfo.innerHTML = pokemon.abilities
+      .map(
+        (ability) => `<span class="ability-badge 
+  ability-${ability}">${ability}</span>`
+      )
+      .join("");
+  }
+  const heightInfo = document.querySelector("#modal-height");
+  if (heightInfo) {
+    heightInfo.textContent = pokemon.height;
+  }
+  const weightInfo = document.querySelector("#modal-weight");
+  if (weightInfo) {
+    weightInfo.textContent = pokemon.weight;
+  }
+
+  const statWrapper = document.querySelector("#modal-stats");
+  if (statWrapper) {
+    const htmlString = pokemon.stats.map((stat) => {
+      const percentage = (stat.baseValue / 255) * 100;
+
+      return `<div class="stat-row">
+                <span class="stat-name">${stat.name}</span>
+                <div class="stat-bar">
+                  <div class="stat-fill" style="width: ${percentage}%"></div>
+                </div>
+                <span class="stat-value">${stat.baseValue}</span>
+              </div>`;
+    });
+    statWrapper.innerHTML = htmlString.join("");
+  }
+  updateStatBars(pokemon.stats);
 }
 
 // TODO: Update stat bars in modal
@@ -404,7 +663,7 @@ function populateModal(pokemon) {
 // Note: Max stat value is 255 for percentage calculation
 function updateStatBars(stats) {
   // Your implementation here
-  // Calculate percentage for each stat (max stat is typically 255)
+  // Calculate percentage for each stat (max sstat is typically 255)
   // Update width of stat-fill elements
 }
 
@@ -419,6 +678,9 @@ function updateStatBars(stats) {
 // Example: Called on input event: <input oninput="handleSearch(event)">
 // Note: Should be debounced to avoid excessive filtering
 function handleSearch(event) {
+  state.currentFilter.search = event.target.value;
+  const filtered = filterPokemon();
+  renderPokemonGrid(filtered);
   // Your implementation here
   // 1. Update state.currentFilter.search
   // 2. Filter and render Pokemon
@@ -431,6 +693,9 @@ function handleSearch(event) {
 // Side effects: Updates state.currentFilter.type, re-renders grid
 // Example: <select onchange="handleTypeFilter(event)">
 function handleTypeFilter(event) {
+  state.currentFilter.type = event.target.value;
+  const filtered = filterPokemon();
+  renderPokemonGrid(filtered);
   // Your implementation here
   // 1. Update state.currentFilter.type
   // 2. Filter and render Pokemon
@@ -442,6 +707,9 @@ function handleTypeFilter(event) {
 // Side effects: Updates state.currentFilter.sortBy, re-sorts and re-renders
 // Example: event.target.value = "name" or "id"
 function handleSortChange(event) {
+  state.currentFilter.sortBy = event.target.value;
+  const filtered = filterPokemon();
+  renderPokemonGrid(filtered);
   // Your implementation here
   // 1. Update state.currentFilter.sortBy
   // 2. Sort and render Pokemon
@@ -453,6 +721,15 @@ function handleSortChange(event) {
 // Side effects: Toggles state.currentFilter.showFavoritesOnly, updates UI
 // Example: handleFavoritesToggle() // switches between all/favorites only
 function handleFavoritesToggle() {
+  state.currentFilter.showFavoritesOnly =
+    !state.currentFilter.showFavoritesOnly;
+  const togggleBtn = document.getElementById("view-favorites");
+  togggleBtn.setAttribute(
+    "aria-pressed",
+    state.currentFilter.showFavoritesOnly
+  );
+  const filtered = filterPokemon();
+  renderPokemonGrid(filtered);
   // Your implementation here
   // 1. Toggle state.currentFilter.showFavoritesOnly
   // 2. Update button aria-pressed
@@ -465,6 +742,13 @@ function handleFavoritesToggle() {
 // Side effects: Clears search input, resets filter, re-renders all Pokemon
 // Example: handleClearSearch() // resets search and shows all Pokemon
 function handleClearSearch() {
+  const searchInput = document.getElementById("search-input");
+  if (searchInput) {
+    searchInput.value = "";
+  }
+  state.currentFilter.search = "";
+  const filtered = filterPokemon();
+  renderPokemonGrid(filtered);
   // Your implementation here
   // 1. Clear search input
   // 2. Update state
@@ -477,6 +761,7 @@ function handleClearSearch() {
 // Side effects: Fetches next batch, appends to state, re-renders
 // Example: handleLoadMore() // loads next 20 Pokemon
 function handleLoadMore() {
+  loadMorePokemon();
   // Your implementation here
   // Load next batch of Pokemon
 }
@@ -487,6 +772,8 @@ function handleLoadMore() {
 // Side effects: Clears error, retries last failed operation
 // Example: handleRetry() // attempts to reload Pokemon data
 function handleRetry() {
+  state.error = null;
+  loadInitialPokemon();
   // Your implementation here
   // Retry failed operation
 }
@@ -497,6 +784,7 @@ function handleRetry() {
 // Side effects: Opens modal with detailed Pokemon information
 // Example: handlePokemonClick({id: 25, name: "Pikachu", ...})
 function handlePokemonClick(pokemon) {
+  openPokemonModal(pokemon);
   // Your implementation here
   // Open modal with Pokemon details
 }
@@ -510,6 +798,7 @@ function handlePokemonClick(pokemon) {
 function handleFavoriteClick(event, pokemonId) {
   // Your implementation here
   // 1. Prevent event bubbling
+  event.stopPropagation();
   // 2. Toggle favorite
   // 3. Update UI
 }
@@ -520,6 +809,7 @@ function handleFavoriteClick(event, pokemonId) {
 // Side effects: Closes modal, removes listeners, restores focus
 // Example: handleModalClose() // closes current modal
 function handleModalClose() {
+  closePokemonModal();
   // Your implementation here
 }
 
@@ -529,6 +819,12 @@ function handleModalClose() {
 // Side effects: Closes modal if ESC key pressed and modal is open
 // Example: event.key === "Escape" => closes modal
 function handleEscapeKey(event) {
+  if (event.key === "Escape") {
+    const modal = document.getElementById("pokemon-modal");
+    if (modal) {
+      closePokemonModal();
+    }
+  }
   // Your implementation here
   // Close modal if open
 }
@@ -547,13 +843,43 @@ function initializeEventListeners() {
   // Your implementation here
   // Add listeners for:
   // 1. Search input (with debounce)
+  const searchInput = document.getElementById("pokemon-search");
+  if (searchInput) {
+    const debouncedSearch = debounce(handleSearch, 300);
+    searchInput.addEventListener("input", debouncedSearch);
+  }
+
   // 2. Clear search button
+  const clearSearchBtn = document.querySelector(".search-clear");
+  clearSearchBtn.addEventListener("click", handleClearSearch);
   // 3. Type filter select
+  const typeSelect = document.getElementById("type-filter");
+  if (typeSelect) {
+    typeSelect.addEventListener("change", handleTypeFilter);
+  }
   // 4. Sort select
+  const sortSelect = document.getElementById("sort-select");
+  if (sortSelect) {
+    sortSelect.addEventListener("change", handleSortChange);
+  }
   // 5. Favorites toggle button
+  const favoritesToggle = document.getElementById("view-favorites");
+  if (favoritesToggle) {
+    favoritesToggle.addEventListener("click", handleFavoritesToggle);
+  }
   // 6. Load more button
+  const loadMoreBtn = document.getElementById("load-more");
+  if (loadMoreBtn) {
+    loadMoreBtn.addEventListener("click", handleLoadMore);
+  }
   // 7. Retry button
+  const retryBtn = document.getElementById("retry-load");
+  if (retryBtn) {
+    retryBtn.addEventListener("click", handleRetry);
+  }
   // 8. Modal close button
+  const modalCloseBtn = document.querySelector(".modal-close");
+  modalCloseBtn.addEventListener("click", handleModalClose);
   // 9. Modal overlay click
   // 10. Escape key press
   // 11. Pokemon card clicks (use event delegation)
@@ -572,8 +898,11 @@ function initializeEventListeners() {
 async function init() {
   // Your implementation here
   // 1. Load favorites from localStorage
+  loadFavorites();
   // 2. Set up event listeners
+  initializeEventListeners();
   // 3. Load initial Pokemon data
+  loadInitialPokemon();
   // 4. Handle any errors
 }
 
