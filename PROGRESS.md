@@ -90,10 +90,10 @@
 **Dates**: Jan 20-26, 2025
 
 #### Planned Objectives
-- [ ] Variables, scope, and closures
-- [ ] Array/object methods and functional programming
-- [ ] Async/await and fetch API
-- [ ] Debounce/throttle implementations
+- [x] Variables, scope, and closures
+- [x] Array/object methods and functional programming
+- [x] Async/await and fetch API
+- [x] Debounce/throttle implementations
 - [ ] Error handling patterns
 
 ---

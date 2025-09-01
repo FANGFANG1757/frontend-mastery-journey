@@ -483,8 +483,8 @@ function showLoading() {
   state.isLoading = true;
   const loading = document.getElementById("loading-state");
   const grid = document.getElementById("pokemon-grid");
-  loading.classList = "loading-container";
-  grid.classList = "pokemon-grid hidden";
+  loading.classList.remove("hidden");
+  grid.classList.add("hidden");
 
   // Your implementation here
 }
@@ -530,7 +530,7 @@ function showError(message) {
 // Side effects: Updates counter text in header showing favorite count
 // Example: updateFavoritesCounter() // shows "Favorites (3)"
 function updateFavoritesCounter() {
-  const counter = document.querySelector(".favorites-counter");
+  const counter = document.getElementById("favorites-count");
   if (counter) {
     counter.textContent = `Favourite(${state.favorites.size})`;
   }
@@ -800,6 +800,13 @@ function handleFavoriteClick(event, pokemonId) {
   // 1. Prevent event bubbling
   event.stopPropagation();
   // 2. Toggle favorite
+  const isFavorite = toggleFavorite(pokemonId);
+  const addToFavBtn = event.currentTarget;
+  if (addToFavBtn) {
+    addToFavBtn.classList.toggle("active", isFavorite);
+    addToFavBtn.setAttribute("aria-pressed", isFavorite);
+  }
+  updateFavoritesCounter();
   // 3. Update UI
 }
 
@@ -867,6 +874,19 @@ function initializeEventListeners() {
   if (favoritesToggle) {
     favoritesToggle.addEventListener("click", handleFavoritesToggle);
   }
+  const PokemonGrid = document.getElementById("pokemon-grid");
+  if (PokemonGrid) {
+    PokemonGrid.addEventListener("click", (event) => {
+      const favoriteBtn = event.target.closest(".favorite-btn");
+      if (favoriteBtn) {
+        const card = favoriteBtn.closest(".pokemon-card");
+        const pokemonId = parseInt(card.dataset.pokemonId);
+        handleFavoriteClick(event, pokemonId);
+        return;
+      }
+    });
+  }
+
   // 6. Load more button
   const loadMoreBtn = document.getElementById("load-more");
   if (loadMoreBtn) {
